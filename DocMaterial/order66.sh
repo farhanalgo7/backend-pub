@@ -1,9 +1,9 @@
 #!/bin/bash
 cd docs/
-printf 'n\n\nDocForFabric\n\nPaddy\n\n1\n\n' | sphinx-quickstart
+printf 'n\n\nDocForFabric\n\nABC\n\n1\n\n' | sphinx-quickstart
 cd ..
 cp ./DocMaterial/index.rst ./DocMaterial/conf.py ./docs
-sphinx-apidoc -o docs ./src_for_doc./AutoDocAction
+sphinx-apidoc -o docs ./src_for_doc./backend-pub
 tree
 cat docs/conf.py
 # rm docs/conf.rst docs/crawler.rst
