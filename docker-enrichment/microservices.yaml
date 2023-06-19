@@ -1,0 +1,99 @@
+---
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: microservices-it
+  labels:
+    purpose: sector-wise-enrichment-IT
+
+spec:
+  containers:
+  - name: enrichment-it
+    image: fabricacr123.azurecr.io/enrichment:latest
+    resources:
+      requests:
+        cpu: "500m"
+      limits:
+        cpu: "1"
+    args: ["--sector", "IT"]
+  restartPolicy: OnFailure
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: microservices-automobile
+  labels:
+    purpose: sector-wise-enrichment-AUTO
+
+spec:
+  containers:
+  - name: enrichment-automobile
+    image: fabricacr123.azurecr.io/enrichment:latest
+    resources:
+        requests:
+          cpu: "500m"
+        limits:
+          cpu: "1"
+    args: ["--sector", "AUTOMOBILE"]
+  restartPolicy: OnFailure
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: microservices-finserv
+  labels:
+    purpose: sector-wise-enrichment-FINSERV 
+
+spec:
+  containers:
+  - name: enrichment-financial-services
+    image: fabricacr123.azurecr.io/enrichment:latest
+    resources:
+      requests:
+        cpu: "1"
+      limits:
+        cpu: "2"
+    args: ["--sector", "FINANCIAL SERVICES"]
+  restartPolicy: OnFailure
+
+---
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: microservices-construction
+  labels:
+    purpose: sector-wise-enrichment-construction
+
+spec:
+  containers:
+  - name: enrichment-construction
+    image: fabricacr123.azurecr.io/enrichment:latest
+    resources:
+      requests:
+        cpu: "1"
+      limits:
+        cpu: "2"
+    args: ["--sector", "CONSTRUCTION"]
+  restartPolicy: OnFailure
+
+---
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: microservices-healthcare
+  labels:
+    purpose: sector-wise-enrichment-healthcare
+
+spec:
+  containers:
+  - name: enrichment-healthcare
+    image: fabricacr123.azurecr.io/enrichment:latest
+    resources:
+      requests:
+        cpu: "1"
+      limits:
+        cpu: "2"
+    args: ["--sector", "HEALTHCARE"]
+  restartPolicy: OnFailure

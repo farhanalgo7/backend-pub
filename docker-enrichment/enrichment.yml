@@ -1,0 +1,492 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name:  data-enrichment-automobile
+#   namespace: fabric-dev
+#   labels:
+#     app:  data-enrichment-automobile
+# spec:
+#   selector:
+#     matchLabels:
+#       app: data-enrichment-automobile
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app:  data-enrichment-automobile
+#     spec:
+#       containers:
+#       - name:  data-enrichment-automobile
+#         image:  fabricacr123.azurecr.io/docker-enrichment:v1
+#         env:
+#         - name: SECTOR
+#           value: 'AUTOMOBILE'
+#       restartPolicy: Always
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name:  data-enrichment-it
+#   namespace: fabric-dev
+#   labels:
+#     app:  data-enrichment-it
+# spec:
+#   selector:
+#     matchLabels:
+#       app: data-enrichment-it
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app:  data-enrichment-it
+#     spec:
+#       containers:
+#       - name:  data-enrichment-it
+#         image:  fabricacr123.azurecr.io/data-enrichment:v1
+#         resources:
+#           requests:
+#             cpu: 1000m
+#             memory: 1000Mi
+#           limits:
+#             cpu: 7000m
+#             memory: 15000Mi
+#         env:
+#         - name: SECTOR
+#           value: "IT"
+#       restartPolicy: Always
+#       nodeSelector:
+#         kubernetes.io/hostname: aks-agentpool-35844783-vmss00000f
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name:  data-enrichment-construction
+#   namespace: fabric-dev
+#   labels:
+#     app:  data-enrichment-construction
+# spec:
+#   selector:
+#     matchLabels:
+#       app: data-enrichment-construction
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app:  data-enrichment-construction
+#     spec:
+#       containers:
+#       - name:  data-enrichment-construction
+#         image:  fabricacr123.azurecr.io/data-enrichment:v1
+#         resources:
+#           requests:
+#             cpu: 1000m
+#             memory: 1000Mi
+#           limits:
+#             cpu: 7000m
+#             memory: 15000Mi
+#         env:
+#         - name: SECTOR
+#           value: 'CONSTRUCTION'
+#       restartPolicy: Always
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name:  data-enrichment-chemicals
+#   namespace: fabric-dev
+#   labels:
+#     app:  data-enrichment-chemicals
+# spec:
+#   selector:
+#     matchLabels:
+#       app: data-enrichment-chemicals
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app:  data-enrichment-chemicals
+#     spec:
+#       containers:
+#       - name:  data-enrichment-chemicals
+#         image:  fabricacr123.azurecr.io/data-enrichment:v1
+#         resources:
+#           requests:
+#             cpu: 1000m
+#             memory: 1000Mi
+#           limits:
+#             cpu: 7000m
+#             memory: 15000Mi
+#         env:
+#         - name: SECTOR
+#           value: 'CHEMICALS'
+#       restartPolicy: Always
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: data-enrichment-construction-materials
+#   namespace: fabric-dev
+#   labels:
+#     app: data-enrichment-construction-materials
+# spec:
+#   selector:
+#     matchLabels:
+#       app: data-enrichment-construction-materials
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app: data-enrichment-construction-materials
+#     spec:
+#       containers:
+#         - name: data-enrichment-construction-materials
+#           image: fabricacr123.azurecr.io/data-enrichment:v1
+#           resources:
+#             requests:
+#               cpu: 1000m
+#               memory: 1000Mi
+#             limits:
+#               cpu: 7000m
+#               memory: 15000Mi
+#           env:
+#             - name: SECTOR
+#               value: "CONSTRUCTION MATERIALS"
+#       restartPolicy: Always
+#       nodeSelector:
+#         kubernetes.io/hostname: aks-node2-19122971-vmss000000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-enrichment-consumer-durables
+  namespace: fabric-dev
+  labels:
+    app: data-enrichment-consumer-durables
+spec:
+  selector:
+    matchLabels:
+      app: data-enrichment-consumer-durables
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: data-enrichment-consumer-durables
+    spec:
+      containers:
+        - name: data-enrichment-consumer-durables
+          image: fabricacr123.azurecr.io/data-enrichment:v1
+          resources:
+            requests:
+              cpu: 8000m
+              memory: 15000Mi
+            limits:
+              cpu: 8000m
+              memory: 16000Mi
+          env:
+            - name: SECTOR
+              value: "CONSUMER DURABLES"
+      restartPolicy: Always
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-enrichment-fast-moving-consumer-goods
+  namespace: fabric-dev
+  labels:
+    app: data-enrichment-fast-moving-consumer-goods
+spec:
+  selector:
+    matchLabels:
+      app: data-enrichment-fast-moving-consumer-goods
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: data-enrichment-fast-moving-consumer-goods
+    spec:
+      containers:
+        - name: data-enrichment-fast-moving-consumer-goods
+          image: fabricacr123.azurecr.io/data-enrichment:v2
+          resources:
+            requests:
+              cpu: 8000m
+              memory: 15000Mi
+            limits:
+              cpu: 8000m
+              memory: 16000Mi
+          env:
+            - name: SECTOR
+              value: "FAST MOVING CONSUMER GOODS"
+      restartPolicy: Always
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: data-enrichment-financial-services
+#   namespace: fabric-dev
+#   labels:
+#     app: data-enrichment-financial-services
+# spec:
+#   selector:
+#     matchLabels:
+#       app: data-enrichment-financial-services
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app: data-enrichment-financial-services
+#     spec:
+#       containers:
+#         - name: data-enrichment-financial-services
+#           image: fabricacr123.azurecr.io/data-enrichment:v1
+#           resources:
+#             requests:
+#               cpu: 1000m
+#               memory: 1000Mi
+#             limits:
+#               cpu: 7000m
+#               memory: 15000Mi
+#           env:
+#             - name: SECTOR
+#               value: "FINANCIAL SERVICES"
+#       restartPolicy: Always
+#       nodeSelector:
+#         kubernetes.io/hostname: aks-node2-19122971-vmss000000
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name:  data-enrichment-healthcare
+#   namespace: fabric-dev
+#   labels:
+#     app:  data-enrichment-healthcare
+# spec:
+#   selector:
+#     matchLabels:
+#       app: data-enrichment-healthcare
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app:  data-enrichment-healthcare
+#     spec:
+#       containers:
+#       - name:  data-enrichment-healthcare
+#         image:  fabricacr123.azurecr.io/data-enrichment:v1
+#         resources:
+#           requests:
+#             cpu: 1000m
+#             memory: 1000Mi
+#           limits:
+#             cpu: 7000m
+#             memory: 15000Mi
+#         env:
+#         - name: SECTOR
+#           value: 'HEALTHCARE'
+#       restartPolicy: Always
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: data-enrichment-metals-mining
+#   namespace: fabric-dev
+#   labels:
+#     app: data-enrichment-metals-mining
+# spec:
+#   selector:
+#     matchLabels:
+#       app: data-enrichment-metals-mining
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app: data-enrichment-metals-mining
+#     spec:
+#       containers:
+#         - name: data-enrichment-metals-mining
+#           image: fabricacr123.azurecr.io/data-enrichment:v1
+#           resources:
+#             requests:
+#               cpu: 1000m
+#               memory: 1000Mi
+#             limits:
+#               cpu: 7000m
+#               memory: 15000Mi
+#           env:
+#             - name: SECTOR
+#               value: "METALS AND MINING"
+#       restartPolicy: Always
+#       nodeSelector:
+#         kubernetes.io/hostname: aks-node2-19122971-vmss000001
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: data-enrichment-oil-cons-fuel
+#   namespace: fabric-dev
+#   labels:
+#     app: data-enrichment-oil-cons-fuel
+# spec:
+#   selector:
+#     matchLabels:
+#       app: data-enrichment-oil-cons-fuel
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app: data-enrichment-oil-cons-fuel
+#     spec:
+#       containers:
+#         - name: data-enrichment-oil-cons-fuel
+#           image: fabricacr123.azurecr.io/data-enrichment:v2
+#           resources:
+#             requests:
+#               cpu: 1000m
+#               memory: 1000Mi
+#             limits:
+#               cpu: 7000m
+#               memory: 15000Mi
+#           env:
+#             - name: SECTOR
+#               value: "OIL GAS AND CONSUMABLE FUEL"
+#       restartPolicy: Always
+#       nodeSelector:
+#         kubernetes.io/hostname: aks-agentpool-35844783-vmss00000n
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name:  data-enrichment-power
+#   namespace: fabric-dev
+#   labels:
+#     app:  data-enrichment-power
+# spec:
+#   selector:
+#     matchLabels:
+#       app: data-enrichment-power
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app:  data-enrichment-power
+#     spec:
+#       containers:
+#       - name:  data-enrichment-power
+#         image:  fabricacr123.azurecr.io/data-enrichment:v2
+#         resources:
+#           requests:
+#             cpu: 1000m
+#             memory: 1000Mi
+#           limits:
+#             cpu: 7000m
+#             memory: 15000Mi
+#         env:
+#         - name: SECTOR
+#           value: 'POWER'
+#       restartPolicy: Always
+#       nodeSelector:
+#         kubernetes.io/hostname: aks-agentpool-35844783-vmss00000n
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name:  data-enrichment-services
+#   namespace: fabric-dev
+#   labels:
+#     app:  data-enrichment-services
+# spec:
+#   selector:
+#     matchLabels:
+#       app: data-enrichment-services
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app:  data-enrichment-services
+#     spec:
+#       containers:
+#       - name:  data-enrichment-services
+#         image:  fabricacr123.azurecr.io/data-enrichment:v2
+#         resources:
+#           requests:
+#             cpu: 1000m
+#             memory: 1000Mi
+#           limits:
+#             cpu: 7000m
+#             memory: 15000Mi
+#         env:
+#         - name: SECTOR
+#           value: 'SERVICES'
+#       restartPolicy: Always
+#       nodeSelector:
+#         kubernetes.io/hostname: aks-agentpool-35844783-vmss00000n
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name:  data-enrichment-telecommunication
+#   namespace: fabric-dev
+#   labels:
+#     app:  data-enrichment-telecommunication
+# spec:
+#   selector:
+#     matchLabels:
+#       app: data-enrichment-telecommunication
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app:  data-enrichment-telecommunication
+#     spec:
+#       containers:
+#       - name:  data-enrichment-telecommunication
+#         image:  fabricacr123.azurecr.io/data-enrichment:v1
+#         resources:
+#           requests:
+#             cpu: 1000m
+#             memory: 1000Mi
+#           limits:
+#             cpu: 7000m
+#             memory: 15000Mi
+#         env:
+#         - name: SECTOR
+#           value: 'TELECOMMUNICATION'
+#       restartPolicy: Always
+#       nodeSelector:
+#         kubernetes.io/hostname: aks-agentpool-35844783-vmss00000n
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  data-enrichment-telecommunication
+  namespace: fabric-dev
+  labels:
+    app:  data-enrichment-telecommunication
+spec:
+  selector:
+    matchLabels:
+      app: data-enrichment-telecommunication
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  data-enrichment-telecommunication
+    spec:
+      containers:
+      - name:  data-enrichment-telecommunication
+        image:  fabricacr123.azurecr.io/data-enrichment:v1
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 1000Mi
+          limits:
+            cpu: 7000m
+            memory: 15000Mi
+        env:
+        - name: SECTOR
+          value: 'CONGLOMERATE'
+      restartPolicy: Always
+      nodeSelector:
+        kubernetes.io/hostname: aks-agentpool-35844783-vmss000012
+

@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: data-enrichment-remaining-sectors-cron
+  namespace: fabric-dev
+spec:
+  schedule: "30 0/3 * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 5
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: data-enrichment
+            image: fabricacr123.azurecr.io/data-enrichment:latest
+            imagePullPolicy: IfNotPresent
+            resources:
+              requests:
+                cpu: 6000m
+                memory: 10000Mi
+              limits:
+                cpu: 7000m
+                memory: 15000Mi
+            env:
+            - name: SECTOR
+              value: 'ALL'
+          restartPolicy: OnFailure
+

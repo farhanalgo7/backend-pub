@@ -1,0 +1,12 @@
+tqdm
+numpy
+pandas
+spacy==3.1.1 
+scikit-learn
+fastapi
+uvicorn[standard]
+transformers==4.6.1
+torch==1.9.0
+finbert-embedding
+joblib
+nltk

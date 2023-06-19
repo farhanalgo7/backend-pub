@@ -1,0 +1,8 @@
+
+FROM python:3.8.2-slim AS build
+WORKDIR /Microservice
+COPY main.py requirements.txt model_90.joblib ./
+RUN pip install --upgrade pip && pip install -r requirements.txt && python -m spacy download en_core_web_md
+
+FROM build
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]

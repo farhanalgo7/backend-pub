@@ -1,0 +1,141 @@
+#banknifty
+#marketupdate
+#nifty
+#nifty50
+#nifty50
+#sensex
+#stockinfocus
+#stockmarket
+#stockmarket
+#stockmarketindia
+#stocks
+52-week Highs
+52-Week Lows
+Analyst Ratings
+Annual Report
+average
+Balace Sheet
+bear
+bearish
+Beta
+bid
+Black Swan
+Bond
+Book Value Per Share – BVPS
+Breakout Stocks
+bull
+bullish
+bulls
+Buy Rating
+Buyback
+CAGR
+capital
+closes
+Consumer Price Index
+Correction
+Cost of Capital
+Cost of Debt
+Cost of Equity
+CPI
+Current Ratio
+Cyclical Stocks
+Debt-To-Equity Ratio
+Diluted Earnings Per Share
+Disruptive Technology
+dividend
+Dividend
+Dividend Achievers
+Dividend Kings
+Dividend Stocks
+Dividend Yield
+earnings
+Earnings Per Share
+Earnings Reports
+EBITDA
+equity
+Equity Income
+ESG Score
+ETFs
+Ex-Dividend
+Exchange-Traded Funds
+FinTech
+Fundamental Analysis
+Futures Contract
+gainer
+gainers
+gains
+Gap Down Stocks
+Gap Up Stocks
+GDP
+Green Investing
+Gross Domestic Product
+growth
+Growth Stocks
+Head and Shoulders Pattern
+Hold Rating
+Hostile Takeover
+Initial Public Offering
+Insider Trading
+Institutional Investors
+intraday
+Intrinsic Value
+Inverted Yield Curve
+investment
+IPO
+LBO
+Leveraged Buyout
+liquidity
+Lock-Up Period Expiration
+losers
+lower
+Market Capitalization
+mid-market
+Monthly Dividend Stocks
+Most Active Stocks
+moving
+Net Income
+Neutral Rating
+News Sentiment
+nifty
+nse
+opening
+Operating Income
+Outperform Rating
+outperforming
+Overbought
+Oversold
+Overweight
+P/E Growth
+PE
+PEG
+PEG
+Percentage Decliners
+Percentage Decliners
+Percentage Gainers
+Percentage Gainers
+performing
+Price Target
+Price Target
+Price to Earnings Ratio
+Price to Earnings Ratio
+Price-Sales Ratio
+Price-to-Book Ratio
+profit
+Profit Margin
+quarterly
+revenue
+risk
+sensex
+shareholder
+shareholders
+shares
+stake
+stock
+stocks
+target
+targeted
+trade
+trading
+underperforming
+valuation
+volatility
