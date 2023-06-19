@@ -1,0 +1,9 @@
+site_name: Semantic Search + QnA
+
+theme: readthedocs
+
+nav:
+    - Home: index.md
+    - Background: background.md
+    - Architecture: architecture.md
+    - Deployment: deployment.md

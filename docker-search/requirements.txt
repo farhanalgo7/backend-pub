@@ -1,0 +1,16 @@
+faiss-cpu==1.7.2
+# farm-haystack[faiss]==1.10.0 - stable till API resp messed up
+# farm-haystack[faiss]==1.12 - stable till after 100 resp it crashes
+farm-haystack[faiss]==1.13
+boto3
+# azure-core==1.26.0
+# azure-cosmos==4.3.0
+python-dotenv
+fastapi
+uvicorn
+# psycopg2
+# SQLAlchemy
+# Sphinx
+# sphinx-rtd-theme
+# pytest
+# mkdocs
