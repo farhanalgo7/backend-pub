@@ -1,0 +1,21 @@
+docker\_microservices package
+=============================
+
+Submodules
+----------
+
+docker\_microservices.main module
+---------------------------------
+
+.. automodule:: docker_microservices.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: docker_microservices
+   :members:
+   :undoc-members:
+   :show-inheritance:

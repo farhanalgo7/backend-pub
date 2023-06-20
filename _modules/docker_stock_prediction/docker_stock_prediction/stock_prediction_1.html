@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docker_stock_prediction.docker_stock_prediction.stock_prediction_1 &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">backend_pub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">docker_stock_prediction.docker_stock_prediction.stock_prediction_1</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for docker_stock_prediction.docker_stock_prediction.stock_prediction_1</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="get_secret"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_secret">[docs]</a><span></span><span class="k">def</span> <span class="nf">get_secret</span><span class="p">():</span>
+    <span class="n">secret_name</span> <span class="o">=</span> <span class="s1">&#39;FABRIC-RDS-Secret-Keys&#39;</span>
+    <span class="n">region_name</span> <span class="o">=</span> <span class="s1">&#39;ap-south-1&#39;</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="n">service_name</span><span class="o">=</span><span class="s1">&#39;secretsmanager&#39;</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="n">region_name</span><span class="p">)</span>
+    <span class="n">get_secret_value_response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_secret_value</span><span class="p">(</span><span class="n">SecretId</span><span class="o">=</span><span class="n">secret_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">get_secret_value_response</span></div>
+
+
+
+<div class="viewcode-block" id="get_connection"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_connection">[docs]</a><span class="k">def</span> <span class="nf">get_connection</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">database</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">token</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_ticker_names_and_id"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_ticker_names_and_id">[docs]</a><span class="k">def</span> <span class="nf">get_ticker_names_and_id</span><span class="p">(</span><span class="n">sector</span><span class="p">,</span> <span class="n">table</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to get ticker_id and the ticker name</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    ----------</span>
+<span class="sd">        sector: str</span>
+<span class="sd">            Name of Sector - IT or BANK</span>
+<span class="sd">        table: str </span>
+<span class="sd">            Name of config table - algoDDB.Table(&#39;ConfigTable&#39;)</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    -------</span>
+<span class="sd">        ticker_id: str</span>
+<span class="sd">            ticker symbol of the company </span>
+<span class="sd">        ticker_name: str</span>
+<span class="sd">            name of the company</span>
+<span class="sd">    </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ticker_id</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ticker_name</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">FilterExpression</span><span class="o">=</span><span class="n">Attr</span><span class="p">(</span><span class="s1">&#39;Sector&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">sector</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;Items&#39;</span><span class="p">]:</span>
+        <span class="n">ticker_id</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;Stock_Ticker_Symbol&#39;</span><span class="p">])</span>
+        <span class="n">ticker_name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;Ticker_Name&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">ticker_id</span><span class="p">,</span> <span class="n">ticker_name</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_news"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_news">[docs]</a><span class="k">def</span> <span class="nf">get_news</span><span class="p">(</span><span class="n">ticker_list</span><span class="p">,</span> <span class="n">algoDDB</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to get news of all the companies present in ticker_list</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    ---------</span>
+<span class="sd">        ticker_list: list</span>
+<span class="sd">            list of company names</span>
+<span class="sd">        algoDDB: variable name</span>
+<span class="sd">            assigned to boto3.resource()</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">        all_news: dataframe</span>
+<span class="sd">            dataframe which includes news of all the companies in ticker_list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">this_month</span> <span class="o">=</span> <span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span> <span class="o">+</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span>
+    <span class="n">today</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">lastMonth</span> <span class="o">=</span> <span class="n">first</span> <span class="o">-</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">last_month</span> <span class="o">=</span> <span class="n">lastMonth</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span>
+    <span class="n">list_months</span> <span class="o">=</span> <span class="p">[</span><span class="n">this_month</span><span class="p">,</span> <span class="n">last_month</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> list of months to be scanned &#39;</span><span class="p">,</span> <span class="n">list_months</span><span class="p">)</span>
+    <span class="n">str_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">str_dict</span><span class="p">[</span><span class="s1">&#39;:val&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">str_dict</span><span class="p">[</span><span class="s1">&#39;:date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span> <span class="o">-</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">+</span> <span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> 00:00:00&#39;</span><span class="p">)</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">algoDDB</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s1">&#39;News_Table&#39;</span><span class="p">)</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">list_months</span><span class="p">:</span>
+        <span class="n">resp_</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Limit</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">KeyConditionExpression</span><span class="o">=</span><span class="n">Key</span><span class="p">(</span><span class="s1">&#39;news_month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">month</span><span class="p">),</span> <span class="n">FilterExpression</span><span class="o">=</span><span class="s1">&#39;news_ner_flag= :val AND news_date &gt; :date&#39;</span><span class="p">,</span> <span class="n">ExpressionAttributeValues</span><span class="o">=</span><span class="n">str_dict</span><span class="p">)</span>
+        <span class="n">items</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">resp_</span><span class="p">[</span><span class="s1">&#39;Items&#39;</span><span class="p">])</span>
+        <span class="k">while</span> <span class="s1">&#39;LastEvaluatedKey&#39;</span> <span class="ow">in</span> <span class="n">resp_</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">resp_</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Limit</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">ExclusiveStartKey</span><span class="o">=</span><span class="n">resp_</span><span class="p">[</span><span class="s1">&#39;LastEvaluatedKey&#39;</span><span class="p">],</span> <span class="n">KeyConditionExpression</span><span class="o">=</span><span class="n">Key</span><span class="p">(</span><span class="s1">&#39;news_month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">month</span><span class="p">),</span> <span class="n">FilterExpression</span><span class="o">=</span><span class="s1">&#39;news_ner_flag= :val AND news_date &gt; :date&#39;</span><span class="p">,</span> <span class="n">ExpressionAttributeValues</span><span class="o">=</span><span class="n">str_dict</span><span class="p">)</span>
+                <span class="n">items</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">resp_</span><span class="p">[</span><span class="s1">&#39;Items&#39;</span><span class="p">])</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+                <span class="n">resp_</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Limit</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">ExclusiveStartKey</span><span class="o">=</span><span class="n">resp_</span><span class="p">[</span><span class="s1">&#39;LastEvaluatedKey&#39;</span><span class="p">],</span> <span class="n">KeyConditionExpression</span><span class="o">=</span><span class="n">Key</span><span class="p">(</span><span class="s1">&#39;news_month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">month</span><span class="p">),</span> <span class="n">FilterExpression</span><span class="o">=</span><span class="s1">&#39;news_ner_flag= :val AND news_date &gt; :date&#39;</span><span class="p">,</span> <span class="n">ExpressionAttributeValues</span><span class="o">=</span><span class="n">str_dict</span><span class="p">)</span>
+                <span class="n">items</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">resp_</span><span class="p">[</span><span class="s1">&#39;Items&#39;</span><span class="p">])</span>
+    <span class="n">all_news</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">all_news</span></div>
+
+
+
+<div class="viewcode-block" id="build_sentiment_mapping_csv"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_sentiment_mapping_csv">[docs]</a><span class="k">def</span> <span class="nf">build_sentiment_mapping_csv</span><span class="p">(</span><span class="n">db_resource</span><span class="p">,</span> <span class="n">sector</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to build sentiment mapping csv </span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">        db_resource: dynamodb resource object</span>
+<span class="sd">            assigned to boto3.resource()</span>
+<span class="sd">        sector: str</span>
+<span class="sd">            name of sector - IT or BANK</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ticker_sentiment_mapping</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;news_for&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker_id&#39;</span><span class="p">,</span> <span class="s1">&#39;keywords&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker_name&#39;</span><span class="p">])</span>
+    <span class="n">config_table</span> <span class="o">=</span> <span class="n">db_resource</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s1">&#39;ConfigTable&#39;</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">config_table</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">FilterExpression</span><span class="o">=</span><span class="n">Attr</span><span class="p">(</span><span class="s1">&#39;Sector&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">sector</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;Items&#39;</span><span class="p">]:</span>
+        <span class="n">ticker_sentiment_mapping</span> <span class="o">=</span> <span class="n">ticker_sentiment_mapping</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;news_for&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;Ticker_Name&#39;</span><span class="p">],</span> <span class="s1">&#39;ticker_id&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;Stock_Ticker_Symbol&#39;</span><span class="p">],</span> <span class="s1">&#39;ticker_name&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;Ticker_Sentiment_Mapping&#39;</span><span class="p">][</span><span class="s1">&#39;SS&#39;</span><span class="p">]},</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ticker_sentiment_mapping</span></div>
+
+
+
+<div class="viewcode-block" id="build_returns_and_output"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_returns_and_output">[docs]</a><span class="k">def</span> <span class="nf">build_returns_and_output</span><span class="p">(</span><span class="n">stock_prices</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate returns and output</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    stock_prices : DataFrame</span>
+<span class="sd">        numerical data about the stocks</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">stock_prices</span><span class="p">[</span><span class="s1">&#39;log_close&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">stock_prices</span><span class="p">[</span><span class="s1">&#39;close&#39;</span><span class="p">])</span>
+    <span class="n">stock_prices</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker_id&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">stock_prices</span><span class="p">[</span><span class="s1">&#39;returns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">)[</span><span class="s1">&#39;log_close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span>
+    <span class="n">stock_prices</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">stock_prices</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">)[</span><span class="s1">&#39;log_close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">stock_prices</span><span class="p">[</span><span class="s1">&#39;returns&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="map_sentiment"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.map_sentiment">[docs]</a><span class="k">def</span> <span class="nf">map_sentiment</span><span class="p">(</span><span class="n">news</span><span class="p">,</span> <span class="n">ticker_mapping</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Maps ticker_id with different forms of ticker_names</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    news : DataFrame row</span>
+<span class="sd">        row of data about stock news</span>
+<span class="sd">    ticker_mapping : map</span>
+<span class="sd">        maps ticker_id with different forms of ticker_names</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ticker_id</span> <span class="o">=</span> <span class="n">news</span><span class="p">[</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">]</span>
+    <span class="n">ticker_names</span> <span class="o">=</span> <span class="n">news</span><span class="p">[</span><span class="s1">&#39;ticker_name&#39;</span><span class="p">]</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ticker_name</span> <span class="ow">in</span> <span class="n">ticker_names</span><span class="p">:</span>
+        <span class="n">value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ticker_name</span><span class="p">)</span>
+    <span class="n">ticker_mapping</span><span class="p">[</span><span class="n">ticker_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
+
+
+
+<div class="viewcode-block" id="calculate_total_news"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.calculate_total_news">[docs]</a><span class="k">def</span> <span class="nf">calculate_total_news</span><span class="p">(</span><span class="n">news</span><span class="p">,</span> <span class="n">news_type</span><span class="p">,</span> <span class="n">ticker_mapping</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes total positive and negative news for respective ticker_id</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    news : DataFrame row</span>
+<span class="sd">        row of data about stock news</span>
+<span class="sd">    news_type : str</span>
+<span class="sd">        positive or negative</span>
+<span class="sd">    ticker_mapping : map</span>
+<span class="sd">       mapping of ticker_id with different forms of ticker_names</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    count : int</span>
+<span class="sd">        count of positive or negative news based on news_type</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">news_for</span> <span class="o">=</span> <span class="n">news</span><span class="p">[</span><span class="s1">&#39;news_for&#39;</span><span class="p">]</span>
+    <span class="n">ticker_ids</span> <span class="o">=</span> <span class="n">ticker_mapping</span><span class="p">[</span><span class="n">news_for</span><span class="p">]</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">sentiment</span> <span class="ow">in</span> <span class="n">news</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">sentiment</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">elif</span> <span class="n">sentiment</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">news_type</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">sentiment</span><span class="p">[</span><span class="s1">&#39;entities&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">entity</span><span class="p">[</span><span class="s1">&#39;entity&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">ticker_ids</span><span class="p">:</span>
+                    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">break</span>
+    <span class="k">return</span> <span class="n">count</span></div>
+
+
+
+<div class="viewcode-block" id="calculate_sentiment"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.calculate_sentiment">[docs]</a><span class="k">def</span> <span class="nf">calculate_sentiment</span><span class="p">(</span><span class="n">news</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute sentiment score using formula (pos-neg)/(pos+neg)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    news : DataFrame row</span>
+<span class="sd">        row of data about stock news</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    sentiment score : float</span>
+<span class="sd">        sentiment score for each row</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">news</span><span class="p">[</span><span class="s1">&#39;positive&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">news</span><span class="p">[</span><span class="s1">&#39;negative&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">news</span><span class="p">[</span><span class="s1">&#39;positive&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">news</span><span class="p">[</span><span class="s1">&#39;negative&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">news</span><span class="p">[</span><span class="s1">&#39;positive&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">news</span><span class="p">[</span><span class="s1">&#39;negative&#39;</span><span class="p">])</span></div>
+
+
+
+<div class="viewcode-block" id="generate_x"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.generate_x">[docs]</a><span class="k">def</span> <span class="nf">generate_x</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">agg_index</span><span class="p">,</span> <span class="n">stock_sentiment</span><span class="p">,</span> <span class="n">agg_sentiment</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create X vector with sentiment</span>
+<span class="sd">    X = [returns, sector_return, sentiment_score, sector_sentiment_score, volume, sector_volume]</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    row : DataFrame row</span>
+<span class="sd">        row of numerical data about the stock</span>
+<span class="sd">    agg_index: DataFrame</span>
+<span class="sd">        grouped numerical data about stocks</span>
+<span class="sd">    stock_sentiment: DataFrame</span>
+<span class="sd">        data about stock news</span>
+<span class="sd">    agg_sentiment: DataFrame</span>
+<span class="sd">        grouped data about stock news</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    X : array</span>
+<span class="sd">        X for each row</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ticker_id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">]</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+    <span class="n">returns</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;returns&#39;</span><span class="p">]</span>
+    <span class="n">sector_return</span> <span class="o">=</span> <span class="n">agg_index</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">agg_index</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">date</span><span class="p">][</span><span class="s1">&#39;returns&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">stock_sentiment_score</span> <span class="o">=</span> <span class="n">stock_sentiment</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">stock_sentiment</span><span class="p">[</span><span class="s1">&#39;news_for&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ticker_id</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">stock_sentiment</span><span class="p">[</span><span class="s1">&#39;news_date&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">date</span><span class="p">)][</span><span class="s1">&#39;sentiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="n">stock_sentiment_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sector_sentiment_score</span> <span class="o">=</span> <span class="n">agg_sentiment</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">agg_sentiment</span><span class="p">[</span><span class="s1">&#39;news_date&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">date</span><span class="p">][</span><span class="s1">&#39;sentiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="n">sector_sentiment_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">volume</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span>
+    <span class="n">sector_volume</span> <span class="o">=</span> <span class="n">agg_index</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">agg_index</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">date</span><span class="p">][</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">returns</span><span class="p">,</span> <span class="n">sector_return</span><span class="p">,</span> <span class="n">stock_sentiment_score</span><span class="p">,</span> <span class="n">sector_sentiment_score</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="n">sector_volume</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="generate_x_ws"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.generate_x_ws">[docs]</a><span class="k">def</span> <span class="nf">generate_x_ws</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">agg_index</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create X vector without sentiment</span>
+<span class="sd">    X = [returns, sector_return, volume, sector_volume]</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    row : DataFrame row</span>
+<span class="sd">        row of numerical data about the stock</span>
+<span class="sd">    agg_index: DataFrame</span>
+<span class="sd">        grouped numerical data about stocks</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    X : array</span>
+<span class="sd">        X for each row</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ticker_id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">]</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>
+    <span class="n">returns</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;returns&#39;</span><span class="p">]</span>
+    <span class="n">sector_return</span> <span class="o">=</span> <span class="n">agg_index</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">agg_index</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">date</span><span class="p">][</span><span class="s1">&#39;returns&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">volume</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span>
+    <span class="n">sector_volume</span> <span class="o">=</span> <span class="n">agg_index</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">agg_index</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">date</span><span class="p">][</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">returns</span><span class="p">,</span> <span class="n">sector_return</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="n">sector_volume</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="build_feature"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_feature">[docs]</a><span class="k">def</span> <span class="nf">build_feature</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">size_of_x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create feature vector = [X(t-2) X(t-1) X(t)]</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    data : DataFrame</span>
+<span class="sd">        numerical processed data about the stocks</span>
+<span class="sd">    size_of_x: int</span>
+<span class="sd">        size of x : with sentiment = 6 </span>
+<span class="sd">                    without sentiment = 4</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;feature&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">size_of_x</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">feature</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;ticker_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;ticker_id&#39;</span><span class="p">]:</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">feature</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;ticker_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;ticker_id&#39;</span><span class="p">]:</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">feature</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">])</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+        <span class="n">feature</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;feature&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">feature</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="binary_classify"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.binary_classify">[docs]</a><span class="k">def</span> <span class="nf">binary_classify</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert output to binary</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    output : float</span>
+<span class="sd">        float output predicted for each stock</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    binary : int</span>
+<span class="sd">        0/1 based on float value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">output</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span></div>
+
+
+
+<div class="viewcode-block" id="process_output"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.process_output">[docs]</a><span class="k">def</span> <span class="nf">process_output</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert binary to keywords</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    output : int</span>
+<span class="sd">        binary output predicted for each stock</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    prediction : str</span>
+<span class="sd">        RISE/DROP based on 1/0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">output</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;RISE&#39;</span>
+    <span class="k">elif</span> <span class="n">output</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;DROP&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span></div>
+
+
+
+<div class="viewcode-block" id="get_classifier"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_classifier">[docs]</a><span class="k">def</span> <span class="nf">get_classifier</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Builds RandomForest classifier object</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    randomForestClassifier : RandomForestClassifier</span>
+<span class="sd">        RandomForest Classifier object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">min_weight_fraction_leaf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_impurity_decrease</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bootstrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">oob_score</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_cross_validator"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_cross_validator">[docs]</a><span class="k">def</span> <span class="nf">get_cross_validator</span><span class="p">(</span><span class="n">folds</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Builds KFold object with desired folds</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    folds : int</span>
+<span class="sd">        number of desired folds for the validator</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    kFold : KFold</span>
+<span class="sd">        KFold object with desired folds</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="n">folds</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="compute_auc"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.compute_auc">[docs]</a><span class="k">def</span> <span class="nf">compute_auc</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute auc score</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    classifier : RandomForestClassifier</span>
+<span class="sd">        classifier object</span>
+<span class="sd">    X: array</span>
+<span class="sd">        feature vector</span>
+<span class="sd">    y: array</span>
+<span class="sd">        actual output</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    auc_score : float</span>
+<span class="sd">        auc_score for X and y</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span><span class="p">)</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">auc_score</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">auc_score</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="compute_f1"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.compute_f1">[docs]</a><span class="k">def</span> <span class="nf">compute_f1</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute f1 score</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    classifier : RandomForestClassifier</span>
+<span class="sd">        classifier object</span>
+<span class="sd">    X: array</span>
+<span class="sd">        feature vector</span>
+<span class="sd">    y: array</span>
+<span class="sd">        actual output</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    f1_score : float</span>
+<span class="sd">        f1_score for X and y</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="compute_accuracy_score"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.compute_accuracy_score">[docs]</a><span class="k">def</span> <span class="nf">compute_accuracy_score</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute accuracy score</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    classifier : RandomForestClassifier</span>
+<span class="sd">        classifier object</span>
+<span class="sd">    X: array</span>
+<span class="sd">        feature vector</span>
+<span class="sd">    y: array</span>
+<span class="sd">        actual output</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    accuracy_score : float</span>
+<span class="sd">        accuracy_score for X and y</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span> <span class="mi">3</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="save_model_to_db"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.save_model_to_db">[docs]</a><span class="k">def</span> <span class="nf">save_model_to_db</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">object_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Save trained model to database</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    model: RandomForestClassifier</span>
+<span class="sd">        classifier object</span>
+<span class="sd">    object_name: Name of file with which the model is to be saved in S3 bucket</span>
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pickled_model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">s3_client</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="s1">&#39;ap-south-1&#39;</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">s3_client</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="s1">&#39;fabric-prediction-models&#39;</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="n">object_name</span><span class="p">,</span> <span class="n">Body</span><span class="o">=</span><span class="n">pickled_model</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;ResponseMetadata&#39;</span><span class="p">][</span><span class="s1">&#39;HTTPStatusCode&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">**********************S3 bucket updated with model******************</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Model could not be saved to S3 bucket response code from s3 :&#39;</span><span class="p">,</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;ResponseMetadata&#39;</span><span class="p">][</span><span class="s1">&#39;HTTPStatusCode&#39;</span><span class="p">])</span></div>
+
+
+
+<div class="viewcode-block" id="build_model"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_model">[docs]</a><span class="k">def</span> <span class="nf">build_model</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">folds</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build model and validate</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    data: DataFrame</span>
+<span class="sd">        numerical processed data about the stocks</span>
+<span class="sd">    folds: int </span>
+<span class="sd">        number of folds to use in KFold</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    clf : RandomForestClassifier</span>
+<span class="sd">        trained classifier object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">validation</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">get_classifier</span><span class="p">()</span>
+    <span class="n">cv</span> <span class="o">=</span> <span class="n">get_cross_validator</span><span class="p">(</span><span class="n">folds</span><span class="p">)</span>
+    <span class="n">accuracy_score</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="p">((</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">),</span> <span class="n">i</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="n">folds</span><span class="p">)):</span>
+        <span class="p">(</span><span class="n">training_data</span><span class="p">,</span> <span class="n">testing_data</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">])</span>
+        <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">training_data</span><span class="o">.</span><span class="n">feature</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">training_data</span><span class="o">.</span><span class="n">output</span><span class="p">))</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">testing_data</span><span class="o">.</span><span class="n">feature</span><span class="p">))</span>
+        <span class="n">testing_data_with_output</span> <span class="o">=</span> <span class="n">testing_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">testing_data_with_output</span><span class="p">[</span><span class="s1">&#39;prediction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_pred</span>
+        <span class="n">validation</span> <span class="o">=</span> <span class="n">validation</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">testing_data_with_output</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">clf</span></div>
+
+
+
+<div class="viewcode-block" id="build_function_sector"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_function_sector">[docs]</a><span class="k">def</span> <span class="nf">build_function_sector</span><span class="p">(</span><span class="n">stock_prices</span><span class="p">,</span> <span class="n">stock_live_prices</span><span class="p">,</span> <span class="n">stock_mapping</span><span class="p">,</span> <span class="n">stock_news</span><span class="p">,</span> <span class="n">MODELS_COL</span><span class="p">,</span> <span class="n">sector</span><span class="p">,</span> <span class="n">number_of_days_for_model_training</span><span class="p">,</span> <span class="n">s3_bucket_object_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Process data</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------</span>
+<span class="sd">    stock_prices: DataFrame</span>
+<span class="sd">        numerical closing data about the stocks</span>
+<span class="sd">    stock_live_prices: DataFrame </span>
+<span class="sd">        numerical live data about the stocks</span>
+<span class="sd">    input_sentiment_csv: str</span>
+<span class="sd">        path to sentiment csv</span>
+<span class="sd">    STOCK_NEWS_COL: </span>
+<span class="sd">        column where the stocks news data is to be fetched from</span>
+<span class="sd">    MODELS_COL:</span>
+<span class="sd">        column where the model is to be saved or fetched from</span>
+<span class="sd">    sector: str</span>
+<span class="sd">        type of sector</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    ------</span>
+<span class="sd">    output : array</span>
+<span class="sd">        [output (dataframe), past_prediction_df (dataframe)]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">date_to_predict</span><span class="p">,</span> <span class="n">data_train</span><span class="p">,</span> <span class="n">all_stocks</span><span class="p">,</span> <span class="n">all_stocks_bank</span>
+    <span class="n">stock_prices</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stock_prices</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+    <span class="n">stock_live_prices</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stock_live_prices</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+    <span class="n">count_per_ticker</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="n">total_stocks</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">count_per_ticker</span><span class="p">)</span>
+    <span class="n">all_stocks</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">count_per_ticker</span><span class="o">.</span><span class="n">ticker_id</span><span class="p">)</span>
+    <span class="n">build_returns_and_output</span><span class="p">(</span><span class="n">stock_prices</span><span class="p">)</span>
+    <span class="n">build_returns_and_output</span><span class="p">(</span><span class="n">stock_live_prices</span><span class="p">)</span>
+    <span class="n">agg_index</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;returns&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;volume&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span>
+    <span class="n">agg_live_index</span> <span class="o">=</span> <span class="n">stock_live_prices</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;returns&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;volume&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span>
+    <span class="n">ticker_mapping</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">stock_mapping</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">map_sentiment</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">ticker_mapping</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">stock_news</span><span class="p">[</span><span class="s1">&#39;news_for&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_news</span><span class="p">[</span><span class="s1">&#39;news_for&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">stock_mapping</span><span class="o">.</span><span class="n">news_for</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">stock_mapping</span><span class="o">.</span><span class="n">ticker_id</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">stock_news</span><span class="p">[</span><span class="s1">&#39;news_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stock_news</span><span class="p">[</span><span class="s1">&#39;news_date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+    <span class="n">stock_news</span><span class="p">[</span><span class="s1">&#39;positive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_news</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">calculate_total_news</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="s1">&#39;positive&#39;</span><span class="p">,</span> <span class="n">ticker_mapping</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">stock_news</span><span class="p">[</span><span class="s1">&#39;negative&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_news</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">calculate_total_news</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="s1">&#39;negative&#39;</span><span class="p">,</span> <span class="n">ticker_mapping</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">stock_news</span><span class="p">[</span><span class="s1">&#39;sentiment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_news</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">calculate_sentiment</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">stock_sentiment</span> <span class="o">=</span> <span class="n">stock_news</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;news_for&#39;</span><span class="p">,</span> <span class="s1">&#39;news_date&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;positive&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;negative&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span>
+    <span class="n">stock_sentiment</span><span class="p">[</span><span class="s1">&#39;sentiment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_sentiment</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">calculate_sentiment</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">agg_sentiment</span> <span class="o">=</span> <span class="n">stock_news</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;news_date&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;positive&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;negative&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span>
+    <span class="n">agg_sentiment</span><span class="p">[</span><span class="s1">&#39;sentiment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">agg_sentiment</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">calculate_sentiment</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">stock_prices_ws</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">stock_live_prices_ws</span> <span class="o">=</span> <span class="n">stock_live_prices</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">stock_prices</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_prices</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">generate_x</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">agg_index</span><span class="p">,</span> <span class="n">stock_sentiment</span><span class="p">,</span> <span class="n">agg_sentiment</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">stock_live_prices</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_live_prices</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">generate_x</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">agg_live_index</span><span class="p">,</span> <span class="n">stock_sentiment</span><span class="p">,</span> <span class="n">agg_sentiment</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">stock_prices_ws</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_prices_ws</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">generate_x_ws</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">agg_index</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">stock_live_prices_ws</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stock_live_prices_ws</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">generate_x_ws</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">agg_live_index</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">sortANDfilter_stock_data</span><span class="p">(</span><span class="n">stock_data</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">stock_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">])</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">]]</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">sortANDfilter_stock_data</span><span class="p">(</span><span class="n">stock_prices</span><span class="p">)</span>
+    <span class="n">data_ws</span> <span class="o">=</span> <span class="n">sortANDfilter_stock_data</span><span class="p">(</span><span class="n">stock_prices_ws</span><span class="p">)</span>
+    <span class="n">live_data</span> <span class="o">=</span> <span class="n">sortANDfilter_stock_data</span><span class="p">(</span><span class="n">stock_live_prices</span><span class="p">)</span>
+    <span class="n">live_data_ws</span> <span class="o">=</span> <span class="n">sortANDfilter_stock_data</span><span class="p">(</span><span class="n">stock_live_prices_ws</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">**************** data sorted by ticker id, date and only columns named ticker_id , date , x , output are considered***********</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">build_feature</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">build_feature</span><span class="p">(</span><span class="n">data_ws</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">data_ws</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">data_ws</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">build_feature</span><span class="p">(</span><span class="n">live_data</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">live_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker_id&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">past_live_data_test</span> <span class="o">=</span> <span class="n">live_data</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">total_stocks</span><span class="p">:</span><span class="o">-</span><span class="n">total_stocks</span><span class="p">]</span>
+    <span class="n">past_live_data_test</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">live_data</span> <span class="o">=</span> <span class="n">live_data</span><span class="p">[</span><span class="o">-</span><span class="n">total_stocks</span><span class="p">:]</span>
+    <span class="n">live_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">)</span>
+    <span class="n">live_data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">date_to_predict</span> <span class="o">=</span> <span class="n">past_live_data_test</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="n">build_feature</span><span class="p">(</span><span class="n">live_data_ws</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">live_data_ws</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker_id&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">past_live_data_test_ws</span> <span class="o">=</span> <span class="n">live_data_ws</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">total_stocks</span><span class="p">:</span><span class="o">-</span><span class="n">total_stocks</span><span class="p">]</span>
+    <span class="n">past_live_data_test_ws</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">live_data_ws</span> <span class="o">=</span> <span class="n">live_data_ws</span><span class="p">[</span><span class="o">-</span><span class="n">total_stocks</span><span class="p">:]</span>
+    <span class="n">live_data_ws</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;output&#39;</span><span class="p">)</span>
+    <span class="n">live_data_ws</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">binary_classify</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;feature&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">]]</span>
+    <span class="n">data_ws</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_ws</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">binary_classify</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">data_ws</span> <span class="o">=</span> <span class="n">data_ws</span><span class="p">[[</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;feature&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">]]</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker_id&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">model_training_duration</span> <span class="o">=</span> <span class="n">number_of_days_for_model_training</span>
+    <span class="n">data_train</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="n">model_training_duration</span> <span class="o">*</span> <span class="n">total_stocks</span><span class="p">:]</span>
+    <span class="n">past_close_data_test</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">-</span><span class="n">total_stocks</span><span class="p">:]</span>
+    <span class="n">data_train</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">past_close_data_test</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">data_ws</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;ticker_id&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">data_train_ws</span> <span class="o">=</span> <span class="n">data_ws</span><span class="p">[</span><span class="o">-</span><span class="n">model_training_duration</span> <span class="o">*</span> <span class="n">total_stocks</span><span class="p">:]</span>
+    <span class="n">past_close_data_test_ws</span> <span class="o">=</span> <span class="n">data_ws</span><span class="p">[</span><span class="o">-</span><span class="n">total_stocks</span><span class="p">:]</span>
+    <span class="n">data_train_ws</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">past_close_data_test_ws</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="n">data_train</span><span class="p">)</span>
+    <span class="n">model_ws</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="n">data_train_ws</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">live_data</span><span class="o">.</span><span class="n">feature</span><span class="p">))</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">live_data</span><span class="o">.</span><span class="n">feature</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">live_data</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span>
+    <span class="n">live_data</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">live_data</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">process_output</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">live_data</span><span class="p">[</span><span class="s1">&#39;confidence_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scores</span>
+    <span class="n">output_ws</span> <span class="o">=</span> <span class="n">model_ws</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">live_data_ws</span><span class="o">.</span><span class="n">feature</span><span class="p">))</span>
+    <span class="n">scores_ws</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">model_ws</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">live_data_ws</span><span class="o">.</span><span class="n">feature</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">live_data_ws</span><span class="p">[</span><span class="s1">&#39;output_without_sentiment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_ws</span>
+    <span class="n">live_data_ws</span><span class="p">[</span><span class="s1">&#39;output_without_sentiment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">live_data_ws</span><span class="p">[</span><span class="s1">&#39;output_without_sentiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">process_output</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">live_data_ws</span><span class="p">[</span><span class="s1">&#39;confidence_score_ws&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scores_ws</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">prediction_date</span> <span class="o">=</span> <span class="n">live_data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No data in live_data variable&#39;</span><span class="p">)</span>
+    <span class="n">save_model_to_db</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">s3_bucket_object_name</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">live_data</span><span class="p">,</span> <span class="n">live_data_ws</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="p">[[</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">,</span> <span class="s1">&#39;output&#39;</span><span class="p">,</span> <span class="s1">&#39;confidence_score&#39;</span><span class="p">,</span> <span class="s1">&#39;output_without_sentiment&#39;</span><span class="p">,</span> <span class="s1">&#39;confidence_score_ws&#39;</span><span class="p">]]</span>
+    <span class="n">output</span><span class="p">[</span><span class="s1">&#39;actual_output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">binary_classify</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">past_live_data_test</span><span class="p">[</span><span class="n">past_live_data_test</span><span class="o">.</span><span class="n">ticker_id</span> <span class="o">==</span> <span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">output</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">output</span><span class="p">[</span><span class="s1">&#39;close_expected_output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">past_close_data_test</span><span class="p">[</span><span class="n">past_close_data_test</span><span class="o">.</span><span class="n">ticker_id</span> <span class="o">==</span> <span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">feature</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">output</span><span class="p">[</span><span class="s1">&#39;close_expected_output_without_sentiment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">model_ws</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">past_close_data_test_ws</span><span class="p">[</span><span class="n">past_close_data_test_ws</span><span class="o">.</span><span class="n">ticker_id</span> <span class="o">==</span> <span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">feature</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">output</span><span class="p">[</span><span class="s1">&#39;actual_output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="s1">&#39;actual_output&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">process_output</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">output</span><span class="p">[</span><span class="s1">&#39;close_expected_output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="s1">&#39;close_expected_output&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">process_output</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">output</span><span class="p">[</span><span class="s1">&#39;close_expected_output_without_sentiment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="s1">&#39;close_expected_output_without_sentiment&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">process_output</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">output</span></div>
+
+
+
+<div class="viewcode-block" id="write_data_to_RDS"><a class="viewcode-back" href="../../../docker_stock_prediction.docker_stock_prediction.html#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.write_data_to_RDS">[docs]</a><span class="k">def</span> <span class="nf">write_data_to_RDS</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">get_connection</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">database</span><span class="p">)</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="ow">in</span> <span class="n">output</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;Insert into &#39;</span> <span class="o">+</span> <span class="n">rds_stock_prediction_table</span> <span class="o">+</span> <span class="s1">&#39; VALUES (</span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1">,</span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1">,</span><span class="si">%s</span><span class="s1">,</span><span class="si">%s</span><span class="s1"> ,</span><span class="si">%s</span><span class="s1">, </span><span class="si">%s</span><span class="s1"> ,</span><span class="si">%s</span><span class="s1"> )&#39;</span>
+        <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;ticker_id&#39;</span><span class="p">],</span> <span class="n">TODAY_DATE</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;confidence_score&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;confidence_score_ws&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;output_without_sentiment&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;close_expected_output_without_sentiment&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;close_expected_output&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;actual_output&#39;</span><span class="p">]))</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;commit&#39;</span><span class="p">)</span>
+    <span class="n">cursor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">db</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Prediction data written into Table&#39;</span><span class="p">)</span></div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ABC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

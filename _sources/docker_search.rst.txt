@@ -1,0 +1,77 @@
+docker\_search package
+======================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   docker_search.tests
+
+Submodules
+----------
+
+docker\_search.app module
+-------------------------
+
+.. automodule:: docker_search.app
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_search.create\_models module
+------------------------------------
+
+.. automodule:: docker_search.create_models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_search.fetch\_from\_DB module
+-------------------------------------
+
+.. automodule:: docker_search.fetch_from_DB
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_search.models module
+----------------------------
+
+.. automodule:: docker_search.models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_search.remove\_older\_docs module
+-----------------------------------------
+
+.. automodule:: docker_search.remove_older_docs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_search.update\_embeddings module
+----------------------------------------
+
+.. automodule:: docker_search.update_embeddings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_search.utils module
+---------------------------
+
+.. automodule:: docker_search.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: docker_search
+   :members:
+   :undoc-members:
+   :show-inheritance:

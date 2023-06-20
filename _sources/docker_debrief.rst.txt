@@ -1,0 +1,61 @@
+docker\_debrief package
+=======================
+
+Submodules
+----------
+
+docker\_debrief.access\_file module
+-----------------------------------
+
+.. automodule:: docker_debrief.access_file
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_debrief.create\_json module
+-----------------------------------
+
+.. automodule:: docker_debrief.create_json
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_debrief.get\_dynamodb\_data module
+------------------------------------------
+
+.. automodule:: docker_debrief.get_dynamodb_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_debrief.helper module
+-----------------------------
+
+.. automodule:: docker_debrief.helper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_debrief.main module
+---------------------------
+
+.. automodule:: docker_debrief.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_debrief.rds\_db module
+------------------------------
+
+.. automodule:: docker_debrief.rds_db
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: docker_debrief
+   :members:
+   :undoc-members:
+   :show-inheritance:

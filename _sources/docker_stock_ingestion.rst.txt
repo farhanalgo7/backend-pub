@@ -1,0 +1,21 @@
+docker\_stock\_ingestion package
+================================
+
+Submodules
+----------
+
+docker\_stock\_ingestion.stock\_ingestion module
+------------------------------------------------
+
+.. automodule:: docker_stock_ingestion.stock_ingestion
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: docker_stock_ingestion
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docker_search package &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="docker_search.tests package" href="docker_search.tests.html" />
+    <link rel="prev" title="docker_microservices package" href="docker_microservices.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">backend_pub</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html">docker_debrief package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html">docker_enrichment package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_microservices.html">docker_microservices package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">docker_search package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docker_search.tests.html">docker_search.tests package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-search-app-module">docker_search.app module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_search.create_models">docker_search.create_models module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.create_models.create_resources"><code class="docutils literal notranslate"><span class="pre">create_resources()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_search.fetch_from_DB">docker_search.fetch_from_DB module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.fetch_from_DB.assign_unique_ids"><code class="docutils literal notranslate"><span class="pre">assign_unique_ids()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.fetch_from_DB.fetch_data"><code class="docutils literal notranslate"><span class="pre">fetch_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.fetch_from_DB.remove_duplicates"><code class="docutils literal notranslate"><span class="pre">remove_duplicates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.fetch_from_DB.save_items_to_text_files"><code class="docutils literal notranslate"><span class="pre">save_items_to_text_files()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_search.models">docker_search.models module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.models.load_document_search_pipeline"><code class="docutils literal notranslate"><span class="pre">load_document_search_pipeline()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.models.load_document_store"><code class="docutils literal notranslate"><span class="pre">load_document_store()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.models.load_preprocessor"><code class="docutils literal notranslate"><span class="pre">load_preprocessor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.models.load_query_classifier"><code class="docutils literal notranslate"><span class="pre">load_query_classifier()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.models.load_reader"><code class="docutils literal notranslate"><span class="pre">load_reader()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.models.load_retriever"><code class="docutils literal notranslate"><span class="pre">load_retriever()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_search.remove_older_docs">docker_search.remove_older_docs module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.remove_older_docs.remove_older_docs"><code class="docutils literal notranslate"><span class="pre">remove_older_docs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_search.update_embeddings">docker_search.update_embeddings module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.update_embeddings.update_embeddings"><code class="docutils literal notranslate"><span class="pre">update_embeddings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_search.utils">docker_search.utils module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.utils.check_type"><code class="docutils literal notranslate"><span class="pre">check_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.utils.convert_datetime_to_date"><code class="docutils literal notranslate"><span class="pre">convert_datetime_to_date()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.utils.get_documentids_from_uuid"><code class="docutils literal notranslate"><span class="pre">get_documentids_from_uuid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.utils.get_documents_from_document_ids"><code class="docutils literal notranslate"><span class="pre">get_documents_from_document_ids()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.utils.get_documents_from_filenames"><code class="docutils literal notranslate"><span class="pre">get_documents_from_filenames()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.utils.get_dynamodb_connection"><code class="docutils literal notranslate"><span class="pre">get_dynamodb_connection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.utils.get_dynamodb_table"><code class="docutils literal notranslate"><span class="pre">get_dynamodb_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.utils.get_today"><code class="docutils literal notranslate"><span class="pre">get_today()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.utils.months_between"><code class="docutils literal notranslate"><span class="pre">months_between()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.utils.outside_threshold"><code class="docutils literal notranslate"><span class="pre">outside_threshold()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.utils.process_prediction"><code class="docutils literal notranslate"><span class="pre">process_prediction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.utils.process_qna_prediction"><code class="docutils literal notranslate"><span class="pre">process_qna_prediction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_search.utils.transform_to_ui_format"><code class="docutils literal notranslate"><span class="pre">transform_to_ui_format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_search">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_ingestion.html">docker_stock_ingestion package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_prediction.html">docker_stock_prediction package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_topics_earning_call_transcripts.html">docker_topics_earning_call_transcripts package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_trend_prediction.html">docker_trend_prediction package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_tweets.html">docker_tweets package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">backend_pub</a></li>
+      <li class="breadcrumb-item active">docker_search package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/docker_search.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="docker-search-package">
+<h1>docker_search package<a class="headerlink" href="#docker-search-package" title="Permalink to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker_search.tests.html">docker_search.tests package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.tests.html#module-docker_search.tests.test_api">docker_search.tests.test_api module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.tests.html#docker_search.tests.test_api.test_health_check"><code class="docutils literal notranslate"><span class="pre">test_health_check()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.tests.html#docker_search.tests.test_api.test_question_answer_pipeline"><code class="docutils literal notranslate"><span class="pre">test_question_answer_pipeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.tests.html#docker_search.tests.test_api.test_semantic_search_news_response"><code class="docutils literal notranslate"><span class="pre">test_semantic_search_news_response()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.tests.html#docker_search.tests.test_api.test_semantic_search_pipeline"><code class="docutils literal notranslate"><span class="pre">test_semantic_search_pipeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.tests.html#docker_search.tests.test_api.test_semantic_search_tweets_response"><code class="docutils literal notranslate"><span class="pre">test_semantic_search_tweets_response()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.tests.html#module-docker_search.tests.test_models">docker_search.tests.test_models module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.tests.html#docker_search.tests.test_models.test_load_reader"><code class="docutils literal notranslate"><span class="pre">test_load_reader()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.tests.html#docker_search.tests.test_models.test_retriever"><code class="docutils literal notranslate"><span class="pre">test_retriever()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.tests.html#module-docker_search.tests.test_utils">docker_search.tests.test_utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.tests.html#docker_search.tests.test_utils.test_convert_datetime_to_date"><code class="docutils literal notranslate"><span class="pre">test_convert_datetime_to_date()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.tests.html#docker_search.tests.test_utils.test_outside_threshold_with_invalid_date"><code class="docutils literal notranslate"><span class="pre">test_outside_threshold_with_invalid_date()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.tests.html#docker_search.tests.test_utils.test_outside_threshold_with_valid_date"><code class="docutils literal notranslate"><span class="pre">test_outside_threshold_with_valid_date()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.tests.html#docker_search.tests.test_utils.test_wrong_type"><code class="docutils literal notranslate"><span class="pre">test_wrong_type()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.tests.html#module-docker_search.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="docker-search-app-module">
+<h2>docker_search.app module<a class="headerlink" href="#docker-search-app-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-docker_search.create_models">
+<span id="docker-search-create-models-module"></span><h2>docker_search.create_models module<a class="headerlink" href="#module-docker_search.create_models" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.create_models.create_resources">
+<span class="sig-prename descclassname"><span class="pre">docker_search.create_models.</span></span><span class="sig-name descname"><span class="pre">create_resources</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/create_models.html#create_resources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.create_models.create_resources" title="Permalink to this definition"></a></dt>
+<dd><p>Create all resources required for running Semantic Search. This is meant to be executed only one time
+around when starting with a fresh retriever model, or in case some mistake results in previous data to be lost.
+This does not fetch the data, it only creates the resources. So, the fetch data program must be run
+independently from this.</p>
+</dd></dl>
+
+</section>
+<section id="module-docker_search.fetch_from_DB">
+<span id="docker-search-fetch-from-db-module"></span><h2>docker_search.fetch_from_DB module<a class="headerlink" href="#module-docker_search.fetch_from_DB" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.fetch_from_DB.assign_unique_ids">
+<span class="sig-prename descclassname"><span class="pre">docker_search.fetch_from_DB.</span></span><span class="sig-name descname"><span class="pre">assign_unique_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/fetch_from_DB.html#assign_unique_ids"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.fetch_from_DB.assign_unique_ids" title="Permalink to this definition"></a></dt>
+<dd><p>Assign UUIDs to the items, and update the mapping file.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>item_list (list): List of items fetched from the database, after removing duplicates.
+type (str, optional): Type, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.fetch_from_DB.fetch_data">
+<span class="sig-prename descclassname"><span class="pre">docker_search.fetch_from_DB.</span></span><span class="sig-name descname"><span class="pre">fetch_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/fetch_from_DB.html#fetch_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.fetch_from_DB.fetch_data" title="Permalink to this definition"></a></dt>
+<dd><p>Fetch data from the DynamoDB, between the from and to dates sent in
+as command line arguments, and return the list of items.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>table (dynamodb.Table): DynamoDB Table, either “News_Table” or “Tweets_Table”
+type (str, optional): Type, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: List of items (row entries) from the database</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.fetch_from_DB.remove_duplicates">
+<span class="sig-prename descclassname"><span class="pre">docker_search.fetch_from_DB.</span></span><span class="sig-name descname"><span class="pre">remove_duplicates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/fetch_from_DB.html#remove_duplicates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.fetch_from_DB.remove_duplicates" title="Permalink to this definition"></a></dt>
+<dd><p>Compare fetched data with the existing mappings, and remove duplicates.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>item_list (list): List of items fetched from the database.
+type (str, optional): Type, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: List of items left after removing duplicates (i.e. items already present)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.fetch_from_DB.save_items_to_text_files">
+<span class="sig-prename descclassname"><span class="pre">docker_search.fetch_from_DB.</span></span><span class="sig-name descname"><span class="pre">save_items_to_text_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/fetch_from_DB.html#save_items_to_text_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.fetch_from_DB.save_items_to_text_files" title="Permalink to this definition"></a></dt>
+<dd><p>Save items as text documents in NEWS_DIR or TWEETS_DIR, depending on type.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>item_list (list): List of items fetched from database, after removing duplicates and assigning UUIDS.
+type (str, optional): Type, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-docker_search.models">
+<span id="docker-search-models-module"></span><h2>docker_search.models module<a class="headerlink" href="#module-docker_search.models" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.models.load_document_search_pipeline">
+<span class="sig-prename descclassname"><span class="pre">docker_search.models.</span></span><span class="sig-name descname"><span class="pre">load_document_search_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/models.html#load_document_search_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.models.load_document_search_pipeline" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a DocumentSearchPipeline for the given type of ‘news’ or ‘tweets’.
+It loads DocumentStore and Retriever first, then constructs pipeline.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>type (str, optional): The type of retriever, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>DocumentSearchPipeline: Haystack’s Document Search Pipeline that can used for querying</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.models.load_document_store">
+<span class="sig-prename descclassname"><span class="pre">docker_search.models.</span></span><span class="sig-name descname"><span class="pre">load_document_store</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/models.html#load_document_store"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.models.load_document_store" title="Permalink to this definition"></a></dt>
+<dd><p>Load the FAISS Document Store Index, for the given type of “news” or “tweets”. The 
+DocumentStore index is assumed to be present at DOCUMENT_STORE_DIR environment variable 
+with a naming convention of f”{type}_faiss_index.faiss”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>type (str, optional): Type of DocumentStore, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>FAISSDocumentStore: The FAISS DocumentStore of the given type.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.models.load_preprocessor">
+<span class="sig-prename descclassname"><span class="pre">docker_search.models.</span></span><span class="sig-name descname"><span class="pre">load_preprocessor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/models.html#load_preprocessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.models.load_preprocessor" title="Permalink to this definition"></a></dt>
+<dd><p>Load Haystack PreProcessor to process documents.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>PreProcessor: A Haystack PreProcessor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.models.load_query_classifier">
+<span class="sig-prename descclassname"><span class="pre">docker_search.models.</span></span><span class="sig-name descname"><span class="pre">load_query_classifier</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/models.html#load_query_classifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.models.load_query_classifier" title="Permalink to this definition"></a></dt>
+<dd><p>Load a Question vs Statement classifier.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>TransformersQueryClassifier: A TransformersQueryClassifier for Question vs Statement classification.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.models.load_reader">
+<span class="sig-prename descclassname"><span class="pre">docker_search.models.</span></span><span class="sig-name descname"><span class="pre">load_reader</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/models.html#load_reader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.models.load_reader" title="Permalink to this definition"></a></dt>
+<dd><p>Load Haystack FARMReader to extract answers from the documents.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>FARMReader: Haystack FARMReader</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.models.load_retriever">
+<span class="sig-prename descclassname"><span class="pre">docker_search.models.</span></span><span class="sig-name descname"><span class="pre">load_retriever</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document_store</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/models.html#load_retriever"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.models.load_retriever" title="Permalink to this definition"></a></dt>
+<dd><p>Load a DensePassageRetriever (DPR) for the given type of “news” or “tweets”. The retriever
+models are assumed to be present at RETRIEVER_DIR, with the query and passage encoding
+models at QUERY_ENCODER_DIR and PASSAGE_ENCODER_DIR environment variables respectively.</p>
+<p>The current models used:
+query_embedding_model: soheeyang/rdr-question_encoder-single-nq-base
+passage_embedding_model: soheeyang/rdr-ctx_encoder-single-nq-base</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>document_store (FAISSDocumentStore): A FAISS DocumentStore corresponding to the type.   
+type (str, optional): The type of retriever, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>DensePassageRetriever: The DPR for the given DocumentStore</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-docker_search.remove_older_docs">
+<span id="docker-search-remove-older-docs-module"></span><h2>docker_search.remove_older_docs module<a class="headerlink" href="#module-docker_search.remove_older_docs" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.remove_older_docs.remove_older_docs">
+<span class="sig-prename descclassname"><span class="pre">docker_search.remove_older_docs.</span></span><span class="sig-name descname"><span class="pre">remove_older_docs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/remove_older_docs.html#remove_older_docs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.remove_older_docs.remove_older_docs" title="Permalink to this definition"></a></dt>
+<dd><p>Remove documents older than the threshold date.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>threshold (datetime.date): Threshold date
+type (str, optional): Type, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-docker_search.update_embeddings">
+<span id="docker-search-update-embeddings-module"></span><h2>docker_search.update_embeddings module<a class="headerlink" href="#module-docker_search.update_embeddings" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.update_embeddings.update_embeddings">
+<span class="sig-prename descclassname"><span class="pre">docker_search.update_embeddings.</span></span><span class="sig-name descname"><span class="pre">update_embeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/update_embeddings.html#update_embeddings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.update_embeddings.update_embeddings" title="Permalink to this definition"></a></dt>
+<dd><p>Write new documents to DocumentStore and update embeddings.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>type (str, optional): Type, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-docker_search.utils">
+<span id="docker-search-utils-module"></span><h2>docker_search.utils module<a class="headerlink" href="#module-docker_search.utils" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.utils.check_type">
+<span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">check_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#check_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.check_type" title="Permalink to this definition"></a></dt>
+<dd><p>Check if the type is “news” or “tweets”. If not, raise error.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>type (str): String specifying “news” or “tweets”</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If type is not “news” or “tweets”</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.utils.convert_datetime_to_date">
+<span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">convert_datetime_to_date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime_str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#convert_datetime_to_date"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.convert_datetime_to_date" title="Permalink to this definition"></a></dt>
+<dd><p>Convert an ISO Format Datetime string to a date object.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>datetime_str (str): Datetime string in ISO Format</p>
+</dd>
+<dt>Returns:</dt><dd><p>datetime.date: A date object extracted from the datetime string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.utils.get_documentids_from_uuid">
+<span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">get_documentids_from_uuid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uuid_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#get_documentids_from_uuid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.get_documentids_from_uuid" title="Permalink to this definition"></a></dt>
+<dd><p>Get document IDs mapped from UUIDs.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>uuid_list (list): List of UUIDs
+type (str, optional): Type, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list: List of document IDs mapped from their UUIDs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.utils.get_documents_from_document_ids">
+<span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">get_documents_from_document_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document_ids_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#get_documents_from_document_ids"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.get_documents_from_document_ids" title="Permalink to this definition"></a></dt>
+<dd><p>Get document entries from DynamoDB given a list of their IDs and type.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>document_ids_list (list): List containing news_ID or tweets_ID values
+table (dynamodb.Table): DynamoDB Table, either “News_Table or “Tweets_Table”
+type (str, optional): Type, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Dictionary of the form f”content{i}”: document_entry, where document_entry is formatted.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.utils.get_documents_from_filenames">
+<span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">get_documents_from_filenames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#get_documents_from_filenames"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.get_documents_from_filenames" title="Permalink to this definition"></a></dt>
+<dd><p>Get formatted document entries for front-end from their filenames. It first creates a list of UUIDs,
+then gets Document IDs from UUIDs, then gets the documents from DynamoDB using these document IDs, and 
+then formats for front-end, all using helper functions.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>file_names (list): List of UUID
+container (container.ContainerProxy): Cosmos Container, either “News_Table” or “Tweets_Table”
+type (str, optional): Type, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Dictionary containing document entries formatted for front-end</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.utils.get_dynamodb_connection">
+<span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">get_dynamodb_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#get_dynamodb_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.get_dynamodb_connection" title="Permalink to this definition"></a></dt>
+<dd><p>Get DynamoDB Connection</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>dynamodb.ServiceResource: Connection to DynamoDB</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.utils.get_dynamodb_table">
+<span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">get_dynamodb_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ddb_connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#get_dynamodb_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.get_dynamodb_table" title="Permalink to this definition"></a></dt>
+<dd><p>Get DynamoDB Table using the connection for a given type of “news” or “tweets”</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ddb_connection (dynamodb.ServiceResource): Connection to DynamoDB
+type (str, optional): Type of “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dynamodb.Table: DynamoDB Table, either “News_Table” or “Tweets_Table”, depending on type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.utils.get_today">
+<span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">get_today</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#get_today"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.get_today" title="Permalink to this definition"></a></dt>
+<dd><p>Get today’s date as a datetime.date object.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>datetime.date: Today’s date</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.utils.months_between">
+<span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">months_between</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#months_between"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.months_between" title="Permalink to this definition"></a></dt>
+<dd><p>Given two instances of <code class="docutils literal notranslate"><span class="pre">datetime.date</span></code>, generate a list of dates on the 
+1st of every month between the two dates (inclusive).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>start_date (datetime.date): Start date
+end_date (datetime.date): End date</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If the end date is before the start date</p>
+</dd>
+<dt>Yields:</dt><dd><p>datetime.date: A date containing the 1st of a month in between</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.utils.outside_threshold">
+<span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">outside_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item_date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold_date</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#outside_threshold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.outside_threshold" title="Permalink to this definition"></a></dt>
+<dd><p>Check whether the given date is before the threshold date. This function is meant to be used
+for checking whether a given news/tweet is older than a given number of days or not.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>item_date (datetime.date): The given date to check
+threshold_date (datetime.date): The threshold date</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if the given date is before the threshold date.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.utils.process_prediction">
+<span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">process_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#process_prediction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.process_prediction" title="Permalink to this definition"></a></dt>
+<dd><p>Process prediction given by the DocumentSearch pipeline. 3 things are returned.
+- search_results contains just the news/tweet content.
+- scores contains sentiment score for the news/tweets.
+- documents contains the entire information of news/tweets along with metadata.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pred (dict): DocumentSearch Pipeline’s output for a given query
+container (container.ContainerProxy): Cosmos Container, required for getting document entries using UUIDs
+type (str, optional): Type, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict, dict, dict: Search Results, Scores and Documents (which contains all info along with metadata)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.utils.process_qna_prediction">
+<span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">process_qna_prediction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_search_results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#process_qna_prediction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.process_qna_prediction" title="Permalink to this definition"></a></dt>
+<dd><p>Process the predictions returned by Reader for Question and Answering.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pred (dict): Prediction dictionary returned by the Reader
+news_pred (dict): News search prediction directly from the Search pipeline
+news_search_results (dict): Simple news search results after processing
+news (dict): Detailed News search results after processing raw predictions from the Search pipeline</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict, dict: QnA Results, QnA Scores</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_search.utils.transform_to_ui_format">
+<span class="sig-prename descclassname"><span class="pre">docker_search.utils.</span></span><span class="sig-name descname"><span class="pre">transform_to_ui_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'news'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_search/utils.html#transform_to_ui_format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_search.utils.transform_to_ui_format" title="Permalink to this definition"></a></dt>
+<dd><p>Transform a news/tweet entry to UI format. It replaces the news/tweet with an HTML formatted
+string showing sentiment, and returns a dictionary consisting of elements required for front-end.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>item (dict): Dictionary containing a news/tweet entry
+index (int): Index of news/tweet in the search prediction
+type (str, optional): Type of entry, either “news” or “tweets”. Defaults to “news”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Dictionary consisting of elements required for front-end.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-docker_search">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-docker_search" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="docker_microservices.html" class="btn btn-neutral float-left" title="docker_microservices package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="docker_search.tests.html" class="btn btn-neutral float-right" title="docker_search.tests package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ABC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

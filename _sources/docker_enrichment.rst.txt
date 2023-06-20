@@ -1,0 +1,53 @@
+docker\_enrichment package
+==========================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   docker_enrichment.access_files
+
+Submodules
+----------
+
+docker\_enrichment.EnrichmentWrapper module
+-------------------------------------------
+
+.. automodule:: docker_enrichment.EnrichmentWrapper
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_enrichment.main module
+------------------------------
+
+.. automodule:: docker_enrichment.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_enrichment.main\_new\_v3\_copy\_2 module
+------------------------------------------------
+
+.. automodule:: docker_enrichment.main_new_v3_copy_2
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_enrichment.new\_main\_v4 module
+---------------------------------------
+
+.. automodule:: docker_enrichment.new_main_v4
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: docker_enrichment
+   :members:
+   :undoc-members:
+   :show-inheritance:

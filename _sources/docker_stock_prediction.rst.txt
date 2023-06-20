@@ -1,0 +1,18 @@
+docker\_stock\_prediction package
+=================================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   docker_stock_prediction.docker_stock_prediction
+
+Module contents
+---------------
+
+.. automodule:: docker_stock_prediction
+   :members:
+   :undoc-members:
+   :show-inheritance:

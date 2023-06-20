@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docker_stock_prediction.docker_stock_prediction package &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="docker_topics_earning_call_transcripts package" href="docker_topics_earning_call_transcripts.html" />
+    <link rel="prev" title="docker_stock_prediction package" href="docker_stock_prediction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">backend_pub</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html">docker_debrief package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html">docker_enrichment package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_microservices.html">docker_microservices package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html">docker_search package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_ingestion.html">docker_stock_ingestion package</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="docker_stock_prediction.html">docker_stock_prediction package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="docker_stock_prediction.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">docker_stock_prediction.docker_stock_prediction package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="docker_stock_prediction.html#module-docker_stock_prediction">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_topics_earning_call_transcripts.html">docker_topics_earning_call_transcripts package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_trend_prediction.html">docker_trend_prediction package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_tweets.html">docker_tweets package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">backend_pub</a></li>
+          <li class="breadcrumb-item"><a href="docker_stock_prediction.html">docker_stock_prediction package</a></li>
+      <li class="breadcrumb-item active">docker_stock_prediction.docker_stock_prediction package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/docker_stock_prediction.docker_stock_prediction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="docker-stock-prediction-docker-stock-prediction-package">
+<h1>docker_stock_prediction.docker_stock_prediction package<a class="headerlink" href="#docker-stock-prediction-docker-stock-prediction-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-docker_stock_prediction.docker_stock_prediction.stock_prediction_1">
+<span id="docker-stock-prediction-docker-stock-prediction-stock-prediction-1-module"></span><h2>docker_stock_prediction.docker_stock_prediction.stock_prediction_1 module<a class="headerlink" href="#module-docker_stock_prediction.docker_stock_prediction.stock_prediction_1" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.binary_classify">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">binary_classify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#binary_classify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.binary_classify" title="Permalink to this definition"></a></dt>
+<dd><p>Convert output to binary</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>output<span class="classifier">float</span></dt><dd><p>float output predicted for each stock</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>binary<span class="classifier">int</span></dt><dd><p>0/1 based on float value</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_feature">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">build_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_of_x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#build_feature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_feature" title="Permalink to this definition"></a></dt>
+<dd><p>Create feature vector = [X(t-2) X(t-1) X(t)]</p>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>data<span class="classifier">DataFrame</span></dt><dd><p>numerical processed data about the stocks</p>
+</dd>
+<dt>size_of_x: int</dt><dd><dl class="simple">
+<dt>size of x<span class="classifier">with sentiment = 6 </span></dt><dd><p>without sentiment = 4</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_function_sector">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">build_function_sector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stock_prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stock_live_prices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stock_mapping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stock_news</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MODELS_COL</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_days_for_model_training</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s3_bucket_object_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#build_function_sector"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_function_sector" title="Permalink to this definition"></a></dt>
+<dd><p>Process data</p>
+<section id="id2">
+<h3>Parameters<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>stock_prices: DataFrame</dt><dd><p>numerical closing data about the stocks</p>
+</dd>
+<dt>stock_live_prices: DataFrame </dt><dd><p>numerical live data about the stocks</p>
+</dd>
+<dt>input_sentiment_csv: str</dt><dd><p>path to sentiment csv</p>
+</dd>
+<dt>STOCK_NEWS_COL: </dt><dd><p>column where the stocks news data is to be fetched from</p>
+</dd>
+<dt>MODELS_COL:</dt><dd><p>column where the model is to be saved or fetched from</p>
+</dd>
+<dt>sector: str</dt><dd><p>type of sector</p>
+</dd>
+</dl>
+</section>
+<section id="id3">
+<h3>Returns<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>output<span class="classifier">array</span></dt><dd><p>[output (dataframe), past_prediction_df (dataframe)]</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_model">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">build_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#build_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_model" title="Permalink to this definition"></a></dt>
+<dd><p>Build model and validate</p>
+<section id="id4">
+<h3>Parameters<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>data: DataFrame</dt><dd><p>numerical processed data about the stocks</p>
+</dd>
+<dt>folds: int </dt><dd><p>number of folds to use in KFold</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3>Returns<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>clf<span class="classifier">RandomForestClassifier</span></dt><dd><p>trained classifier object</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_returns_and_output">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">build_returns_and_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stock_prices</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#build_returns_and_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_returns_and_output" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate returns and output</p>
+<section id="id6">
+<h3>Parameters<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>stock_prices<span class="classifier">DataFrame</span></dt><dd><p>numerical data about the stocks</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_sentiment_mapping_csv">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">build_sentiment_mapping_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_resource</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sector</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#build_sentiment_mapping_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.build_sentiment_mapping_csv" title="Permalink to this definition"></a></dt>
+<dd><p>Function to build sentiment mapping csv</p>
+<section id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>db_resource: dynamodb resource object</dt><dd><p>assigned to boto3.resource()</p>
+</dd>
+<dt>sector: str</dt><dd><p>name of sector - IT or BANK</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.calculate_sentiment">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">calculate_sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">news</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#calculate_sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.calculate_sentiment" title="Permalink to this definition"></a></dt>
+<dd><p>Compute sentiment score using formula (pos-neg)/(pos+neg)</p>
+<section id="id8">
+<h3>Parameters<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>news<span class="classifier">DataFrame row</span></dt><dd><p>row of data about stock news</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h3>Returns<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>sentiment score<span class="classifier">float</span></dt><dd><p>sentiment score for each row</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.calculate_total_news">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">calculate_total_news</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">news</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">news_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_mapping</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#calculate_total_news"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.calculate_total_news" title="Permalink to this definition"></a></dt>
+<dd><p>Computes total positive and negative news for respective ticker_id</p>
+<section id="id10">
+<h3>Parameters<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>news<span class="classifier">DataFrame row</span></dt><dd><p>row of data about stock news</p>
+</dd>
+<dt>news_type<span class="classifier">str</span></dt><dd><p>positive or negative</p>
+</dd>
+<dt>ticker_mapping<span class="classifier">map</span></dt><dd><p>mapping of ticker_id with different forms of ticker_names</p>
+</dd>
+</dl>
+</section>
+<section id="id11">
+<h3>Returns<a class="headerlink" href="#id11" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>count<span class="classifier">int</span></dt><dd><p>count of positive or negative news based on news_type</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.compute_accuracy_score">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">compute_accuracy_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#compute_accuracy_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.compute_accuracy_score" title="Permalink to this definition"></a></dt>
+<dd><p>Compute accuracy score</p>
+<section id="id12">
+<h3>Parameters<a class="headerlink" href="#id12" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>classifier<span class="classifier">RandomForestClassifier</span></dt><dd><p>classifier object</p>
+</dd>
+<dt>X: array</dt><dd><p>feature vector</p>
+</dd>
+<dt>y: array</dt><dd><p>actual output</p>
+</dd>
+</dl>
+</section>
+<section id="id13">
+<h3>Returns<a class="headerlink" href="#id13" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>accuracy_score<span class="classifier">float</span></dt><dd><p>accuracy_score for X and y</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.compute_auc">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">compute_auc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#compute_auc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.compute_auc" title="Permalink to this definition"></a></dt>
+<dd><p>Compute auc score</p>
+<section id="id14">
+<h3>Parameters<a class="headerlink" href="#id14" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>classifier<span class="classifier">RandomForestClassifier</span></dt><dd><p>classifier object</p>
+</dd>
+<dt>X: array</dt><dd><p>feature vector</p>
+</dd>
+<dt>y: array</dt><dd><p>actual output</p>
+</dd>
+</dl>
+</section>
+<section id="id15">
+<h3>Returns<a class="headerlink" href="#id15" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>auc_score<span class="classifier">float</span></dt><dd><p>auc_score for X and y</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.compute_f1">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">compute_f1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classifier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#compute_f1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.compute_f1" title="Permalink to this definition"></a></dt>
+<dd><p>Compute f1 score</p>
+<section id="id16">
+<h3>Parameters<a class="headerlink" href="#id16" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>classifier<span class="classifier">RandomForestClassifier</span></dt><dd><p>classifier object</p>
+</dd>
+<dt>X: array</dt><dd><p>feature vector</p>
+</dd>
+<dt>y: array</dt><dd><p>actual output</p>
+</dd>
+</dl>
+</section>
+<section id="id17">
+<h3>Returns<a class="headerlink" href="#id17" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>f1_score<span class="classifier">float</span></dt><dd><p>f1_score for X and y</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.generate_x">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">generate_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agg_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stock_sentiment</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agg_sentiment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#generate_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.generate_x" title="Permalink to this definition"></a></dt>
+<dd><p>Create X vector with sentiment
+X = [returns, sector_return, sentiment_score, sector_sentiment_score, volume, sector_volume]</p>
+<section id="id18">
+<h3>Parameters<a class="headerlink" href="#id18" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>row<span class="classifier">DataFrame row</span></dt><dd><p>row of numerical data about the stock</p>
+</dd>
+<dt>agg_index: DataFrame</dt><dd><p>grouped numerical data about stocks</p>
+</dd>
+<dt>stock_sentiment: DataFrame</dt><dd><p>data about stock news</p>
+</dd>
+<dt>agg_sentiment: DataFrame</dt><dd><p>grouped data about stock news</p>
+</dd>
+</dl>
+</section>
+<section id="id19">
+<h3>Returns<a class="headerlink" href="#id19" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>X<span class="classifier">array</span></dt><dd><p>X for each row</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.generate_x_ws">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">generate_x_ws</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">agg_index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#generate_x_ws"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.generate_x_ws" title="Permalink to this definition"></a></dt>
+<dd><p>Create X vector without sentiment
+X = [returns, sector_return, volume, sector_volume]</p>
+<section id="id20">
+<h3>Parameters<a class="headerlink" href="#id20" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>row<span class="classifier">DataFrame row</span></dt><dd><p>row of numerical data about the stock</p>
+</dd>
+<dt>agg_index: DataFrame</dt><dd><p>grouped numerical data about stocks</p>
+</dd>
+</dl>
+</section>
+<section id="id21">
+<h3>Returns<a class="headerlink" href="#id21" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>X<span class="classifier">array</span></dt><dd><p>X for each row</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_classifier">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">get_classifier</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#get_classifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_classifier" title="Permalink to this definition"></a></dt>
+<dd><p>Builds RandomForest classifier object</p>
+<section id="id22">
+<h3>Returns<a class="headerlink" href="#id22" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>randomForestClassifier<span class="classifier">RandomForestClassifier</span></dt><dd><p>RandomForest Classifier object</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_connection">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">get_connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#get_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_connection" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_cross_validator">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">get_cross_validator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#get_cross_validator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_cross_validator" title="Permalink to this definition"></a></dt>
+<dd><p>Builds KFold object with desired folds</p>
+<section id="id23">
+<h3>Parameters<a class="headerlink" href="#id23" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>folds<span class="classifier">int</span></dt><dd><p>number of desired folds for the validator</p>
+</dd>
+</dl>
+</section>
+<section id="id24">
+<h3>Returns<a class="headerlink" href="#id24" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>kFold<span class="classifier">KFold</span></dt><dd><p>KFold object with desired folds</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_news">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">get_news</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ticker_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">algoDDB</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#get_news"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_news" title="Permalink to this definition"></a></dt>
+<dd><p>Function to get news of all the companies present in ticker_list</p>
+<section id="id25">
+<h3>Parameters:<a class="headerlink" href="#id25" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>ticker_list: list</dt><dd><p>list of company names</p>
+</dd>
+<dt>algoDDB: variable name</dt><dd><p>assigned to boto3.resource()</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id26">
+<h3>Returns:<a class="headerlink" href="#id26" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>all_news: dataframe</dt><dd><p>dataframe which includes news of all the companies in ticker_list</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_secret">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">get_secret</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#get_secret"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_secret" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_ticker_names_and_id">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">get_ticker_names_and_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#get_ticker_names_and_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.get_ticker_names_and_id" title="Permalink to this definition"></a></dt>
+<dd><p>Function to get ticker_id and the ticker name</p>
+<section id="id27">
+<h3>Parameters:<a class="headerlink" href="#id27" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>sector: str</dt><dd><p>Name of Sector - IT or BANK</p>
+</dd>
+<dt>table: str </dt><dd><p>Name of config table - algoDDB.Table(‘ConfigTable’)</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id28">
+<h3>Returns:<a class="headerlink" href="#id28" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>ticker_id: str</dt><dd><p>ticker symbol of the company</p>
+</dd>
+<dt>ticker_name: str</dt><dd><p>name of the company</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.map_sentiment">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">map_sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">news</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ticker_mapping</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#map_sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.map_sentiment" title="Permalink to this definition"></a></dt>
+<dd><p>Maps ticker_id with different forms of ticker_names</p>
+<section id="id29">
+<h3>Parameters<a class="headerlink" href="#id29" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>news<span class="classifier">DataFrame row</span></dt><dd><p>row of data about stock news</p>
+</dd>
+<dt>ticker_mapping<span class="classifier">map</span></dt><dd><p>maps ticker_id with different forms of ticker_names</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.process_output">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">process_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#process_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.process_output" title="Permalink to this definition"></a></dt>
+<dd><p>Convert binary to keywords</p>
+<section id="id30">
+<h3>Parameters<a class="headerlink" href="#id30" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>output<span class="classifier">int</span></dt><dd><p>binary output predicted for each stock</p>
+</dd>
+</dl>
+</section>
+<section id="id31">
+<h3>Returns<a class="headerlink" href="#id31" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>prediction<span class="classifier">str</span></dt><dd><p>RISE/DROP based on 1/0</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.save_model_to_db">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">save_model_to_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#save_model_to_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.save_model_to_db" title="Permalink to this definition"></a></dt>
+<dd><p>Save trained model to database</p>
+<section id="id32">
+<h3>Parameters<a class="headerlink" href="#id32" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>model: RandomForestClassifier</dt><dd><p>classifier object</p>
+</dd>
+</dl>
+<p>object_name: Name of file with which the model is to be saved in S3 bucket
+Returns
+——
+None</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_1.write_data_to_RDS">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_1.</span></span><span class="sig-name descname"><span class="pre">write_data_to_RDS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_1.html#write_data_to_RDS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_1.write_data_to_RDS" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-docker_stock_prediction.docker_stock_prediction.stock_prediction_2">
+<span id="docker-stock-prediction-docker-stock-prediction-stock-prediction-2-module"></span><h2>docker_stock_prediction.docker_stock_prediction.stock_prediction_2 module<a class="headerlink" href="#module-docker_stock_prediction.docker_stock_prediction.stock_prediction_2" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.build_model">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">build_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#build_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.build_model" title="Permalink to this definition"></a></dt>
+<dd><p>Build model</p>
+<section id="id33">
+<h3>Parameters<a class="headerlink" href="#id33" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>data: DataFrame</dt><dd><p>numerical processed data about the stocks</p>
+</dd>
+</dl>
+</section>
+<section id="id34">
+<h3>Returns<a class="headerlink" href="#id34" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>clf<span class="classifier">RandomForestClassifier</span></dt><dd><p>trained classifier object</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.compute_accuracy_score">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">compute_accuracy_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#compute_accuracy_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.compute_accuracy_score" title="Permalink to this definition"></a></dt>
+<dd><p>Compute accuracy score</p>
+<section id="id35">
+<h3>Parameters<a class="headerlink" href="#id35" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>y: array</dt><dd><p>actual output</p>
+</dd>
+<dt>y_pred: array</dt><dd><p>predicted output</p>
+</dd>
+</dl>
+</section>
+<section id="id36">
+<h3>Returns<a class="headerlink" href="#id36" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>accuracy_score<span class="classifier">float</span></dt><dd><p>accuracy_score for X and y</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.compute_auc">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">compute_auc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#compute_auc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.compute_auc" title="Permalink to this definition"></a></dt>
+<dd><p>Compute auc score</p>
+<section id="id37">
+<h3>Parameters<a class="headerlink" href="#id37" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>y: array</dt><dd><p>actual output</p>
+</dd>
+<dt>y_pred: array</dt><dd><p>predicted output</p>
+</dd>
+</dl>
+</section>
+<section id="id38">
+<h3>Returns<a class="headerlink" href="#id38" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>auc_score_neg<span class="classifier">float</span></dt><dd><p>auc_score for negative class</p>
+</dd>
+<dt>auc_score_neutral<span class="classifier">float</span></dt><dd><p>auc_score for neutral class</p>
+</dd>
+<dt>auc_score_pos<span class="classifier">float</span></dt><dd><p>auc_score for positive class</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.compute_f1">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">compute_f1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#compute_f1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.compute_f1" title="Permalink to this definition"></a></dt>
+<dd><p>Compute f1 score</p>
+<section id="id39">
+<h3>Parameters<a class="headerlink" href="#id39" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>y: array</dt><dd><p>actual output</p>
+</dd>
+<dt>y_pred: array</dt><dd><p>predicted output</p>
+</dd>
+</dl>
+</section>
+<section id="id40">
+<h3>Returns<a class="headerlink" href="#id40" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>f1_score<span class="classifier">float</span></dt><dd><p>f1_score for X and y</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.compute_indicators">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">compute_indicators</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#compute_indicators"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.compute_indicators" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates all indicator for ticker_ids</p>
+<section id="id41">
+<h3>Parameters<a class="headerlink" href="#id41" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>group<span class="classifier">DataFrame group</span></dt><dd><p>group of ticker_id</p>
+</dd>
+</dl>
+</section>
+<section id="id42">
+<h3>Returns<a class="headerlink" href="#id42" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>df<span class="classifier">Dataframe</span></dt><dd><p>dataframe for all indicators for ticker_ids</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.compute_output">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">compute_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#compute_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.compute_output" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates output for ticker_ids</p>
+<section id="id43">
+<h3>Parameters<a class="headerlink" href="#id43" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>group<span class="classifier">DataFrame group</span></dt><dd><p>group of ticker_id</p>
+</dd>
+</dl>
+</section>
+<section id="id44">
+<h3>Returns<a class="headerlink" href="#id44" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>df<span class="classifier">Dataframe</span></dt><dd><p>dataframe for output for ticker_ids</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.display_training_results">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">display_training_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#display_training_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.display_training_results" title="Permalink to this definition"></a></dt>
+<dd><p>Displays the results for training the model</p>
+<section id="id45">
+<h3>Parameters<a class="headerlink" href="#id45" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>results<span class="classifier">DataFrame</span></dt><dd><p>consists actual and predicted data</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.generate_feature">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">generate_feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#generate_feature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.generate_feature" title="Permalink to this definition"></a></dt>
+<dd><p>Builds feature vector</p>
+<section id="id46">
+<h3>Parameters<a class="headerlink" href="#id46" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>row<span class="classifier">DataFrame row</span></dt><dd><p>row of all indicator data about the stock</p>
+</dd>
+</dl>
+</section>
+<section id="id47">
+<h3>Returns<a class="headerlink" href="#id47" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>feature<span class="classifier">array</span></dt><dd><p>feature for each row</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.get_classifier">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">get_classifier</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#get_classifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.get_classifier" title="Permalink to this definition"></a></dt>
+<dd><p>Builds RandomForest classifier object</p>
+<section id="id48">
+<h3>Returns<a class="headerlink" href="#id48" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>randomForestClassifier<span class="classifier">RandomForestClassifier</span></dt><dd><p>RandomForest Classifier object</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.get_connection">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">get_connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#get_connection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.get_connection" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.get_secret">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">get_secret</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#get_secret"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.get_secret" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.get_ticker_names_and_id">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">get_ticker_names_and_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#get_ticker_names_and_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.get_ticker_names_and_id" title="Permalink to this definition"></a></dt>
+<dd><p>Function to get ticker_id and the ticker name</p>
+<section id="id49">
+<h3>Parameters:<a class="headerlink" href="#id49" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>sector: str</dt><dd><p>Name of Sector - IT or BANK</p>
+</dd>
+<dt>table: str </dt><dd><p>Name of config table - algoDDB.Table(‘ConfigTable’)</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+<section id="id50">
+<h3>Returns:<a class="headerlink" href="#id50" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><dl class="simple">
+<dt>ticker_id: str</dt><dd><p>ticker symbol of the company</p>
+</dd>
+<dt>ticker_name: str</dt><dd><p>name of the company</p>
+</dd>
+</dl>
+</div></blockquote>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.main_function">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">main_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stock_prices</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#main_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.main_function" title="Permalink to this definition"></a></dt>
+<dd><p>Function to build prediction dataframe</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><dl class="simple">
+<dt>stock_prices: csv</dt><dd><p>stock data</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>prediction: csv</dt><dd><p>prediction csv for last 5 days</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.process_output">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">process_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#process_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.process_output" title="Permalink to this definition"></a></dt>
+<dd><p>Convert binary to keywords</p>
+<section id="id51">
+<h3>Parameters<a class="headerlink" href="#id51" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>output<span class="classifier">int</span></dt><dd><p>binary output predicted for each stock</p>
+</dd>
+</dl>
+</section>
+<section id="id52">
+<h3>Returns<a class="headerlink" href="#id52" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>prediction<span class="classifier">str</span></dt><dd><p>RISE/DROP based on 1/0</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.train_model">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">train_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#train_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.train_model" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the model using window method</p>
+<section id="id53">
+<h3>Parameters<a class="headerlink" href="#id53" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>group<span class="classifier">DataFrame group</span></dt><dd><p>group of ticker_id</p>
+</dd>
+<dt>results: DataFrame</dt><dd><p>consists actual and predicted data</p>
+</dd>
+<dt>window_size<span class="classifier">Integer</span></dt><dd><p>length of window</p>
+</dd>
+</dl>
+</section>
+<section id="id54">
+<h3>Returns<a class="headerlink" href="#id54" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>results<span class="classifier">DataFrame</span></dt><dd><p>consists actual and predicted data</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_stock_prediction.docker_stock_prediction.stock_prediction_2.write_data_to_RDS">
+<span class="sig-prename descclassname"><span class="pre">docker_stock_prediction.docker_stock_prediction.stock_prediction_2.</span></span><span class="sig-name descname"><span class="pre">write_data_to_RDS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_stock_prediction/docker_stock_prediction/stock_prediction_2.html#write_data_to_RDS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_stock_prediction.docker_stock_prediction.stock_prediction_2.write_data_to_RDS" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-docker_stock_prediction.docker_stock_prediction">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-docker_stock_prediction.docker_stock_prediction" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="docker_stock_prediction.html" class="btn btn-neutral float-left" title="docker_stock_prediction package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="docker_topics_earning_call_transcripts.html" class="btn btn-neutral float-right" title="docker_topics_earning_call_transcripts package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ABC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

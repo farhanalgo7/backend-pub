@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docker_trend_prediction package &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="docker_tweets package" href="docker_tweets.html" />
+    <link rel="prev" title="docker_topics_earning_call_transcripts package" href="docker_topics_earning_call_transcripts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">backend_pub</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html">docker_debrief package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html">docker_enrichment package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_microservices.html">docker_microservices package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html">docker_search package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_ingestion.html">docker_stock_ingestion package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_prediction.html">docker_stock_prediction package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_topics_earning_call_transcripts.html">docker_topics_earning_call_transcripts package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">docker_trend_prediction package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_trend_prediction.Trend_prediction">docker_trend_prediction.Trend_prediction module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_trend_prediction.Trend_prediction.build_model"><code class="docutils literal notranslate"><span class="pre">build_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_trend_prediction.Trend_prediction.compute_output"><code class="docutils literal notranslate"><span class="pre">compute_output()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_trend_prediction.Trend_prediction.compute_trend_variable"><code class="docutils literal notranslate"><span class="pre">compute_trend_variable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_trend_prediction.Trend_prediction.get_regressor"><code class="docutils literal notranslate"><span class="pre">get_regressor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_trend_prediction.Trend_prediction.train_model"><code class="docutils literal notranslate"><span class="pre">train_model()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_trend_prediction">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_tweets.html">docker_tweets package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">backend_pub</a></li>
+      <li class="breadcrumb-item active">docker_trend_prediction package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/docker_trend_prediction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="docker-trend-prediction-package">
+<h1>docker_trend_prediction package<a class="headerlink" href="#docker-trend-prediction-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-docker_trend_prediction.Trend_prediction">
+<span id="docker-trend-prediction-trend-prediction-module"></span><h2>docker_trend_prediction.Trend_prediction module<a class="headerlink" href="#module-docker_trend_prediction.Trend_prediction" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_trend_prediction.Trend_prediction.build_model">
+<span class="sig-prename descclassname"><span class="pre">docker_trend_prediction.Trend_prediction.</span></span><span class="sig-name descname"><span class="pre">build_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_trend_prediction/Trend_prediction.html#build_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_trend_prediction.Trend_prediction.build_model" title="Permalink to this definition"></a></dt>
+<dd><p>Build model</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>data: DataFrame</dt><dd><p>numerical processed data about the stocks</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>clf: RandomForestRegressor</dt><dd><p>trained classifier object</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_trend_prediction.Trend_prediction.compute_output">
+<span class="sig-prename descclassname"><span class="pre">docker_trend_prediction.Trend_prediction.</span></span><span class="sig-name descname"><span class="pre">compute_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_of_days</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_trend_prediction/Trend_prediction.html#compute_output"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_trend_prediction.Trend_prediction.compute_output" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates output for ticker_ids</p>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>group: DataFrame group</dt><dd><p>group of ticker_id</p>
+</dd>
+<dt>no_of_days: Integer</dt><dd><p>Integer specifying the no of days for prediction</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>df: Dataframe</dt><dd><p>dataframe for output for ticker_ids</p>
+</dd>
+</dl>
+</section>
+<section id="steps">
+<h3>Steps<a class="headerlink" href="#steps" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Create output array</p></li>
+<li><p>Append output values</p></li>
+<li><p>Return output dataframe</p></li>
+</ol>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_trend_prediction.Trend_prediction.compute_trend_variable">
+<span class="sig-prename descclassname"><span class="pre">docker_trend_prediction.Trend_prediction.</span></span><span class="sig-name descname"><span class="pre">compute_trend_variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_trend_prediction/Trend_prediction.html#compute_trend_variable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_trend_prediction.Trend_prediction.compute_trend_variable" title="Permalink to this definition"></a></dt>
+<dd><p>Calculates features i.e trend variables for 2,3,5,10 days</p>
+<section id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>group: DataFrame group</dt><dd><p>group of ticker_id</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h3>Returns<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>df: Dataframe</dt><dd><p>dataframe for all features for ticker_ids</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3>Steps<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Make input array of closing prices</p></li>
+<li><dl>
+<dt>Iterate over number of days(k) to calculate trend variable</dt><dd><p>2.1 Append NaN values for first 10 days to temporary array td
+2.2 Iterate from 10th day to avoid undefined values of t10</p>
+<blockquote>
+<div><p>2.2.1 Calculate sum of absolute differences of closing prices of consecutive days for past k days
+2.2.2 Divide the absolute difference of closing price of ith day and (i-k)th day by sum and append final value to td araay</p>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_trend_prediction.Trend_prediction.get_regressor">
+<span class="sig-prename descclassname"><span class="pre">docker_trend_prediction.Trend_prediction.</span></span><span class="sig-name descname"><span class="pre">get_regressor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_trend_prediction/Trend_prediction.html#get_regressor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_trend_prediction.Trend_prediction.get_regressor" title="Permalink to this definition"></a></dt>
+<dd><p>Builds RandomForest regressor object</p>
+<section id="id6">
+<h3>Returns<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>randomForestRegressor: RandomForestRegressor</dt><dd><p>RandomForest Regressor object</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_trend_prediction.Trend_prediction.train_model">
+<span class="sig-prename descclassname"><span class="pre">docker_trend_prediction.Trend_prediction.</span></span><span class="sig-name descname"><span class="pre">train_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_trend_prediction/Trend_prediction.html#train_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_trend_prediction.Trend_prediction.train_model" title="Permalink to this definition"></a></dt>
+<dd><p>Trains the model using window method</p>
+<section id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>group: DataFrame group</dt><dd><p>group of ticker_id</p>
+</dd>
+<dt>results: DataFrame</dt><dd><p>consists actual and predicted data</p>
+</dd>
+<dt>window_size: Integer</dt><dd><p>length of window</p>
+</dd>
+</dl>
+</section>
+<section id="id8">
+<h3>Returns<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt>results: DataFrame</dt><dd><p>consists actual and predicted data</p>
+</dd>
+</dl>
+</section>
+<section id="id9">
+<h3>Steps<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Training</dt><dd><p>1.1 Create train and test data using window_size
+1.2 Build model with train data
+1.3 Predict for test data
+1.4 Calculate percentile for test data
+1.5 Create result object and convert into dataframe
+1.6 Append results to dataframe</p>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+</dd></dl>
+
+</section>
+<section id="module-docker_trend_prediction">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-docker_trend_prediction" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="docker_topics_earning_call_transcripts.html" class="btn btn-neutral float-left" title="docker_topics_earning_call_transcripts package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="docker_tweets.html" class="btn btn-neutral float-right" title="docker_tweets package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ABC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

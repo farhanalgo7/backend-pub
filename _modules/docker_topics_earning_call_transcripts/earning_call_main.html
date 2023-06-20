@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docker_topics_earning_call_transcripts.earning_call_main &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">backend_pub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">docker_topics_earning_call_transcripts.earning_call_main</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for docker_topics_earning_call_transcripts.earning_call_main</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="sentiment"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.sentiment">[docs]</a><span></span><span class="k">def</span> <span class="nf">sentiment</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mf">0.05</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Positive&#39;</span>
+    <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mf">0.05</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Negative&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Neutral&#39;</span></div>
+
+
+
+<div class="viewcode-block" id="clean_text"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.clean_text">[docs]</a><span class="k">def</span> <span class="nf">clean_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">delete_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">sp_character</span><span class="p">:</span> <span class="s1">&#39;&#39;</span> <span class="k">for</span> <span class="n">sp_character</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">}</span>
+    <span class="n">delete_dict</span><span class="p">[</span><span class="s1">&#39; &#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="n">delete_dict</span><span class="p">)</span>
+    <span class="n">text1</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+    <span class="n">textArr</span> <span class="o">=</span> <span class="n">text1</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">text2</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">textArr</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">w</span><span class="o">.</span><span class="n">isdigit</span><span class="p">()</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">text2</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="remove_stopwords"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.remove_stopwords">[docs]</a><span class="k">def</span> <span class="nf">remove_stopwords</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+    <span class="n">textArr</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">rem_text</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">textArr</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">rem_text</span></div>
+
+
+
+<div class="viewcode-block" id="lemmatization"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.lemmatization">[docs]</a><span class="k">def</span> <span class="nf">lemmatization</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="n">allowed_postags</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NOUN&#39;</span><span class="p">,</span> <span class="s1">&#39;ADJ&#39;</span><span class="p">]):</span>
+    <span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;en_core_web_md&#39;</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;parser&#39;</span><span class="p">,</span> <span class="s1">&#39;ner&#39;</span><span class="p">])</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">texts</span><span class="p">:</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">token</span><span class="o">.</span><span class="n">lemma_</span> <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">doc</span> <span class="k">if</span> <span class="n">token</span><span class="o">.</span><span class="n">pos_</span> <span class="ow">in</span> <span class="n">allowed_postags</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">output</span></div>
+
+
+
+<div class="viewcode-block" id="Optimal_Model"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.Optimal_Model">[docs]</a><span class="k">def</span> <span class="nf">Optimal_Model</span><span class="p">(</span><span class="n">num_keywords</span><span class="p">,</span> <span class="n">ideal_topic_num</span><span class="p">,</span> <span class="n">tokenized_reviews</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tokenized_reviews type&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">tokenized_reviews</span><span class="p">))</span>
+    <span class="n">dictionary</span> <span class="o">=</span> <span class="n">corpora</span><span class="o">.</span><span class="n">Dictionary</span><span class="p">(</span><span class="n">tokenized_reviews</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In optimal model dictionary&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">dictionary</span><span class="p">))</span>
+    <span class="n">doc_term_matrix</span> <span class="o">=</span> <span class="p">[</span><span class="n">dictionary</span><span class="o">.</span><span class="n">doc2bow</span><span class="p">(</span><span class="n">rev</span><span class="p">)</span> <span class="k">for</span> <span class="n">rev</span> <span class="ow">in</span> <span class="n">tokenized_reviews</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;doc_term_matrix&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">doc_term_matrix</span><span class="p">))</span>
+    <span class="n">Optimal_model</span> <span class="o">=</span> <span class="n">LdaModel</span><span class="p">(</span><span class="n">corpus</span><span class="o">=</span><span class="n">doc_term_matrix</span><span class="p">,</span> <span class="n">id2word</span><span class="o">=</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">num_topics</span><span class="o">=</span><span class="n">ideal_topic_num</span><span class="p">,</span> <span class="n">update_every</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">doc_term_matrix</span><span class="p">),</span> <span class="n">passes</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;LDA Model&#39;</span><span class="p">,</span> <span class="n">Optimal_model</span><span class="p">,</span> <span class="s1">&#39;/n&#39;</span><span class="p">,</span> <span class="n">Optimal_model</span><span class="p">)</span>
+    <span class="n">model_topics</span> <span class="o">=</span> <span class="n">Optimal_model</span><span class="o">.</span><span class="n">show_topics</span><span class="p">(</span><span class="n">formatted</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;model_topics&#39;</span><span class="p">)</span>
+    <span class="n">coherence_model_lda</span> <span class="o">=</span> <span class="n">CoherenceModel</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">Optimal_model</span><span class="p">,</span> <span class="n">texts</span><span class="o">=</span><span class="n">tokenized_reviews</span><span class="p">,</span> <span class="n">dictionary</span><span class="o">=</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">coherence</span><span class="o">=</span><span class="s1">&#39;c_v&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; coherence_model_lda&#39;</span><span class="p">)</span>
+    <span class="n">coherence_lda</span> <span class="o">=</span> <span class="n">coherence_model_lda</span><span class="o">.</span><span class="n">get_coherence</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; coherence_lda  Optimal_Model executed&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">Optimal_model</span><span class="p">,</span> <span class="n">coherence_lda</span><span class="p">,</span> <span class="n">doc_term_matrix</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="format_topics_sentences"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.format_topics_sentences">[docs]</a><span class="k">def</span> <span class="nf">format_topics_sentences</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">corpus</span><span class="p">,</span> <span class="n">Questions</span><span class="p">,</span> <span class="n">Answers</span><span class="p">,</span> <span class="n">Sentiments</span><span class="p">,</span> <span class="n">Compound_score</span><span class="p">):</span>
+    <span class="n">sent_topics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="n">corpus</span><span class="p">]):</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="p">(</span><span class="n">topic_num</span><span class="p">,</span> <span class="n">prop_topic</span><span class="p">))</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">wp</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">show_topic</span><span class="p">(</span><span class="n">topic_num</span><span class="p">)</span>
+                <span class="n">topic_keywords</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">word</span> <span class="k">for</span> <span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">prop</span><span class="p">)</span> <span class="ow">in</span> <span class="n">wp</span><span class="p">])</span>
+                <span class="n">sent_topics_df</span> <span class="o">=</span> <span class="n">sent_topics_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">topic_keywords</span><span class="p">]),</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">break</span>
+    <span class="n">sent_topics_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Topic_Keywords&#39;</span><span class="p">]</span>
+    <span class="n">Q1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">Questions</span><span class="p">)</span>
+    <span class="n">A1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">Answers</span><span class="p">)</span>
+    <span class="n">c1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">Compound_score</span><span class="p">)</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">Sentiments</span><span class="p">)</span>
+    <span class="n">sent_topics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">Q1</span><span class="p">,</span> <span class="n">A1</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">sent_topics_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sent_topics_df</span></div>
+
+
+
+<div class="viewcode-block" id="Sentiment_Analysis"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.Sentiment_Analysis">[docs]</a><span class="k">def</span> <span class="nf">Sentiment_Analysis</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="n">analyser</span> <span class="o">=</span> <span class="n">SentimentIntensityAnalyzer</span><span class="p">()</span>
+    <span class="n">scores_VADER</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">review</span><span class="p">:</span> <span class="n">analyser</span><span class="o">.</span><span class="n">polarity_scores</span><span class="p">(</span><span class="n">review</span><span class="p">))</span>
+    <span class="n">compound_VADER</span> <span class="o">=</span> <span class="n">scores_VADER</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">score_dict</span><span class="p">:</span> <span class="n">score_dict</span><span class="p">[</span><span class="s1">&#39;compound&#39;</span><span class="p">])</span>
+    <span class="n">Sentiments</span> <span class="o">=</span> <span class="n">compound_VADER</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">sentiment</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">Sentiments</span><span class="p">,</span> <span class="n">compound_VADER</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="build_dataframe"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.build_dataframe">[docs]</a><span class="k">def</span> <span class="nf">build_dataframe</span><span class="p">(</span><span class="n">DF</span><span class="p">):</span>
+    <span class="n">Compound_score</span> <span class="o">=</span> <span class="n">Sentiment_Analysis</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">])[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">Sentiments</span> <span class="o">=</span> <span class="n">Sentiment_Analysis</span><span class="p">(</span><span class="n">DF</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">col_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Questions&#39;</span><span class="p">,</span> <span class="s1">&#39;Answers&#39;</span><span class="p">,</span> <span class="s1">&#39;Compound_score&#39;</span><span class="p">,</span> <span class="s1">&#39;Sentiments&#39;</span><span class="p">]</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_names</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Questions&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">DF</span><span class="p">[</span><span class="s1">&#39;Questions&#39;</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">DF</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Compound_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Compound_score</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sentiments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Sentiments</span>
+    <span class="n">Total_Pos</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sentiments&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Positive&#39;</span><span class="p">])</span>
+    <span class="n">Total_Neg</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sentiments&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Negative&#39;</span><span class="p">])</span>
+    <span class="n">Total_Neu</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sentiments&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Neutral&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">Total_Pos</span><span class="p">,</span> <span class="n">Total_Neg</span><span class="p">,</span> <span class="n">Total_Neu</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Topic_Modeling_Positive"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.Topic_Modeling_Positive">[docs]</a><span class="k">def</span> <span class="nf">Topic_Modeling_Positive</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df_Pos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sentiments&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Positive&#39;</span><span class="p">]</span>
+    <span class="n">df_Pos</span> <span class="o">=</span> <span class="n">df_Pos</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df_Pos</span><span class="p">[</span><span class="s1">&#39;Original_text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span>
+    <span class="n">df_Pos</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_Pos</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_text</span><span class="p">)</span>
+    <span class="n">df_Pos</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_Pos</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_stopwords</span><span class="p">)</span>
+    <span class="n">text_list</span> <span class="o">=</span> <span class="n">df_Pos</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">ss</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text_list</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;word count&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
+    <span class="n">tokenized_reviews</span> <span class="o">=</span> <span class="n">lemmatization</span><span class="p">(</span><span class="n">text_list</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tokenized_reviews completed&#39;</span><span class="p">)</span>
+    <span class="n">ideal_topic</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">num_keywords</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;at Optimal_Model &#39;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">optimal_model</span><span class="p">,</span> <span class="n">coherence_lda</span><span class="p">,</span> <span class="n">doc_term_matrix</span><span class="p">)</span> <span class="o">=</span> <span class="n">Optimal_Model</span><span class="p">(</span><span class="n">num_keywords</span><span class="p">,</span> <span class="n">ideal_topic</span><span class="p">,</span> <span class="n">tokenized_reviews</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Process at Optimal_Model  completed&#39;</span><span class="p">)</span>
+    <span class="n">OverallTopics_Pos</span> <span class="o">=</span> <span class="n">optimal_model</span><span class="o">.</span><span class="n">print_topics</span><span class="p">(</span><span class="n">num_words</span><span class="o">=</span><span class="n">num_keywords</span><span class="p">)</span>
+    <span class="n">Positive_documents</span> <span class="o">=</span> <span class="n">format_topics_sentences</span><span class="p">(</span><span class="n">optimal_model</span><span class="p">,</span> <span class="n">doc_term_matrix</span><span class="p">,</span> <span class="n">df_Pos</span><span class="p">[</span><span class="s1">&#39;Questions&#39;</span><span class="p">],</span> <span class="n">df_Pos</span><span class="p">[</span><span class="s1">&#39;Original_text&#39;</span><span class="p">],</span> <span class="n">df_Pos</span><span class="p">[</span><span class="s1">&#39;Sentiments&#39;</span><span class="p">],</span> <span class="n">df_Pos</span><span class="p">[</span><span class="s1">&#39;Compound_score&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">optimal_model</span><span class="p">,</span> <span class="n">Positive_documents</span><span class="p">,</span> <span class="n">OverallTopics_Pos</span><span class="p">,</span> <span class="n">ideal_topic</span><span class="p">,</span> <span class="n">coherence_lda</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Topic_Modeling_Negative"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.Topic_Modeling_Negative">[docs]</a><span class="k">def</span> <span class="nf">Topic_Modeling_Negative</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df_Neg</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sentiments&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Negative&#39;</span><span class="p">]</span>
+    <span class="n">df_Neg</span> <span class="o">=</span> <span class="n">df_Neg</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df_Neg</span><span class="p">[</span><span class="s1">&#39;Original_text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span>
+    <span class="n">df_Neg</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_Neg</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_text</span><span class="p">)</span>
+    <span class="n">df_Neg</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_Neg</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_stopwords</span><span class="p">)</span>
+    <span class="n">text_list</span> <span class="o">=</span> <span class="n">df_Neg</span><span class="p">[</span><span class="s1">&#39;Answers&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">tokenized_reviews</span> <span class="o">=</span> <span class="n">lemmatization</span><span class="p">(</span><span class="n">text_list</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tokenized_reviews completed&#39;</span><span class="p">)</span>
+    <span class="n">ss</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">text_list</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;word count&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
+    <span class="n">ideal_topic</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">num_keywords</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;at Optimal_Model &#39;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">optimal_model</span><span class="p">,</span> <span class="n">coherence_lda</span><span class="p">,</span> <span class="n">doc_term_matrix</span><span class="p">)</span> <span class="o">=</span> <span class="n">Optimal_Model</span><span class="p">(</span><span class="n">num_keywords</span><span class="p">,</span> <span class="n">ideal_topic</span><span class="p">,</span> <span class="n">tokenized_reviews</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Process at Optimal_Model  completed&#39;</span><span class="p">)</span>
+    <span class="n">OverallTopics_Neg</span> <span class="o">=</span> <span class="n">optimal_model</span><span class="o">.</span><span class="n">print_topics</span><span class="p">(</span><span class="n">num_words</span><span class="o">=</span><span class="n">num_keywords</span><span class="p">)</span>
+    <span class="n">Negative_documents</span> <span class="o">=</span> <span class="n">format_topics_sentences</span><span class="p">(</span><span class="n">optimal_model</span><span class="p">,</span> <span class="n">doc_term_matrix</span><span class="p">,</span> <span class="n">df_Neg</span><span class="p">[</span><span class="s1">&#39;Questions&#39;</span><span class="p">],</span> <span class="n">df_Neg</span><span class="p">[</span><span class="s1">&#39;Original_text&#39;</span><span class="p">],</span> <span class="n">df_Neg</span><span class="p">[</span><span class="s1">&#39;Sentiments&#39;</span><span class="p">],</span> <span class="n">df_Neg</span><span class="p">[</span><span class="s1">&#39;Compound_score&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">optimal_model</span><span class="p">,</span> <span class="n">Negative_documents</span><span class="p">,</span> <span class="n">OverallTopics_Neg</span><span class="p">,</span> <span class="n">ideal_topic</span><span class="p">,</span> <span class="n">coherence_lda</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Word_Cloud_Freq"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.Word_Cloud_Freq">[docs]</a><span class="k">def</span> <span class="nf">Word_Cloud_Freq</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ideal_topic_num</span><span class="p">):</span>
+    <span class="n">topics</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">strip_punctuation</span><span class="p">,</span> <span class="n">strip_numeric</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">show_topics</span><span class="p">(</span><span class="n">num_topics</span><span class="o">=</span><span class="n">ideal_topic_num</span><span class="p">):</span>
+        <span class="n">topics</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">preprocess_string</span><span class="p">(</span><span class="n">topic</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">filters</span><span class="p">))</span>
+    <span class="n">Final_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">topics</span><span class="p">)):</span>
+        <span class="n">Final_list</span> <span class="o">+=</span> <span class="n">topics</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">Final_list</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">topics</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_result"><a class="viewcode-back" href="../../docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.get_result">[docs]</a><span class="k">def</span> <span class="nf">get_result</span><span class="p">(</span><span class="n">input_csv_qa</span><span class="p">,</span> <span class="n">Filename</span><span class="p">):</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">DF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">input_csv_qa</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;cp1252&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">DF</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">overall_Pos</span><span class="p">,</span> <span class="n">overall_Neg</span><span class="p">,</span> <span class="n">overall_Neu</span><span class="p">)</span> <span class="o">=</span> <span class="n">build_dataframe</span><span class="p">(</span><span class="n">DF</span><span class="p">)</span>
+    <span class="n">s3</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time taken to build dataframe = </span><span class="si">{</span><span class="n">s3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">model_Pos</span><span class="p">,</span> <span class="n">Positive_documents</span><span class="p">,</span> <span class="n">Overall_Topics_Pos</span><span class="p">,</span> <span class="n">ideal_topic_Pos</span><span class="p">,</span> <span class="n">coherence_lda_Pos</span><span class="p">)</span> <span class="o">=</span> <span class="n">Topic_Modeling_Positive</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">s4</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time taken for Topic_Modeling_Positive = </span><span class="si">{</span><span class="n">s4</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">total_pos</span><span class="p">,</span> <span class="n">Freq_Pos</span><span class="p">)</span> <span class="o">=</span> <span class="n">Word_Cloud_Freq</span><span class="p">(</span><span class="n">model_Pos</span><span class="p">,</span> <span class="n">ideal_topic_Pos</span><span class="p">)</span>
+    <span class="n">s5</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time taken for Word_Cloud_Freq (Positive) = </span><span class="si">{</span><span class="n">s5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s4</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">Pos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Questions&#39;</span><span class="p">:</span> <span class="n">Positive_documents</span><span class="p">[</span><span class="s1">&#39;Questions&#39;</span><span class="p">],</span> <span class="s1">&#39;Answers&#39;</span><span class="p">:</span> <span class="n">Positive_documents</span><span class="p">[</span><span class="s1">&#39;Original_text&#39;</span><span class="p">],</span> <span class="s1">&#39;Compound_score&#39;</span><span class="p">:</span> <span class="n">Positive_documents</span><span class="p">[</span><span class="s1">&#39;Compound_score&#39;</span><span class="p">],</span> <span class="s1">&#39;Sentiments&#39;</span><span class="p">:</span> <span class="n">Positive_documents</span><span class="p">[</span><span class="s1">&#39;Sentiments&#39;</span><span class="p">],</span> <span class="s1">&#39;Topics&#39;</span><span class="p">:</span> <span class="n">Positive_documents</span><span class="p">[</span><span class="s1">&#39;Topic_Keywords&#39;</span><span class="p">]})</span>
+    <span class="n">s6</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time taken to build Pos dataframe = </span><span class="si">{</span><span class="n">s6</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s5</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">model_Neg</span><span class="p">,</span> <span class="n">Negative_documents</span><span class="p">,</span> <span class="n">Overall_Topics_Neg</span><span class="p">,</span> <span class="n">ideal_topic_Neg</span><span class="p">,</span> <span class="n">coherence_lda_Neg</span><span class="p">)</span> <span class="o">=</span> <span class="n">Topic_Modeling_Negative</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">s7</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time taken for Topic_Modeling_Negative = </span><span class="si">{</span><span class="n">s7</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s6</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="p">(</span><span class="n">total_neg</span><span class="p">,</span> <span class="n">Freq_Neg</span><span class="p">)</span> <span class="o">=</span> <span class="n">Word_Cloud_Freq</span><span class="p">(</span><span class="n">model_Neg</span><span class="p">,</span> <span class="n">ideal_topic_Neg</span><span class="p">)</span>
+    <span class="n">s8</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time taken for Word_Cloud_Freq (Negative) = </span><span class="si">{</span><span class="n">s8</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s7</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">Neg</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Questions&#39;</span><span class="p">:</span> <span class="n">Negative_documents</span><span class="p">[</span><span class="s1">&#39;Questions&#39;</span><span class="p">],</span> <span class="s1">&#39;Answers&#39;</span><span class="p">:</span> <span class="n">Negative_documents</span><span class="p">[</span><span class="s1">&#39;Original_text&#39;</span><span class="p">],</span> <span class="s1">&#39;Compound_score&#39;</span><span class="p">:</span> <span class="n">Negative_documents</span><span class="p">[</span><span class="s1">&#39;Compound_score&#39;</span><span class="p">],</span> <span class="s1">&#39;Sentiments&#39;</span><span class="p">:</span> <span class="n">Negative_documents</span><span class="p">[</span><span class="s1">&#39;Sentiments&#39;</span><span class="p">],</span> <span class="s1">&#39;Topics&#39;</span><span class="p">:</span> <span class="n">Negative_documents</span><span class="p">[</span><span class="s1">&#39;Topic_Keywords&#39;</span><span class="p">]})</span>
+    <span class="n">s9</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Time taken to build Neg dataframe = </span><span class="si">{</span><span class="n">s9</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s8</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">df3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sentiments&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Neutral&#39;</span><span class="p">]</span>
+    <span class="n">Overall_documents</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">Pos</span><span class="p">,</span> <span class="n">Neg</span><span class="p">,</span> <span class="n">df3</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">Documents</span> <span class="o">=</span> <span class="n">Overall_documents</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
+    <span class="n">s10</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">microsecond</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Total Time = </span><span class="si">{</span><span class="n">s10</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">Filename</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Overall_Sentiments&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Positive&#39;</span><span class="p">:</span> <span class="n">overall_Pos</span><span class="p">,</span> <span class="s1">&#39;Negative&#39;</span><span class="p">:</span> <span class="n">overall_Neg</span><span class="p">,</span> <span class="s1">&#39;Neutral&#39;</span><span class="p">:</span> <span class="n">overall_Neu</span><span class="p">},</span> <span class="s1">&#39;Overall_topics&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Positive&#39;</span><span class="p">:</span> <span class="n">total_pos</span><span class="p">,</span> <span class="s1">&#39;Best topic numbers(Positive)&#39;</span><span class="p">:</span> <span class="n">ideal_topic_Pos</span><span class="p">,</span> <span class="s1">&#39;coherence score for Positive documents&#39;</span><span class="p">:</span> <span class="n">coherence_lda_Pos</span><span class="p">,</span> <span class="s1">&#39;Negative&#39;</span><span class="p">:</span> <span class="n">total_neg</span><span class="p">,</span> <span class="s1">&#39;Best topic numbers (Negative)&#39;</span><span class="p">:</span> <span class="n">ideal_topic_Neg</span><span class="p">,</span> <span class="s1">&#39;coherence score for Negative documents&#39;</span><span class="p">:</span> <span class="n">coherence_lda_Neg</span><span class="p">}},</span> <span class="s1">&#39;Output&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Overall_Documents&#39;</span><span class="p">:</span> <span class="n">Documents</span><span class="p">,</span> <span class="s1">&#39;WordCloud&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Positive_WordCloud&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Freq_Pos</span><span class="p">),</span> <span class="s1">&#39;Negative_WordCloud&#39;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Freq_Neg</span><span class="p">)}}}</span></div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ABC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docker_enrichment.new_main_v4 &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">backend_pub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">docker_enrichment.new_main_v4</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for docker_enrichment.new_main_v4</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="get_connection"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_connection">[docs]</a><span></span><span class="k">def</span> <span class="nf">get_connection</span><span class="p">():</span>
+    <span class="n">algoDDB</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;dynamodb&#39;</span><span class="p">,</span> <span class="n">endpoint_url</span><span class="o">=</span><span class="s1">&#39;http://dynamodb.ap-south-1.amazonaws.com&#39;</span><span class="p">,</span> <span class="n">region_name</span><span class="o">=</span><span class="n">AWS_REGION</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">algoDDB</span></div>
+
+
+
+<div class="viewcode-block" id="get_sentiment_class"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_sentiment_class">[docs]</a><span class="k">def</span> <span class="nf">get_sentiment_class</span><span class="p">(</span><span class="n">neg</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">neut</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="n">neg</span> <span class="ow">and</span> <span class="n">pos</span> <span class="o">&gt;</span> <span class="n">neut</span><span class="p">:</span>
+        <span class="n">sentiment_class</span> <span class="o">=</span> <span class="s1">&#39;positive&#39;</span>
+    <span class="k">elif</span> <span class="n">neg</span> <span class="o">&gt;</span> <span class="n">pos</span> <span class="ow">and</span> <span class="n">neg</span> <span class="o">&gt;</span> <span class="n">neut</span><span class="p">:</span>
+        <span class="n">sentiment_class</span> <span class="o">=</span> <span class="s1">&#39;negative&#39;</span>
+    <span class="k">elif</span> <span class="n">neut</span> <span class="o">&gt;</span> <span class="n">neg</span> <span class="ow">and</span> <span class="n">neut</span> <span class="o">&gt;</span> <span class="n">pos</span><span class="p">:</span>
+        <span class="n">sentiment_class</span> <span class="o">=</span> <span class="s1">&#39;neutral&#39;</span>
+    <span class="k">return</span> <span class="n">sentiment_class</span></div>
+
+
+
+<div class="viewcode-block" id="get_sentiment_modified"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.get_sentiment_modified">[docs]</a><span class="k">def</span> <span class="nf">get_sentiment_modified</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  This modified function does not perform NER since the entity which we are focusing</span>
+<span class="sd">  on is the same company to which the news belongs and that has been passed as </span>
+<span class="sd">  TSA_keyword.</span>
+
+<span class="sd">  Parameters</span>
+<span class="sd">      -------------</span>
+<span class="sd">      1. sentence: str</span>
+<span class="sd">  Returns</span>
+<span class="sd">  -------</span>
+<span class="sd">    1. sentiment_analysis : dict</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+    <span class="n">predictions_np</span> <span class="o">=</span> <span class="n">analyze_sentiment</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predictions_np</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predictions_np</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">neut</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">predictions_np</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">sentiment_class</span> <span class="o">=</span> <span class="n">get_sentiment_class</span><span class="p">(</span><span class="n">neg</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">neut</span><span class="p">)</span>
+    <span class="n">sentiment_analysis</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">sentence</span><span class="p">,</span> <span class="s1">&#39;negative_sentiment_score&#39;</span><span class="p">:</span> <span class="n">neg</span><span class="p">,</span> <span class="s1">&#39;positive_sentiment_score&#39;</span><span class="p">:</span> <span class="n">pos</span><span class="p">,</span> <span class="s1">&#39;neutral_sentiment_score&#39;</span><span class="p">:</span> <span class="n">neut</span><span class="p">,</span> <span class="s1">&#39;sentiment_class&#39;</span><span class="p">:</span> <span class="n">sentiment_class</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">sentiment_analysis</span></div>
+
+
+
+<div class="viewcode-block" id="analyze_sentiment"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.analyze_sentiment">[docs]</a><span class="k">def</span> <span class="nf">analyze_sentiment</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Function to perform Sentiment analysis using ProsusAI/finbert tokenizer and pretrained NLP model.</span>
+<span class="sd">    </span>
+<span class="sd">    The function will take a doc/text as input and first apply tokenizer and then calculate outputs by using model function on it. </span>
+<span class="sd">    We will perform softmax on outputs and return numpy array of pt_predictions.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">      -------------</span>
+<span class="sd">            1. doc : a single string</span>
+<span class="sd">      Returns</span>
+<span class="sd">      ----------</span>
+<span class="sd">        pt_predictions.detach().numpy(): numpy array of pt_predictions </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pt_batch</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">)</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model_sentiment</span><span class="p">(</span><span class="o">**</span><span class="n">pt_batch</span><span class="p">)</span>
+    <span class="n">pt_predictions</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">outputs</span><span class="o">.</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pt_predictions</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="extract_org_frequency"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.extract_org_frequency">[docs]</a><span class="k">def</span> <span class="nf">extract_org_frequency</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extracts organizations (ORG entities) from the given article and returns their frequency.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        article (str): The input article to extract organizations from.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: A list of dictionaries, each containing the &#39;entity&#39; (organization) and &#39;frequency&#39; keys.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        article = &quot;An article about technology companies such as Google, Apple, and Microsoft.&quot;</span>
+<span class="sd">        result = extract_org_frequency(article)</span>
+<span class="sd">        print(result)</span>
+<span class="sd">        Output: [{&#39;entity&#39;: &#39;Google&#39;, &#39;frequency&#39;: 1}, {&#39;entity&#39;: &#39;Apple&#39;, &#39;frequency&#39;: 1},</span>
+<span class="sd">                 {&#39;entity&#39;: &#39;Microsoft&#39;, &#39;frequency&#39;: 1}]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
+    <span class="n">org_frequency</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">entity</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">ents</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">entity</span><span class="o">.</span><span class="n">label_</span> <span class="o">==</span> <span class="s1">&#39;ORG&#39;</span><span class="p">:</span>
+            <span class="n">org</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="n">text</span>
+            <span class="n">org_frequency</span><span class="p">[</span><span class="n">org</span><span class="p">]</span> <span class="o">=</span> <span class="n">org_frequency</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">org</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;entity&#39;</span><span class="p">:</span> <span class="n">org</span><span class="p">,</span> <span class="s1">&#39;frequency&#39;</span><span class="p">:</span> <span class="n">freq</span><span class="p">}</span> <span class="k">for</span> <span class="p">(</span><span class="n">org</span><span class="p">,</span> <span class="n">freq</span><span class="p">)</span> <span class="ow">in</span> <span class="n">org_frequency</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+
+<div class="viewcode-block" id="compute_summary"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.compute_summary">[docs]</a><span class="k">def</span> <span class="nf">compute_summary</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the summary of the provided text</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">SUMMARIZATION_MODEL_NAME</span> <span class="o">=</span> <span class="s1">&#39;sshleifer/distilbart-cnn-12-6&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Loading the </span><span class="si">{</span><span class="n">SUMMARIZATION_MODEL_NAME</span><span class="si">}</span><span class="s1"> model...&#39;</span><span class="p">)</span>
+    <span class="n">summarization_tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">SUMMARIZATION_MODEL_NAME</span><span class="p">)</span>
+    <span class="n">summarization_model</span> <span class="o">=</span> <span class="n">AutoModelForSeq2SeqLM</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">SUMMARIZATION_MODEL_NAME</span><span class="p">)</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">preprocess_text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">n&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">db_prepared_Text</span> <span class="o">=</span> <span class="s1">&#39;summarize: &#39;</span> <span class="o">+</span> <span class="n">preprocess_text</span>
+        <span class="n">tokenized_text</span> <span class="o">=</span> <span class="n">summarization_tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">db_prepared_Text</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">summary_db</span> <span class="o">=</span> <span class="n">summarization_model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">tokenized_text</span><span class="p">,</span> <span class="n">num_beams</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">no_repeat_ngram_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span> <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">summary</span> <span class="o">=</span> <span class="n">summarization_tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">summary_db</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in generating summary: &#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">summary</span></div>
+
+
+
+<div class="viewcode-block" id="compute_summary_updated"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.compute_summary_updated">[docs]</a><span class="k">def</span> <span class="nf">compute_summary_updated</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the summary of the provided text</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">preprocess_text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">n&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="n">db_prepared_Text</span> <span class="o">=</span> <span class="s1">&#39;summarize: &#39;</span> <span class="o">+</span> <span class="n">preprocess_text</span>
+        <span class="n">tokenized_text</span> <span class="o">=</span> <span class="n">summarization_tokenizer_t5</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">db_prepared_Text</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;pt&#39;</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">summary_db</span> <span class="o">=</span> <span class="n">summarization_model_t5</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">tokenized_text</span><span class="p">,</span> <span class="n">num_beams</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">no_repeat_ngram_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span> <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">summary</span> <span class="o">=</span> <span class="n">summarization_tokenizer_t5</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">summary_db</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">summary</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">sentence</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">nltk</span><span class="o">.</span><span class="n">sent_tokenize</span><span class="p">(</span><span class="n">summary</span><span class="p">)])</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error in generating summary: &#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">summary</span></div>
+
+
+
+<div class="viewcode-block" id="find_events"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.find_events">[docs]</a><span class="k">def</span> <span class="nf">find_events</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    find sentences containing &#39;events&#39; from provided text</span>
+<span class="sd">    Parameters</span>
+<span class="sd">      ----------</span>
+<span class="sd">      text: str</span>
+<span class="sd">          Text from which we need to find desired &#39;events&#39;</span>
+<span class="sd">    Output</span>
+<span class="sd">      ----------</span>
+<span class="sd">      events: list of strings</span>
+<span class="sd">          sentences containing &#39;events&#39; as a list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">events</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">text</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;length of event is 0&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">events</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">()</span>
+    <span class="n">text_sent</span> <span class="o">=</span> <span class="n">event_tokenizer</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+    <span class="n">sentences_fb</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">np_zeros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">768</span><span class="p">,))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text_sent</span><span class="p">)):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">emb</span> <span class="o">=</span> <span class="n">finbert</span><span class="o">.</span><span class="n">sentence_vector</span><span class="p">(</span><span class="n">text_sent</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">np_arr</span> <span class="o">=</span> <span class="n">emb</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+            <span class="n">sentences_fb</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np_arr</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Except: &#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;error while getting sentence embeddings&#39;</span><span class="p">)</span>
+            <span class="k">continue</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentences_fb</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No embeddings found&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">events</span>
+    <span class="n">prediction_labels</span> <span class="o">=</span> <span class="n">event_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sentences_fb</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prediction_labels</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">prediction_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text_sent</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">events</span></div>
+
+
+
+<div class="viewcode-block" id="find_mult_class"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.find_mult_class">[docs]</a><span class="k">def</span> <span class="nf">find_mult_class</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Take a input text sentences of &#39;events&#39; and classifiy it into different pre-defined categories.</span>
+<span class="sd">    The categories considered are: &#39;Debt&#39;, &#39;Dividend&#39;, &#39;Employment&#39;, &#39;Financial Results&#39; , &#39;Investment &amp; Funding&#39; , </span>
+<span class="sd">            &#39;Litigation&#39;, &#39;Macroeconomics&#39;, &#39;Merger &amp; Acquisition&#39; , &#39;Partnership &amp; JointVenture&#39;, &#39;Products &amp; Services&#39;, </span>
+<span class="sd">            &#39;Rating &amp; Recommendation&#39;, &#39;Securities Turnover&#39; and &#39;Share Repurchase&#39;</span>
+
+<span class="sd">    Summary</span>
+<span class="sd">    --------------</span>
+<span class="sd">    Take a input text sentence and returns its most related category from the above. It returns &#39;Other&#39;,</span>
+<span class="sd">    if no related categories are found.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ---------------------</span>
+<span class="sd">    text: The input sentences as a string. (eg: a paragraph of relevent event sentences)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    --------------------</span>
+<span class="sd">    Dictionary : Returns a dictionary of sentences (events), corresponding labels and its probability.</span>
+<span class="sd">  </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">top_2_events</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">all_events</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">events</span> <span class="o">=</span> <span class="n">find_events</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">label_d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;Debt&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Dividend&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;Employment&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;Financial Results&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;Investment &amp; Funding&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;Litigation&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;Macroeconomics&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="s1">&#39;Merger &amp; Acquisition&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="s1">&#39;Partnership &amp; JointVenture&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="s1">&#39;Products &amp; Services&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;Rating &amp; Recommendation&#39;</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span> <span class="s1">&#39;Securities Turnover&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">:</span> <span class="s1">&#39;Share Repurchase&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span> <span class="s1">&#39;Other&#39;</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">events</span><span class="p">:</span>
+        <span class="n">event_text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="n">predict_input</span> <span class="o">=</span> <span class="n">tokenizer_event</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">event_text</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s1">&#39;tf&#39;</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">model_event</span><span class="p">(</span><span class="n">predict_input</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">prob</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">prob</span> <span class="o">=</span> <span class="n">prob</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        <span class="n">prob</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">prob</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.15</span> <span class="ow">and</span> <span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">13</span><span class="p">:</span>
+            <span class="p">(</span><span class="n">prob</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">prob</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">=</span> <span class="p">(</span><span class="n">prob</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">prob</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pred</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">=</span> <span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pred</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">top_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">label_d</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pred</span><span class="p">]</span>
+        <span class="n">top_2_events_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">event_text</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="n">top_labels</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="n">prob</span><span class="p">[:</span><span class="mi">2</span><span class="p">]}</span>
+        <span class="n">top_2_events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">top_2_events_dict</span><span class="p">)</span>
+        <span class="n">all_events_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">event_text</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="n">top_labels</span><span class="p">,</span> <span class="s1">&#39;probability&#39;</span><span class="p">:</span> <span class="n">prob</span><span class="p">}</span>
+        <span class="n">all_events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">all_events_dict</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">all_events</span><span class="p">,</span> <span class="n">top_2_events</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="extract_sents"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.extract_sents">[docs]</a><span class="k">def</span> <span class="nf">extract_sents</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">company_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  This function is extracting sentences addressing the target company using coreferencing</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">clusters</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">_</span><span class="o">.</span><span class="n">coref_clusters</span>
+    <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">:</span>
+        <span class="n">mentions</span> <span class="o">=</span> <span class="p">[</span><span class="n">text</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">]</span>
+    <span class="n">final_cluster</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="n">clusters</span><span class="p">:</span>
+        <span class="n">mentions</span> <span class="o">=</span> <span class="p">[</span><span class="n">text</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="k">for</span> <span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span> <span class="ow">in</span> <span class="n">cluster</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">mentions</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">company_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">element</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">mentions</span>
+                <span class="n">final_cluster</span> <span class="o">=</span> <span class="n">cluster</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">final_cluster</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="n">sentences</span> <span class="o">=</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">start_pos</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">sentiment_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">sentence</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sentences</span><span class="p">):</span>
+        <span class="n">end_pos</span> <span class="o">=</span> <span class="n">start_pos</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">position</span> <span class="ow">in</span> <span class="n">final_cluster</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">start_pos</span> <span class="ow">and</span> <span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">end_pos</span><span class="p">:</span>
+                    <span class="n">sentiment_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+                    <span class="k">break</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Company keyword not found in sentence&#39;</span><span class="p">)</span>
+        <span class="n">start_pos</span> <span class="o">=</span> <span class="n">end_pos</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">sentiment_sentences</span></div>
+
+
+
+<div class="viewcode-block" id="perform_enrichment"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.perform_enrichment">[docs]</a><span class="k">def</span> <span class="nf">perform_enrichment</span><span class="p">(</span><span class="n">article</span><span class="p">,</span> <span class="n">tsa_keyword</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PERFORMING NER&#39;</span><span class="p">)</span>
+    <span class="n">start_time1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">ner_org_analysis</span> <span class="o">=</span> <span class="n">extract_org_frequency</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PERFORMING Targeted Sentiment Analysis&#39;</span><span class="p">)</span>
+    <span class="n">start_time2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">batch</span> <span class="o">=</span> <span class="n">extract_sents</span><span class="p">(</span><span class="n">article</span><span class="p">,</span> <span class="n">tsa_keyword</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Tokenize time --- </span><span class="si">%s</span><span class="s1"> seconds ---&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time1</span><span class="p">))</span>
+    <span class="n">sentiment_analysis_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">:</span>
+        <span class="n">sentence_sentiment</span> <span class="o">=</span> <span class="n">get_sentiment_modified</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="n">sentiment_analysis_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence_sentiment</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sentiment time --- </span><span class="si">%s</span><span class="s1"> seconds ---&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time2</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PERFORMING Summarization&#39;</span><span class="p">)</span>
+    <span class="n">start_time3</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">summarization</span> <span class="o">=</span> <span class="n">compute_summary_updated</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">summarization</span> <span class="o">=</span> <span class="n">compute_summary</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Summary time --- </span><span class="si">%s</span><span class="s1"> seconds ---&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time3</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PERFORMING Event Detection and Classification&#39;</span><span class="p">)</span>
+    <span class="n">start_time4</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">events_detected</span> <span class="o">=</span> <span class="n">find_mult_class</span><span class="p">(</span><span class="n">article</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Muliclass time --- </span><span class="si">%s</span><span class="s1"> seconds ---&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time4</span><span class="p">))</span>
+    <span class="n">events</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;all_events&#39;</span><span class="p">:</span> <span class="n">events_detected</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;top_2_events&#39;</span><span class="p">:</span> <span class="n">events_detected</span><span class="p">[</span><span class="mi">1</span><span class="p">]}</span>
+    <span class="n">perform_enrichment_output</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">sentiment_analysis_list</span><span class="p">),</span> <span class="s1">&#39;ner_analysis&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">ner_org_analysis</span><span class="p">),</span> <span class="s1">&#39;summary&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">summarization</span><span class="p">),</span> <span class="s1">&#39;events&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">events</span><span class="p">)}</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;THE OUTPUT of The article is:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">perform_enrichment_output</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">perform_enrichment_output</span></div>
+
+
+
+<div class="viewcode-block" id="upload_data"><a class="viewcode-back" href="../../docker_enrichment.html#docker_enrichment.new_main_v4.upload_data">[docs]</a><span class="k">def</span> <span class="nf">upload_data</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">enriched_data</span><span class="p">):</span>
+    <span class="n">Sentiment</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">enriched_data</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">])</span>
+    <span class="n">enriched_data</span><span class="p">[</span><span class="s1">&#39;events&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">enriched_data</span><span class="p">[</span><span class="s1">&#39;events&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">enriched_data</span><span class="p">[</span><span class="s1">&#39;events&#39;</span><span class="p">][</span><span class="s1">&#39;all_events&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">enriched_data</span><span class="p">[</span><span class="s1">&#39;events&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;all_events&#39;</span><span class="p">:</span> <span class="s1">&#39;Null&#39;</span><span class="p">,</span> <span class="s1">&#39;top_2_events&#39;</span><span class="p">:</span> <span class="s1">&#39;Null&#39;</span><span class="p">}</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">Top_Events</span> <span class="o">=</span> <span class="n">enriched_data</span><span class="p">[</span><span class="s1">&#39;events&#39;</span><span class="p">][</span><span class="s1">&#39;top_2_events&#39;</span><span class="p">]</span>
+        <span class="n">All_Events</span> <span class="o">=</span> <span class="n">enriched_data</span><span class="p">[</span><span class="s1">&#39;events&#39;</span><span class="p">][</span><span class="s1">&#39;all_events&#39;</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No events detected for : &#39;</span><span class="p">)</span>
+    <span class="n">formatted_sentiment</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">Sentiment</span><span class="p">),</span> <span class="n">parse_float</span><span class="o">=</span><span class="n">Decimal</span><span class="p">)</span>
+    <span class="n">formatted_top_events</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">Top_Events</span><span class="p">),</span> <span class="n">parse_float</span><span class="o">=</span><span class="n">Decimal</span><span class="p">)</span>
+    <span class="n">formatted_all_events</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">All_Events</span><span class="p">),</span> <span class="n">parse_float</span><span class="o">=</span><span class="n">Decimal</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s1">&#39;News&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NEWS&#39;</span><span class="p">)</span>
+        <span class="n">Summary</span> <span class="o">=</span> <span class="n">enriched_data</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="n">News_Table</span>
+        <span class="n">record_id</span> <span class="o">=</span> <span class="n">enriched_data</span><span class="p">[</span><span class="s1">&#39;news_ID&#39;</span><span class="p">]</span>
+        <span class="n">record_month</span> <span class="o">=</span> <span class="n">enriched_data</span><span class="p">[</span><span class="s1">&#39;news_month&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Sentiment</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">No enriched data received for </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s1"> with id: </span><span class="si">{</span><span class="n">record_id</span><span class="si">}</span><span class="s1">..............&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="n">update_loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">update_loop</span><span class="o">.</span><span class="n">run_until_complete</span><span class="p">(</span><span class="n">update_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">record_id</span><span class="p">,</span> <span class="n">record_month</span><span class="p">,</span> <span class="n">formatted_sentiment</span><span class="p">,</span> <span class="n">Summary</span><span class="p">,</span> <span class="n">formatted_top_events</span><span class="p">,</span> <span class="n">formatted_all_events</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*****************table updated with enriched data******************************&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Count: &#39;</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">count</span></div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ABC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

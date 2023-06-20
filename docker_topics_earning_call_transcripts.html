@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docker_topics_earning_call_transcripts package &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="docker_trend_prediction package" href="docker_trend_prediction.html" />
+    <link rel="prev" title="docker_stock_prediction.docker_stock_prediction package" href="docker_stock_prediction.docker_stock_prediction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">backend_pub</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html">docker_debrief package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html">docker_enrichment package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_microservices.html">docker_microservices package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html">docker_search package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_ingestion.html">docker_stock_ingestion package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_prediction.html">docker_stock_prediction package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">docker_topics_earning_call_transcripts package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_topics_earning_call_transcripts.earning_call_main">docker_topics_earning_call_transcripts.earning_call_main module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.earning_call_main.Optimal_Model"><code class="docutils literal notranslate"><span class="pre">Optimal_Model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.earning_call_main.Sentiment_Analysis"><code class="docutils literal notranslate"><span class="pre">Sentiment_Analysis()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.earning_call_main.Topic_Modeling_Negative"><code class="docutils literal notranslate"><span class="pre">Topic_Modeling_Negative()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.earning_call_main.Topic_Modeling_Positive"><code class="docutils literal notranslate"><span class="pre">Topic_Modeling_Positive()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.earning_call_main.Word_Cloud_Freq"><code class="docutils literal notranslate"><span class="pre">Word_Cloud_Freq()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.earning_call_main.build_dataframe"><code class="docutils literal notranslate"><span class="pre">build_dataframe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.earning_call_main.clean_text"><code class="docutils literal notranslate"><span class="pre">clean_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.earning_call_main.format_topics_sentences"><code class="docutils literal notranslate"><span class="pre">format_topics_sentences()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.earning_call_main.get_result"><code class="docutils literal notranslate"><span class="pre">get_result()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.earning_call_main.lemmatization"><code class="docutils literal notranslate"><span class="pre">lemmatization()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.earning_call_main.remove_stopwords"><code class="docutils literal notranslate"><span class="pre">remove_stopwords()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.earning_call_main.sentiment"><code class="docutils literal notranslate"><span class="pre">sentiment()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_topics_earning_call_transcripts.main">docker_topics_earning_call_transcripts.main module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.main.Optimal_Model"><code class="docutils literal notranslate"><span class="pre">Optimal_Model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.main.Topic_Modeling_News"><code class="docutils literal notranslate"><span class="pre">Topic_Modeling_News()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.main.Topic_Modeling_Tweets"><code class="docutils literal notranslate"><span class="pre">Topic_Modeling_Tweets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.main.Word_Cloud_Freq"><code class="docutils literal notranslate"><span class="pre">Word_Cloud_Freq()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.main.clean_text_modified"><code class="docutils literal notranslate"><span class="pre">clean_text_modified()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.main.format_topics_sentences"><code class="docutils literal notranslate"><span class="pre">format_topics_sentences()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.main.get_ticker_names_and_id"><code class="docutils literal notranslate"><span class="pre">get_ticker_names_and_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.main.read_news_data"><code class="docutils literal notranslate"><span class="pre">read_news_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.main.read_tweets_data"><code class="docutils literal notranslate"><span class="pre">read_tweets_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#docker_topics_earning_call_transcripts.main.text_preprocessing_fn"><code class="docutils literal notranslate"><span class="pre">text_preprocessing_fn()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-docker_topics_earning_call_transcripts">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_trend_prediction.html">docker_trend_prediction package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_tweets.html">docker_tweets package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">backend_pub</a></li>
+      <li class="breadcrumb-item active">docker_topics_earning_call_transcripts package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/docker_topics_earning_call_transcripts.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="docker-topics-earning-call-transcripts-package">
+<h1>docker_topics_earning_call_transcripts package<a class="headerlink" href="#docker-topics-earning-call-transcripts-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-docker_topics_earning_call_transcripts.earning_call_main">
+<span id="docker-topics-earning-call-transcripts-earning-call-main-module"></span><h2>docker_topics_earning_call_transcripts.earning_call_main module<a class="headerlink" href="#module-docker_topics_earning_call_transcripts.earning_call_main" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.earning_call_main.Optimal_Model">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.earning_call_main.</span></span><span class="sig-name descname"><span class="pre">Optimal_Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_keywords</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ideal_topic_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenized_reviews</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/earning_call_main.html#Optimal_Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.earning_call_main.Optimal_Model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.earning_call_main.Sentiment_Analysis">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.earning_call_main.</span></span><span class="sig-name descname"><span class="pre">Sentiment_Analysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/earning_call_main.html#Sentiment_Analysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.earning_call_main.Sentiment_Analysis" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.earning_call_main.Topic_Modeling_Negative">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.earning_call_main.</span></span><span class="sig-name descname"><span class="pre">Topic_Modeling_Negative</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/earning_call_main.html#Topic_Modeling_Negative"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.earning_call_main.Topic_Modeling_Negative" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.earning_call_main.Topic_Modeling_Positive">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.earning_call_main.</span></span><span class="sig-name descname"><span class="pre">Topic_Modeling_Positive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/earning_call_main.html#Topic_Modeling_Positive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.earning_call_main.Topic_Modeling_Positive" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.earning_call_main.Word_Cloud_Freq">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.earning_call_main.</span></span><span class="sig-name descname"><span class="pre">Word_Cloud_Freq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ideal_topic_num</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/earning_call_main.html#Word_Cloud_Freq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.earning_call_main.Word_Cloud_Freq" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.earning_call_main.build_dataframe">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.earning_call_main.</span></span><span class="sig-name descname"><span class="pre">build_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DF</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/earning_call_main.html#build_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.earning_call_main.build_dataframe" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.earning_call_main.clean_text">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.earning_call_main.</span></span><span class="sig-name descname"><span class="pre">clean_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/earning_call_main.html#clean_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.earning_call_main.clean_text" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.earning_call_main.format_topics_sentences">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.earning_call_main.</span></span><span class="sig-name descname"><span class="pre">format_topics_sentences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corpus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Questions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Answers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Sentiments</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Compound_score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/earning_call_main.html#format_topics_sentences"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.earning_call_main.format_topics_sentences" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.earning_call_main.get_result">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.earning_call_main.</span></span><span class="sig-name descname"><span class="pre">get_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_csv_qa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/earning_call_main.html#get_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.earning_call_main.get_result" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.earning_call_main.lemmatization">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.earning_call_main.</span></span><span class="sig-name descname"><span class="pre">lemmatization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allowed_postags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['NOUN',</span> <span class="pre">'ADJ']</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/earning_call_main.html#lemmatization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.earning_call_main.lemmatization" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.earning_call_main.remove_stopwords">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.earning_call_main.</span></span><span class="sig-name descname"><span class="pre">remove_stopwords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/earning_call_main.html#remove_stopwords"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.earning_call_main.remove_stopwords" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.earning_call_main.sentiment">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.earning_call_main.</span></span><span class="sig-name descname"><span class="pre">sentiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/earning_call_main.html#sentiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.earning_call_main.sentiment" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-docker_topics_earning_call_transcripts.main">
+<span id="docker-topics-earning-call-transcripts-main-module"></span><h2>docker_topics_earning_call_transcripts.main module<a class="headerlink" href="#module-docker_topics_earning_call_transcripts.main" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.main.Optimal_Model">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.main.</span></span><span class="sig-name descname"><span class="pre">Optimal_Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tokenized_reviews</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/main.html#Optimal_Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.main.Optimal_Model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.main.Topic_Modeling_News">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.main.</span></span><span class="sig-name descname"><span class="pre">Topic_Modeling_News</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">company</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/main.html#Topic_Modeling_News"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.main.Topic_Modeling_News" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.main.Topic_Modeling_Tweets">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.main.</span></span><span class="sig-name descname"><span class="pre">Topic_Modeling_Tweets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">company</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/main.html#Topic_Modeling_Tweets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.main.Topic_Modeling_Tweets" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.main.Word_Cloud_Freq">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.main.</span></span><span class="sig-name descname"><span class="pre">Word_Cloud_Freq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ideal_topic_num</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/main.html#Word_Cloud_Freq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.main.Word_Cloud_Freq" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.main.clean_text_modified">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.main.</span></span><span class="sig-name descname"><span class="pre">clean_text_modified</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/main.html#clean_text_modified"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.main.clean_text_modified" title="Permalink to this definition"></a></dt>
+<dd><p>Make text lowercase, remove text in square brackets,remove links,remove punctuation
+and remove words containing numbers.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.main.format_topics_sentences">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.main.</span></span><span class="sig-name descname"><span class="pre">format_topics_sentences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corpus</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/main.html#format_topics_sentences"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.main.format_topics_sentences" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.main.get_ticker_names_and_id">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.main.</span></span><span class="sig-name descname"><span class="pre">get_ticker_names_and_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/main.html#get_ticker_names_and_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.main.get_ticker_names_and_id" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.main.read_news_data">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.main.</span></span><span class="sig-name descname"><span class="pre">read_news_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dynamodb_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_months</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/main.html#read_news_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.main.read_news_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.main.read_tweets_data">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.main.</span></span><span class="sig-name descname"><span class="pre">read_tweets_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dynamodb_client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_months</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/main.html#read_tweets_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.main.read_tweets_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="docker_topics_earning_call_transcripts.main.text_preprocessing_fn">
+<span class="sig-prename descclassname"><span class="pre">docker_topics_earning_call_transcripts.main.</span></span><span class="sig-name descname"><span class="pre">text_preprocessing_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/docker_topics_earning_call_transcripts/main.html#text_preprocessing_fn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#docker_topics_earning_call_transcripts.main.text_preprocessing_fn" title="Permalink to this definition"></a></dt>
+<dd><p>Cleaning and parsing the text.</p>
+</dd></dl>
+
+</section>
+<section id="module-docker_topics_earning_call_transcripts">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-docker_topics_earning_call_transcripts" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="docker_stock_prediction.docker_stock_prediction.html" class="btn btn-neutral float-left" title="docker_stock_prediction.docker_stock_prediction package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="docker_trend_prediction.html" class="btn btn-neutral float-right" title="docker_trend_prediction package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ABC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

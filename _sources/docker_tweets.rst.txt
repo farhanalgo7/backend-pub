@@ -1,0 +1,29 @@
+docker\_tweets package
+======================
+
+Submodules
+----------
+
+docker\_tweets.news\_ingestion\_aws module
+------------------------------------------
+
+.. automodule:: docker_tweets.news_ingestion_aws
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+docker\_tweets.tweets\_ingestion\_aws module
+--------------------------------------------
+
+.. automodule:: docker_tweets.tweets_ingestion_aws
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: docker_tweets
+   :members:
+   :undoc-members:
+   :show-inheritance:

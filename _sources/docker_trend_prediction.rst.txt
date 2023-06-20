@@ -1,0 +1,21 @@
+docker\_trend\_prediction package
+=================================
+
+Submodules
+----------
+
+docker\_trend\_prediction.Trend\_prediction module
+--------------------------------------------------
+
+.. automodule:: docker_trend_prediction.Trend_prediction
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: docker_trend_prediction
+   :members:
+   :undoc-members:
+   :show-inheritance:

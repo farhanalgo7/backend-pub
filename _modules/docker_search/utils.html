@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docker_search.utils &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">backend_pub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">docker_search.utils</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for docker_search.utils</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="check_type"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.check_type">[docs]</a><span></span><span class="k">def</span> <span class="nf">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the type is &quot;news&quot; or &quot;tweets&quot;. If not, raise error.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        type (str): String specifying &quot;news&quot; or &quot;tweets&quot;</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If type is not &quot;news&quot; or &quot;tweets&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;news&#39;</span><span class="p">,</span> <span class="s1">&#39;tweets&#39;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid type. Must be &#39;news&#39; or &#39;tweets&#39;.&quot;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Wrong type detected. Must be news or tweets.&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_dynamodb_connection"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.get_dynamodb_connection">[docs]</a><span class="k">def</span> <span class="nf">get_dynamodb_connection</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get DynamoDB Connection</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dynamodb.ServiceResource: Connection to DynamoDB</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">algoDDB</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span><span class="s1">&#39;dynamodb&#39;</span><span class="p">,</span> <span class="n">aws_access_key_id</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;AWS_TOKEN&#39;</span><span class="p">],</span> <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;AWS_KEY&#39;</span><span class="p">],</span> <span class="n">region_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;AWS_REGION&#39;</span><span class="p">])</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Connected to AWS DynamoDB&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">algoDDB</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Could not connect to AWS DynamoDB.&#39;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exception:</span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_dynamodb_table"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.get_dynamodb_table">[docs]</a><span class="k">def</span> <span class="nf">get_dynamodb_table</span><span class="p">(</span><span class="n">ddb_connection</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get DynamoDB Table using the connection for a given type of &quot;news&quot; or &quot;tweets&quot;</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ddb_connection (dynamodb.ServiceResource): Connection to DynamoDB</span>
+<span class="sd">        type (str, optional): Type of &quot;news&quot; or &quot;tweets&quot;. Defaults to &quot;news&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dynamodb.Table: DynamoDB Table, either &quot;News_Table&quot; or &quot;Tweets_Table&quot;, depending on type</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Obtained DynamoDB Table for </span><span class="si">{</span><span class="nb">type</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ddb_connection</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1">_Table&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not get DynamoDB Table for </span><span class="si">{</span><span class="nb">type</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exception:</span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="process_prediction"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.process_prediction">[docs]</a><span class="k">def</span> <span class="nf">process_prediction</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">container</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Process prediction given by the DocumentSearch pipeline. 3 things are returned.</span>
+<span class="sd">    - search_results contains just the news/tweet content.</span>
+<span class="sd">    - scores contains sentiment score for the news/tweets.</span>
+<span class="sd">    - documents contains the entire information of news/tweets along with metadata.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        pred (dict): DocumentSearch Pipeline&#39;s output for a given query</span>
+<span class="sd">        container (container.ContainerProxy): Cosmos Container, required for getting document entries using UUIDs</span>
+<span class="sd">        type (str, optional): Type, either &quot;news&quot; or &quot;tweets&quot;. Defaults to &quot;news&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict, dict, dict: Search Results, Scores and Documents (which contains all info along with metadata)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">source_names</span> <span class="o">=</span> <span class="p">{</span><span class="sa">f</span><span class="s1">&#39;content</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">_source_name&#39;</span><span class="p">:</span> <span class="n">pred</span><span class="p">[</span><span class="s1">&#39;documents&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="s1">&#39;documents&#39;</span><span class="p">]))}</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_names</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not get document filenames from prediction for </span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+        <span class="n">documents</span> <span class="o">=</span> <span class="n">get_documents_from_filenames</span><span class="p">(</span><span class="n">source_names</span><span class="p">,</span> <span class="n">container</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not get documents from filenames for </span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+        <span class="n">search_results</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">pred</span><span class="p">[</span><span class="s1">&#39;documents&#39;</span><span class="p">][</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))]</span><span class="o">.</span><span class="n">content</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">documents</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="p">{</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">_score&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="s1">&#39;documents&#39;</span><span class="p">][</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))]</span><span class="o">.</span><span class="n">score</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">documents</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">search_results</span><span class="p">)):</span>
+            <span class="n">summary</span> <span class="o">=</span> <span class="n">documents</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;content</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">][</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1">_Summary&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">summary</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                <span class="n">search_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;content</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summary</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">search_results</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">documents</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">ke</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Key Error in some dictionary, possibly in prediction. Either it has no documents, or the metadata does not have names.&#39;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exception:</span><span class="se">\n</span><span class="si">{</span><span class="n">ke</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">ke</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Something went wrong in Processing Predictions for </span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exception:</span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">({},</span> <span class="p">{},</span> <span class="p">{})</span></div>
+
+
+
+<div class="viewcode-block" id="get_documents_from_filenames"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.get_documents_from_filenames">[docs]</a><span class="k">def</span> <span class="nf">get_documents_from_filenames</span><span class="p">(</span><span class="n">file_names</span><span class="p">,</span> <span class="n">container</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get formatted document entries for front-end from their filenames. It first creates a list of UUIDs,</span>
+<span class="sd">    then gets Document IDs from UUIDs, then gets the documents from DynamoDB using these document IDs, and </span>
+<span class="sd">    then formats for front-end, all using helper functions.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        file_names (list): List of UUID</span>
+<span class="sd">        container (container.ContainerProxy): Cosmos Container, either &quot;News_Table&quot; or &quot;Tweets_Table&quot;</span>
+<span class="sd">        type (str, optional): Type, either &quot;news&quot; or &quot;tweets&quot;. Defaults to &quot;news&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Dictionary containing document entries formatted for front-end</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">uuid_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span> <span class="ow">in</span> <span class="n">file_names</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">document_id</span> <span class="o">=</span> <span class="n">file_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;doc_&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="n">uuid_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">document_id</span><span class="p">)</span>
+        <span class="n">document_ids_list</span> <span class="o">=</span> <span class="n">get_documentids_from_uuid</span><span class="p">(</span><span class="n">uuid_list</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">document_ids_list</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;No Document IDs found from UUID Document Names. Maybe because there are no results.&#39;</span><span class="p">)</span>
+        <span class="n">source_documents</span> <span class="o">=</span> <span class="n">get_documents_from_document_ids</span><span class="p">(</span><span class="n">document_ids_list</span><span class="p">,</span> <span class="n">container</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">source_documents</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;No Documents found from Document IDs. Maybe because there are no results.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">source_documents</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exception:</span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_documentids_from_uuid"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.get_documentids_from_uuid">[docs]</a><span class="k">def</span> <span class="nf">get_documentids_from_uuid</span><span class="p">(</span><span class="n">uuid_list</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get document IDs mapped from UUIDs.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        uuid_list (list): List of UUIDs</span>
+<span class="sd">        type (str, optional): Type, either &quot;news&quot; or &quot;tweets&quot;. Defaults to &quot;news&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: List of document IDs mapped from their UUIDs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;MAPPING_DIR&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">_mapping.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+            <span class="n">mapping_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">mapping_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uid</span><span class="p">)</span> <span class="k">for</span> <span class="n">uid</span> <span class="ow">in</span> <span class="n">uuid_list</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">fnfe</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mapping file not found for </span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exception:</span><span class="se">\n</span><span class="si">{</span><span class="n">fnfe</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">fnfe</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exception:</span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_documents_from_document_ids"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.get_documents_from_document_ids">[docs]</a><span class="k">def</span> <span class="nf">get_documents_from_document_ids</span><span class="p">(</span><span class="n">document_ids_list</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get document entries from DynamoDB given a list of their IDs and type.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        document_ids_list (list): List containing news_ID or tweets_ID values</span>
+<span class="sd">        table (dynamodb.Table): DynamoDB Table, either &quot;News_Table or &quot;Tweets_Table&quot;</span>
+<span class="sd">        type (str, optional): Type, either &quot;news&quot; or &quot;tweets&quot;. Defaults to &quot;news&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Dictionary of the form f&quot;content{i}&quot;: document_entry, where document_entry is formatted.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+    <span class="n">documents_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">key_month</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">_month&#39;</span>
+    <span class="n">key_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">_ID&#39;</span>
+    <span class="n">ner_flag</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">_ner_flag&#39;</span>
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;tweets&#39;</span><span class="p">:</span>
+        <span class="n">ner_flag</span> <span class="o">=</span> <span class="s1">&#39;tweet_ner_flag&#39;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">document_id</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">document_ids_list</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">document_month</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">document_id</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">KeyConditionExpression</span><span class="o">=</span><span class="n">Key</span><span class="p">(</span><span class="n">key_month</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">document_month</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">Key</span><span class="p">(</span><span class="n">key_id</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">document_id</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">FilterExpression</span><span class="o">=</span><span class="n">Attr</span><span class="p">(</span><span class="n">ner_flag</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="kc">True</span><span class="p">))[</span><span class="s1">&#39;Items&#39;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+                <span class="n">required_docs</span> <span class="o">=</span> <span class="n">transform_to_ui_format</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">i</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">)</span>
+                <span class="n">documents_dict</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;content</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">required_docs</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Exception getting documents from DynamoDB.&#39;</span><span class="p">)</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exception:</span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">documents_dict</span></div>
+
+
+
+<div class="viewcode-block" id="transform_to_ui_format"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.transform_to_ui_format">[docs]</a><span class="k">def</span> <span class="nf">transform_to_ui_format</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transform a news/tweet entry to UI format. It replaces the news/tweet with an HTML formatted</span>
+<span class="sd">    string showing sentiment, and returns a dictionary consisting of elements required for front-end.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        item (dict): Dictionary containing a news/tweet entry</span>
+<span class="sd">        index (int): Index of news/tweet in the search prediction</span>
+<span class="sd">        type (str, optional): Type of entry, either &quot;news&quot; or &quot;tweets&quot;. Defaults to &quot;news&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Dictionary consisting of elements required for front-end.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;news&#39;</span><span class="p">:</span>
+        <span class="n">text_key</span> <span class="o">=</span> <span class="s1">&#39;long_description&#39;</span>
+        <span class="n">date_key</span> <span class="o">=</span> <span class="s1">&#39;news_date&#39;</span>
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;tweets&#39;</span><span class="p">:</span>
+        <span class="n">text_key</span> <span class="o">=</span> <span class="s1">&#39;tweet_text&#39;</span>
+        <span class="n">date_key</span> <span class="o">=</span> <span class="s1">&#39;tweet_date&#39;</span>
+    <span class="n">html_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="p">(</span><span class="n">pos_sent</span><span class="p">,</span> <span class="n">neg_sent</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">sentiment_class</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="n">sentiment_score</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">sentence</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sentence</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;positive&#39;</span><span class="p">:</span>
+                    <span class="n">html_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&gt;</span><span class="si">{</span><span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/</span><span class="si">{</span><span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
+                    <span class="n">item</span><span class="p">[</span><span class="n">text_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="n">text_key</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">],</span> <span class="n">html_str</span><span class="p">)</span>
+                    <span class="n">pos_sent</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">elif</span> <span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;negative&#39;</span><span class="p">:</span>
+                    <span class="n">html_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;</span><span class="si">{</span><span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&gt;</span><span class="si">{</span><span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/</span><span class="si">{</span><span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
+                    <span class="n">item</span><span class="p">[</span><span class="n">text_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="n">text_key</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">],</span> <span class="n">html_str</span><span class="p">)</span>
+                    <span class="n">neg_sent</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">html_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&lt;normal&gt;</span><span class="si">{</span><span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;/normal&gt;&quot;</span>
+                    <span class="n">item</span><span class="p">[</span><span class="n">text_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="n">text_key</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">],</span> <span class="n">html_str</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pos_sent</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">neg_sent</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">sentiment_score</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sentiment_score</span> <span class="o">=</span> <span class="p">(</span><span class="n">pos_sent</span> <span class="o">-</span> <span class="n">neg_sent</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">pos_sent</span> <span class="o">+</span> <span class="n">neg_sent</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sentiment_score</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">sentiment_class</span> <span class="o">=</span> <span class="s1">&#39;positive&#39;</span>
+    <span class="k">elif</span> <span class="n">sentiment_score</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">sentiment_class</span> <span class="o">=</span> <span class="s1">&#39;negative&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sentiment_class</span> <span class="o">=</span> <span class="s1">&#39;neutral&#39;</span>
+    <span class="n">ttype</span> <span class="o">=</span> <span class="nb">type</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+    <span class="n">result_dict</span> <span class="o">=</span> <span class="p">{</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ttype</span><span class="si">}</span><span class="s1">_Title&#39;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ttype</span><span class="si">}</span><span class="s1">_Source&#39;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">_source&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ttype</span><span class="si">}</span><span class="s1">_Sentiment&#39;</span><span class="p">:</span> <span class="n">sentiment_class</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ttype</span><span class="si">}</span><span class="s1">_Time_Stamp&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="n">date_key</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ttype</span><span class="si">}</span><span class="s1">_Sentiment_Score&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">sentiment_score</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ttype</span><span class="si">}</span><span class="s1">_Summary&#39;</span><span class="p">:</span> <span class="n">item</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;summary&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">),</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ttype</span><span class="si">}</span><span class="s1">_Tags&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ttype</span><span class="si">}</span><span class="s1">_ID&#39;</span><span class="p">:</span> <span class="n">index</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">_ID&#39;</span><span class="p">],</span> <span class="s1">&#39;Events_Detected&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;All_Events&#39;</span><span class="p">],</span> <span class="n">ttype</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="n">text_key</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;Actual_</span><span class="si">{</span><span class="n">ttype</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="n">text_key</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">ttype</span><span class="si">}</span><span class="s1">_date&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="n">date_key</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;Sentiment_Analyzed_</span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="n">text_key</span><span class="p">]}</span>
+    <span class="k">return</span> <span class="n">result_dict</span></div>
+
+
+
+<div class="viewcode-block" id="process_qna_prediction"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.process_qna_prediction">[docs]</a><span class="k">def</span> <span class="nf">process_qna_prediction</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">news_pred</span><span class="p">,</span> <span class="n">news_search_results</span><span class="p">,</span> <span class="n">news</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Process the predictions returned by Reader for Question and Answering.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        pred (dict): Prediction dictionary returned by the Reader</span>
+<span class="sd">        news_pred (dict): News search prediction directly from the Search pipeline</span>
+<span class="sd">        news_search_results (dict): Simple news search results after processing</span>
+<span class="sd">        news (dict): Detailed News search results after processing raw predictions from the Search pipeline</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict, dict: QnA Results, QnA Scores</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">answers</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="s1">&#39;answers&#39;</span><span class="p">]</span>
+        <span class="n">news_doc_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">doc</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">news_pred</span><span class="p">[</span><span class="s1">&#39;documents&#39;</span><span class="p">]]</span>
+        <span class="n">qna_results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">answers</span><span class="p">)):</span>
+            <span class="n">ans_doc_id</span> <span class="o">=</span> <span class="n">answers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">document_id</span>
+            <span class="n">news_index</span> <span class="o">=</span> <span class="n">news_doc_ids</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">ans_doc_id</span><span class="p">)</span>
+            <span class="n">processed_news_search</span> <span class="o">=</span> <span class="n">news_search_results</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;content</span><span class="si">{</span><span class="n">news_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+            <span class="n">processed_news</span> <span class="o">=</span> <span class="n">news</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;content</span><span class="si">{</span><span class="n">news_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+            <span class="n">qna_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;content_name&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;content</span><span class="si">{</span><span class="n">news_index</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;answer&#39;</span><span class="p">:</span> <span class="n">answers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">answer</span><span class="p">,</span> <span class="s1">&#39;context&#39;</span><span class="p">:</span> <span class="n">answers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">context</span><span class="p">,</span> <span class="s1">&#39;News_Search_Results&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;search_results&#39;</span><span class="p">:</span> <span class="n">processed_news_search</span><span class="p">,</span> <span class="s1">&#39;news&#39;</span><span class="p">:</span> <span class="n">processed_news</span><span class="p">}}</span>
+            <span class="n">qna_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qna_dict</span><span class="p">)</span>
+        <span class="n">qna_scores</span> <span class="o">=</span> <span class="p">{</span><span class="sa">f</span><span class="s1">&#39;content</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">_score&#39;</span><span class="p">:</span> <span class="n">answers</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">score</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">answers</span><span class="p">))}</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">qna_results</span><span class="p">,</span> <span class="n">qna_scores</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">ke</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;No QnA answers in prediction.&#39;</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exception:</span><span class="se">\n</span><span class="si">{</span><span class="n">ke</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">ke</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">({},</span> <span class="p">{})</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Exception:</span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">({},</span> <span class="p">{})</span></div>
+
+
+
+<div class="viewcode-block" id="months_between"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.months_between">[docs]</a><span class="k">def</span> <span class="nf">months_between</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Given two instances of ``datetime.date``, generate a list of dates on the </span>
+<span class="sd">    1st of every month between the two dates (inclusive).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        start_date (datetime.date): Start date</span>
+<span class="sd">        end_date (datetime.date): End date</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If the end date is before the start date</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        datetime.date: A date containing the 1st of a month in between</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">start_date</span> <span class="o">&gt;</span> <span class="n">end_date</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Start date </span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s1"> is not before end date </span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">year</span> <span class="o">=</span> <span class="n">start_date</span><span class="o">.</span><span class="n">year</span>
+    <span class="n">month</span> <span class="o">=</span> <span class="n">start_date</span><span class="o">.</span><span class="n">month</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="p">(</span><span class="n">end_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">end_date</span><span class="o">.</span><span class="n">month</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">month</span> <span class="o">==</span> <span class="mi">12</span><span class="p">:</span>
+            <span class="n">month</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">month</span> <span class="o">+=</span> <span class="mi">1</span></div>
+
+
+
+<div class="viewcode-block" id="get_today"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.get_today">[docs]</a><span class="k">def</span> <span class="nf">get_today</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get today&#39;s date as a datetime.date object.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        datetime.date: Today&#39;s date</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">UTC</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span>
+    <span class="n">IST</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">timezone</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;IST&#39;</span><span class="p">)</span>
+    <span class="n">now_dt</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">UTC</span><span class="p">)</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(</span><span class="n">IST</span><span class="p">)</span>
+    <span class="n">today</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">now_dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">today</span></div>
+
+
+
+<div class="viewcode-block" id="convert_datetime_to_date"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.convert_datetime_to_date">[docs]</a><span class="k">def</span> <span class="nf">convert_datetime_to_date</span><span class="p">(</span><span class="n">datetime_str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert an ISO Format Datetime string to a date object.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        datetime_str (str): Datetime string in ISO Format</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        datetime.date: A date object extracted from the datetime string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">item_datetime</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">datetime_str</span><span class="p">)</span>
+    <span class="n">item_date_str</span> <span class="o">=</span> <span class="n">item_datetime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">item_date</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">item_date_str</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">item_date</span></div>
+
+
+
+<div class="viewcode-block" id="outside_threshold"><a class="viewcode-back" href="../../docker_search.html#docker_search.utils.outside_threshold">[docs]</a><span class="k">def</span> <span class="nf">outside_threshold</span><span class="p">(</span><span class="n">item_date</span><span class="p">,</span> <span class="n">threshold_date</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check whether the given date is before the threshold date. This function is meant to be used</span>
+<span class="sd">    for checking whether a given news/tweet is older than a given number of days or not.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        item_date (datetime.date): The given date to check</span>
+<span class="sd">        threshold_date (datetime.date): The threshold date</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the given date is before the threshold date.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">item_date</span> <span class="o">&lt;</span> <span class="n">threshold_date</span></div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ABC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

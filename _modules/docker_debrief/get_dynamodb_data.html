@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docker_debrief.get_dynamodb_data &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">backend_pub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">docker_debrief.get_dynamodb_data</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for docker_debrief.get_dynamodb_data</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="read_news_data"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.read_news_data">[docs]</a><span></span><span class="k">def</span> <span class="nf">read_news_data</span><span class="p">(</span><span class="n">dynamodb_client</span><span class="p">,</span> <span class="n">since</span><span class="p">,</span> <span class="n">list_months</span><span class="p">):</span>
+    <span class="n">news_table</span> <span class="o">=</span> <span class="n">dynamodb_client</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s1">&#39;News_Table&#39;</span><span class="p">)</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">str_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">str_dict</span><span class="p">[</span><span class="s1">&#39;:val&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">str_dict</span><span class="p">[</span><span class="s1">&#39;:date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">since</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> 00:00:00&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">list_months</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">resp_</span> <span class="o">=</span> <span class="n">news_table</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Limit</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">KeyConditionExpression</span><span class="o">=</span><span class="n">Key</span><span class="p">(</span><span class="s1">&#39;news_month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">month</span><span class="p">),</span> <span class="n">FilterExpression</span><span class="o">=</span><span class="s1">&#39;news_ner_flag= :val AND news_date &gt; :date&#39;</span><span class="p">,</span> <span class="n">ExpressionAttributeValues</span><span class="o">=</span><span class="n">str_dict</span><span class="p">)</span>
+        <span class="n">items</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">resp_</span><span class="p">[</span><span class="s1">&#39;Items&#39;</span><span class="p">])</span>
+        <span class="k">while</span> <span class="s1">&#39;LastEvaluatedKey&#39;</span> <span class="ow">in</span> <span class="n">resp_</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">resp_</span> <span class="o">=</span> <span class="n">news_table</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Limit</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">ExclusiveStartKey</span><span class="o">=</span><span class="n">resp_</span><span class="p">[</span><span class="s1">&#39;LastEvaluatedKey&#39;</span><span class="p">],</span> <span class="n">KeyConditionExpression</span><span class="o">=</span><span class="n">Key</span><span class="p">(</span><span class="s1">&#39;news_month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">month</span><span class="p">),</span> <span class="n">FilterExpression</span><span class="o">=</span><span class="s1">&#39;news_ner_flag= :val AND news_date &gt; :date&#39;</span><span class="p">,</span> <span class="n">ExpressionAttributeValues</span><span class="o">=</span><span class="n">str_dict</span><span class="p">)</span>
+                <span class="n">items</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">resp_</span><span class="p">[</span><span class="s1">&#39;Items&#39;</span><span class="p">])</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">resp_</span> <span class="o">=</span> <span class="n">news_table</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Limit</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">ExclusiveStartKey</span><span class="o">=</span><span class="n">resp_</span><span class="p">[</span><span class="s1">&#39;LastEvaluatedKey&#39;</span><span class="p">],</span> <span class="n">KeyConditionExpression</span><span class="o">=</span><span class="n">Key</span><span class="p">(</span><span class="s1">&#39;news_month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">month</span><span class="p">),</span> <span class="n">FilterExpression</span><span class="o">=</span><span class="s1">&#39;news_ner_flag= :val AND news_date &gt; :date&#39;</span><span class="p">,</span> <span class="n">ExpressionAttributeValues</span><span class="o">=</span><span class="n">str_dict</span><span class="p">)</span>
+                <span class="n">items</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">resp_</span><span class="p">[</span><span class="s1">&#39;Items&#39;</span><span class="p">])</span>
+    <span class="n">news_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">news_dict</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;news_for&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">news_dict</span></div>
+
+
+
+<div class="viewcode-block" id="read_tweets_data"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.read_tweets_data">[docs]</a><span class="k">def</span> <span class="nf">read_tweets_data</span><span class="p">(</span><span class="n">dynamodb_client</span><span class="p">,</span> <span class="n">since</span><span class="p">,</span> <span class="n">list_months</span><span class="p">):</span>
+    <span class="n">news_table</span> <span class="o">=</span> <span class="n">dynamodb_client</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s1">&#39;Tweets_Table&#39;</span><span class="p">)</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">tweet_limit</span> <span class="o">=</span> <span class="mi">200</span>
+    <span class="n">str_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">str_dict</span><span class="p">[</span><span class="s1">&#39;:val&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">str_dict</span><span class="p">[</span><span class="s1">&#39;:date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">since</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> 00:00:00&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">list_months</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">resp_</span> <span class="o">=</span> <span class="n">news_table</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Limit</span><span class="o">=</span><span class="n">tweet_limit</span><span class="p">,</span> <span class="n">KeyConditionExpression</span><span class="o">=</span><span class="n">Key</span><span class="p">(</span><span class="s1">&#39;tweets_month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">month</span><span class="p">),</span> <span class="n">FilterExpression</span><span class="o">=</span><span class="s1">&#39;tweet_ner_flag= :val AND tweet_date &gt; :date&#39;</span><span class="p">,</span> <span class="n">ExpressionAttributeValues</span><span class="o">=</span><span class="n">str_dict</span><span class="p">)</span>
+        <span class="n">items</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">resp_</span><span class="p">[</span><span class="s1">&#39;Items&#39;</span><span class="p">])</span>
+        <span class="k">while</span> <span class="s1">&#39;LastEvaluatedKey&#39;</span> <span class="ow">in</span> <span class="n">resp_</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">resp_</span> <span class="o">=</span> <span class="n">news_table</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Limit</span><span class="o">=</span><span class="n">tweet_limit</span><span class="p">,</span> <span class="n">ExclusiveStartKey</span><span class="o">=</span><span class="n">resp_</span><span class="p">[</span><span class="s1">&#39;LastEvaluatedKey&#39;</span><span class="p">],</span> <span class="n">KeyConditionExpression</span><span class="o">=</span><span class="n">Key</span><span class="p">(</span><span class="s1">&#39;tweets_month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">month</span><span class="p">),</span> <span class="n">FilterExpression</span><span class="o">=</span><span class="s1">&#39;tweet_ner_flag= :val AND tweet_date &gt; :date&#39;</span><span class="p">,</span> <span class="n">ExpressionAttributeValues</span><span class="o">=</span><span class="n">str_dict</span><span class="p">)</span>
+                <span class="n">items</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">resp_</span><span class="p">[</span><span class="s1">&#39;Items&#39;</span><span class="p">])</span>
+                <span class="n">tweet_limit</span> <span class="o">=</span> <span class="mi">200</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">tweet_limit</span> <span class="o">=</span> <span class="n">tweet_limit</span> <span class="o">-</span> <span class="mi">50</span>
+                <span class="k">pass</span>
+    <span class="n">tweets_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">tweets_dict</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;tweet_for&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tweets_dict</span></div>
+
+
+
+<div class="viewcode-block" id="create_default"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.create_default">[docs]</a><span class="k">def</span> <span class="nf">create_default</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;sentiment_score&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;total&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="read_data_dynamodb"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.read_data_dynamodb">[docs]</a><span class="k">def</span> <span class="nf">read_data_dynamodb</span><span class="p">(</span><span class="n">dynamodb_client</span><span class="p">,</span> <span class="n">table_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read whole data from dynamodb table and returns the json object</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        dynamodb_client : Boto3 DynamoDB client</span>
+<span class="sd">        table_name (string): Name of the table to read from</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        [json]: returns the json object of the table (key-value pairs)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">dynamodb_client</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;Items&#39;</span><span class="p">]</span>
+    <span class="k">while</span> <span class="s1">&#39;LastEvaluatedKey&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">ExclusiveStartKey</span><span class="o">=</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;LastEvaluatedKey&#39;</span><span class="p">])</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s1">&#39;Items&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">data</span></div>
+
+
+
+<div class="viewcode-block" id="sum_get_total_tweets"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.sum_get_total_tweets">[docs]</a><span class="k">def</span> <span class="nf">sum_get_total_tweets</span><span class="p">(</span><span class="n">ticker_name</span><span class="p">,</span> <span class="n">since</span><span class="p">,</span> <span class="n">until</span><span class="p">,</span> <span class="n">all_tweets</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get tweets for a given ticker from since to until</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ticker_name (string): Ticker name</span>
+<span class="sd">        since(datetime): Start date</span>
+<span class="sd">        until(datetime): End date</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dict: Dictionary of tweets for given ticker name in the format of {date: [tweet1, tweet2, ...]}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">required_tweets</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">total_tweets</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_tweet_sentences_sentiment</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_tweet_sentences_pos_sentiment</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_tweet_sentences_neg_sentiment</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_tweet_sentences_neutral_sentiment</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span> <span class="ow">in</span> <span class="n">all_tweets</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">ticker_name</span><span class="p">:</span>
+            <span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="k">break</span>
+    <span class="n">total_tweets</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">until</span> <span class="o">-</span> <span class="n">since</span>
+    <span class="n">required_tweets</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">tweets_sent</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="n">create_default</span><span class="p">)</span>
+    <span class="n">sentiment_score</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">required_tweets</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;tweet_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="n">tweets_sent</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;tweet_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]][</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;tweet_ner_flag&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="s1">&#39;sentiment_analysis&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="p">(</span><span class="n">pos_sent</span><span class="p">,</span> <span class="n">neg_sent</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">total_tweet_sentences_sentiment</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">sentence</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;positive&#39;</span><span class="p">:</span>
+                        <span class="n">total_tweet_sentences_pos_sentiment</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">pos_sent</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">elif</span> <span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;negative&#39;</span><span class="p">:</span>
+                        <span class="n">total_tweet_sentences_neg_sentiment</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">neg_sent</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">total_tweet_sentences_neutral_sentiment</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">pos_sent</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">neg_sent</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">sentiment_score</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sentiment_score</span> <span class="o">=</span> <span class="p">(</span><span class="n">pos_sent</span> <span class="o">-</span> <span class="n">neg_sent</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">pos_sent</span> <span class="o">+</span> <span class="n">neg_sent</span><span class="p">)</span>
+            <span class="n">tweets_sent</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;tweet_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]][</span><span class="s1">&#39;sentiment_score&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">sentiment_score</span>
+    <span class="k">if</span> <span class="n">tweets_sent</span><span class="p">[</span><span class="n">until</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)][</span><span class="s1">&#39;total&#39;</span><span class="p">]:</span>
+        <span class="n">today_tweet_sent</span> <span class="o">=</span> <span class="n">tweets_sent</span><span class="p">[</span><span class="n">until</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)][</span><span class="s1">&#39;sentiment_score&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">tweets_sent</span><span class="p">[</span><span class="n">until</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)][</span><span class="s1">&#39;total&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">today_tweet_sent</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="n">required_tweets</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">today_tweet</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">required_tweets</span><span class="p">[</span><span class="n">until</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)])</span>
+    <span class="n">tweet_count</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;tweetcount&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)}</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">required_tweets</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">tweet_count</span><span class="p">,</span> <span class="n">tweets_sent</span><span class="p">,</span> <span class="n">today_tweet</span><span class="p">,</span> <span class="n">today_tweet_sent</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="sum_get_total_news"><a class="viewcode-back" href="../../docker_debrief.html#docker_debrief.get_dynamodb_data.sum_get_total_news">[docs]</a><span class="k">def</span> <span class="nf">sum_get_total_news</span><span class="p">(</span><span class="n">ticker_name</span><span class="p">,</span> <span class="n">since</span><span class="p">,</span> <span class="n">until</span><span class="p">,</span> <span class="n">all_news</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     Get news for a given ticker from since to until</span>
+
+<span class="sd">     Args:</span>
+<span class="sd">         ticker_name (string): Ticker name</span>
+<span class="sd">         since(datetime): Start date</span>
+<span class="sd">         until(datetime): End date</span>
+
+<span class="sd">     Returns:</span>
+<span class="sd">         dict: Dictionary of news for given ticker name in the format of {date: [news1, news2, ...]}</span>
+<span class="sd">     &quot;&quot;&quot;</span>
+    <span class="n">total_news_sentences_sentiment</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_news_sentences_pos_sentiment</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_news_sentences_neg_sentiment</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_news_sentences_neutral_sentiment</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">all_news</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">ticker_name</span><span class="p">:</span>
+            <span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">yesterday</span> <span class="o">=</span> <span class="n">until</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+    <span class="n">news_sent</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="n">create_default</span><span class="p">)</span>
+    <span class="n">required_today_news_count</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">required_news_count</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">sentiment_score</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="n">required_today_news_count</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;news_date&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="n">required_news_count</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;news_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="n">news_sent</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;news_date&#39;</span><span class="p">]][</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;news_ner_flag&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="s1">&#39;sentiment_analysis&#39;</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">total_news_sentences_sentiment</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">])</span>
+            <span class="p">(</span><span class="n">pos_sent</span><span class="p">,</span> <span class="n">neg_sent</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;sentiment_analysis&#39;</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">sentence</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;positive&#39;</span><span class="p">:</span>
+                            <span class="n">total_news_sentences_pos_sentiment</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="n">pos_sent</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="k">elif</span> <span class="n">sentence</span><span class="p">[</span><span class="s1">&#39;sentiment_class&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;negative&#39;</span><span class="p">:</span>
+                            <span class="n">total_news_sentences_neg_sentiment</span> <span class="o">+=</span> <span class="mi">1</span>
+                            <span class="n">neg_sent</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">total_news_sentences_neutral_sentiment</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Exception&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">pos_sent</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">neg_sent</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">sentiment_score</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sentiment_score</span> <span class="o">=</span> <span class="p">(</span><span class="n">pos_sent</span> <span class="o">-</span> <span class="n">neg_sent</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">pos_sent</span> <span class="o">+</span> <span class="n">neg_sent</span><span class="p">)</span>
+            <span class="n">news_sent</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;news_date&#39;</span><span class="p">]][</span><span class="s1">&#39;sentiment_score&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">sentiment_score</span>
+    <span class="n">news_count</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;newscount&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)}</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">required_news_count</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+    <span class="n">total_sent_score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">news_sent</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">dt_obj</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">)</span>
+        <span class="n">dt_obj</span> <span class="o">=</span> <span class="n">dt_obj</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dt_obj</span> <span class="o">&lt;=</span> <span class="n">until</span> <span class="ow">and</span> <span class="n">dt_obj</span> <span class="o">&gt;=</span> <span class="n">yesterday</span><span class="p">:</span>
+            <span class="n">total_sent_score</span> <span class="o">+=</span> <span class="n">value</span><span class="p">[</span><span class="s1">&#39;sentiment_score&#39;</span><span class="p">]</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">value</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">total</span><span class="p">:</span>
+        <span class="n">today_news_sent</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">total_sent_score</span> <span class="o">/</span> <span class="n">total</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">today_news_sent</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">today_news_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">required_today_news_count</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="n">dt_obj</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">)</span>
+        <span class="n">dt_obj</span> <span class="o">=</span> <span class="n">dt_obj</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">tzinfo</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">dt_obj</span> <span class="o">&lt;=</span> <span class="n">until</span> <span class="ow">and</span> <span class="n">dt_obj</span> <span class="o">&gt;=</span> <span class="n">yesterday</span><span class="p">:</span>
+            <span class="n">today_news_count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">news_count</span><span class="p">,</span> <span class="n">news_sent</span><span class="p">,</span> <span class="n">today_news_count</span><span class="p">,</span> <span class="n">today_news_sent</span><span class="p">)</span></div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ABC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

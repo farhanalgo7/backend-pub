@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>backend_pub &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="docker_debrief package" href="docker_debrief.html" />
+    <link rel="prev" title="Welcome to ABC’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">backend_pub</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html">docker_debrief package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html">docker_enrichment package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_microservices.html">docker_microservices package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html">docker_search package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_ingestion.html">docker_stock_ingestion package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_prediction.html">docker_stock_prediction package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_topics_earning_call_transcripts.html">docker_topics_earning_call_transcripts package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_trend_prediction.html">docker_trend_prediction package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_tweets.html">docker_tweets package</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">backend_pub</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="backend-pub">
+<h1>backend_pub<a class="headerlink" href="#backend-pub" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker_debrief.html">docker_debrief package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html#module-docker_debrief.access_file">docker_debrief.access_file module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.access_file.get_secret"><code class="docutils literal notranslate"><span class="pre">get_secret()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html#module-docker_debrief.create_json">docker_debrief.create_json module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.create_company_docs"><code class="docutils literal notranslate"><span class="pre">create_company_docs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.create_header"><code class="docutils literal notranslate"><span class="pre">create_header()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.create_news"><code class="docutils literal notranslate"><span class="pre">create_news()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.create_overview"><code class="docutils literal notranslate"><span class="pre">create_overview()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.create_prediction"><code class="docutils literal notranslate"><span class="pre">create_prediction()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.create_technical_analysis"><code class="docutils literal notranslate"><span class="pre">create_technical_analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.create_tweets"><code class="docutils literal notranslate"><span class="pre">create_tweets()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.dict_None_output"><code class="docutils literal notranslate"><span class="pre">dict_None_output()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.dict_output"><code class="docutils literal notranslate"><span class="pre">dict_output()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.fetch_data_summary"><code class="docutils literal notranslate"><span class="pre">fetch_data_summary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.fetch_debrief_data"><code class="docutils literal notranslate"><span class="pre">fetch_debrief_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.read_data_from_s3"><code class="docutils literal notranslate"><span class="pre">read_data_from_s3()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.updated_dict"><code class="docutils literal notranslate"><span class="pre">updated_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.create_json.working_check"><code class="docutils literal notranslate"><span class="pre">working_check()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html#module-docker_debrief.get_dynamodb_data">docker_debrief.get_dynamodb_data module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.get_dynamodb_data.create_default"><code class="docutils literal notranslate"><span class="pre">create_default()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.get_dynamodb_data.read_data_dynamodb"><code class="docutils literal notranslate"><span class="pre">read_data_dynamodb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.get_dynamodb_data.read_news_data"><code class="docutils literal notranslate"><span class="pre">read_news_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.get_dynamodb_data.read_tweets_data"><code class="docutils literal notranslate"><span class="pre">read_tweets_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.get_dynamodb_data.sum_get_total_news"><code class="docutils literal notranslate"><span class="pre">sum_get_total_news()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.get_dynamodb_data.sum_get_total_tweets"><code class="docutils literal notranslate"><span class="pre">sum_get_total_tweets()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html#module-docker_debrief.helper">docker_debrief.helper module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.helper.create_invalidation"><code class="docutils literal notranslate"><span class="pre">create_invalidation()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.helper.myconverter"><code class="docutils literal notranslate"><span class="pre">myconverter()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.helper.write_json_file"><code class="docutils literal notranslate"><span class="pre">write_json_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html#module-docker_debrief.main">docker_debrief.main module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.main.lambd_func"><code class="docutils literal notranslate"><span class="pre">lambd_func()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html#module-docker_debrief.rds_db">docker_debrief.rds_db module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_debrief.html#docker_debrief.rds_db.rds_con"><code class="docutils literal notranslate"><span class="pre">rds_con()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_debrief.html#module-docker_debrief">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker_enrichment.html">docker_enrichment package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.access_files.html">docker_enrichment.access_files package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docker_enrichment.access_files.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docker_enrichment.access_files.html#module-docker_enrichment.access_files.db_server">docker_enrichment.access_files.db_server module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docker_enrichment.access_files.html#module-docker_enrichment.access_files.vault">docker_enrichment.access_files.vault module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docker_enrichment.access_files.html#module-docker_enrichment.access_files">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html#module-docker_enrichment.EnrichmentWrapper">docker_enrichment.EnrichmentWrapper module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.EnrichmentWrapper.Update_table"><code class="docutils literal notranslate"><span class="pre">Update_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.EnrichmentWrapper.enrichment"><code class="docutils literal notranslate"><span class="pre">enrichment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.EnrichmentWrapper.fetch_data"><code class="docutils literal notranslate"><span class="pre">fetch_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.EnrichmentWrapper.get_connection"><code class="docutils literal notranslate"><span class="pre">get_connection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.EnrichmentWrapper.perform_enrichment"><code class="docutils literal notranslate"><span class="pre">perform_enrichment()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html#module-docker_enrichment.main">docker_enrichment.main module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main.analyze_sentiment"><code class="docutils literal notranslate"><span class="pre">analyze_sentiment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main.compute_summary"><code class="docutils literal notranslate"><span class="pre">compute_summary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main.find_events"><code class="docutils literal notranslate"><span class="pre">find_events()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main.find_mult_class"><code class="docutils literal notranslate"><span class="pre">find_mult_class()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main.get_sentiment"><code class="docutils literal notranslate"><span class="pre">get_sentiment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main.get_sentiment_class"><code class="docutils literal notranslate"><span class="pre">get_sentiment_class()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main.perform_enrichment"><code class="docutils literal notranslate"><span class="pre">perform_enrichment()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html#module-docker_enrichment.main_new_v3_copy_2">docker_enrichment.main_new_v3_copy_2 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main_new_v3_copy_2.analyze_sentiment"><code class="docutils literal notranslate"><span class="pre">analyze_sentiment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main_new_v3_copy_2.compute_summary"><code class="docutils literal notranslate"><span class="pre">compute_summary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main_new_v3_copy_2.compute_summary_updated"><code class="docutils literal notranslate"><span class="pre">compute_summary_updated()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main_new_v3_copy_2.find_events"><code class="docutils literal notranslate"><span class="pre">find_events()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main_new_v3_copy_2.find_mult_class"><code class="docutils literal notranslate"><span class="pre">find_mult_class()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main_new_v3_copy_2.get_connection"><code class="docutils literal notranslate"><span class="pre">get_connection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main_new_v3_copy_2.get_sentiment"><code class="docutils literal notranslate"><span class="pre">get_sentiment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main_new_v3_copy_2.get_sentiment_class"><code class="docutils literal notranslate"><span class="pre">get_sentiment_class()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main_new_v3_copy_2.perform_enrichment"><code class="docutils literal notranslate"><span class="pre">perform_enrichment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.main_new_v3_copy_2.upload_data"><code class="docutils literal notranslate"><span class="pre">upload_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html#module-docker_enrichment.new_main_v4">docker_enrichment.new_main_v4 module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.new_main_v4.analyze_sentiment"><code class="docutils literal notranslate"><span class="pre">analyze_sentiment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.new_main_v4.compute_summary"><code class="docutils literal notranslate"><span class="pre">compute_summary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.new_main_v4.compute_summary_updated"><code class="docutils literal notranslate"><span class="pre">compute_summary_updated()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.new_main_v4.extract_org_frequency"><code class="docutils literal notranslate"><span class="pre">extract_org_frequency()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.new_main_v4.extract_sents"><code class="docutils literal notranslate"><span class="pre">extract_sents()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.new_main_v4.find_events"><code class="docutils literal notranslate"><span class="pre">find_events()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.new_main_v4.find_mult_class"><code class="docutils literal notranslate"><span class="pre">find_mult_class()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.new_main_v4.get_connection"><code class="docutils literal notranslate"><span class="pre">get_connection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.new_main_v4.get_sentiment_class"><code class="docutils literal notranslate"><span class="pre">get_sentiment_class()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.new_main_v4.get_sentiment_modified"><code class="docutils literal notranslate"><span class="pre">get_sentiment_modified()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.new_main_v4.perform_enrichment"><code class="docutils literal notranslate"><span class="pre">perform_enrichment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_enrichment.html#docker_enrichment.new_main_v4.upload_data"><code class="docutils literal notranslate"><span class="pre">upload_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_enrichment.html#module-docker_enrichment">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker_microservices.html">docker_microservices package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_microservices.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_microservices.html#module-docker_microservices.main">docker_microservices.main module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_microservices.html#docker_microservices.main.analyze_sentiment"><code class="docutils literal notranslate"><span class="pre">analyze_sentiment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_microservices.html#docker_microservices.main.compute_summary"><code class="docutils literal notranslate"><span class="pre">compute_summary()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_microservices.html#docker_microservices.main.find_events"><code class="docutils literal notranslate"><span class="pre">find_events()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_microservices.html#docker_microservices.main.get_sentiment"><code class="docutils literal notranslate"><span class="pre">get_sentiment()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_microservices.html#docker_microservices.main.get_sentiment_class"><code class="docutils literal notranslate"><span class="pre">get_sentiment_class()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_microservices.html#module-docker_microservices">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker_search.html">docker_search package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.tests.html">docker_search.tests package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docker_search.tests.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docker_search.tests.html#module-docker_search.tests.test_api">docker_search.tests.test_api module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docker_search.tests.html#module-docker_search.tests.test_models">docker_search.tests.test_models module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docker_search.tests.html#module-docker_search.tests.test_utils">docker_search.tests.test_utils module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docker_search.tests.html#module-docker_search.tests">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html#docker-search-app-module">docker_search.app module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html#module-docker_search.create_models">docker_search.create_models module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.create_models.create_resources"><code class="docutils literal notranslate"><span class="pre">create_resources()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html#module-docker_search.fetch_from_DB">docker_search.fetch_from_DB module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.fetch_from_DB.assign_unique_ids"><code class="docutils literal notranslate"><span class="pre">assign_unique_ids()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.fetch_from_DB.fetch_data"><code class="docutils literal notranslate"><span class="pre">fetch_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.fetch_from_DB.remove_duplicates"><code class="docutils literal notranslate"><span class="pre">remove_duplicates()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.fetch_from_DB.save_items_to_text_files"><code class="docutils literal notranslate"><span class="pre">save_items_to_text_files()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html#module-docker_search.models">docker_search.models module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.models.load_document_search_pipeline"><code class="docutils literal notranslate"><span class="pre">load_document_search_pipeline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.models.load_document_store"><code class="docutils literal notranslate"><span class="pre">load_document_store()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.models.load_preprocessor"><code class="docutils literal notranslate"><span class="pre">load_preprocessor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.models.load_query_classifier"><code class="docutils literal notranslate"><span class="pre">load_query_classifier()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.models.load_reader"><code class="docutils literal notranslate"><span class="pre">load_reader()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.models.load_retriever"><code class="docutils literal notranslate"><span class="pre">load_retriever()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html#module-docker_search.remove_older_docs">docker_search.remove_older_docs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.remove_older_docs.remove_older_docs"><code class="docutils literal notranslate"><span class="pre">remove_older_docs()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html#module-docker_search.update_embeddings">docker_search.update_embeddings module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.update_embeddings.update_embeddings"><code class="docutils literal notranslate"><span class="pre">update_embeddings()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html#module-docker_search.utils">docker_search.utils module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.utils.check_type"><code class="docutils literal notranslate"><span class="pre">check_type()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.utils.convert_datetime_to_date"><code class="docutils literal notranslate"><span class="pre">convert_datetime_to_date()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.utils.get_documentids_from_uuid"><code class="docutils literal notranslate"><span class="pre">get_documentids_from_uuid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.utils.get_documents_from_document_ids"><code class="docutils literal notranslate"><span class="pre">get_documents_from_document_ids()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.utils.get_documents_from_filenames"><code class="docutils literal notranslate"><span class="pre">get_documents_from_filenames()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.utils.get_dynamodb_connection"><code class="docutils literal notranslate"><span class="pre">get_dynamodb_connection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.utils.get_dynamodb_table"><code class="docutils literal notranslate"><span class="pre">get_dynamodb_table()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.utils.get_today"><code class="docutils literal notranslate"><span class="pre">get_today()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.utils.months_between"><code class="docutils literal notranslate"><span class="pre">months_between()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.utils.outside_threshold"><code class="docutils literal notranslate"><span class="pre">outside_threshold()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.utils.process_prediction"><code class="docutils literal notranslate"><span class="pre">process_prediction()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.utils.process_qna_prediction"><code class="docutils literal notranslate"><span class="pre">process_qna_prediction()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_search.html#docker_search.utils.transform_to_ui_format"><code class="docutils literal notranslate"><span class="pre">transform_to_ui_format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_search.html#module-docker_search">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker_stock_ingestion.html">docker_stock_ingestion package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_ingestion.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_ingestion.html#module-docker_stock_ingestion.stock_ingestion">docker_stock_ingestion.stock_ingestion module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_stock_ingestion.html#docker_stock_ingestion.stock_ingestion.crawl_stock"><code class="docutils literal notranslate"><span class="pre">crawl_stock()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_stock_ingestion.html#docker_stock_ingestion.stock_ingestion.get_connection"><code class="docutils literal notranslate"><span class="pre">get_connection()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_stock_ingestion.html#docker_stock_ingestion.stock_ingestion.get_secret"><code class="docutils literal notranslate"><span class="pre">get_secret()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_ingestion.html#module-docker_stock_ingestion">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker_stock_prediction.html">docker_stock_prediction package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_prediction.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_stock_prediction.docker_stock_prediction.html">docker_stock_prediction.docker_stock_prediction package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docker_stock_prediction.docker_stock_prediction.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docker_stock_prediction.docker_stock_prediction.html#module-docker_stock_prediction.docker_stock_prediction.stock_prediction_1">docker_stock_prediction.docker_stock_prediction.stock_prediction_1 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docker_stock_prediction.docker_stock_prediction.html#module-docker_stock_prediction.docker_stock_prediction.stock_prediction_2">docker_stock_prediction.docker_stock_prediction.stock_prediction_2 module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="docker_stock_prediction.docker_stock_prediction.html#module-docker_stock_prediction.docker_stock_prediction">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_stock_prediction.html#module-docker_stock_prediction">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker_topics_earning_call_transcripts.html">docker_topics_earning_call_transcripts package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#module-docker_topics_earning_call_transcripts.earning_call_main">docker_topics_earning_call_transcripts.earning_call_main module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.Optimal_Model"><code class="docutils literal notranslate"><span class="pre">Optimal_Model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.Sentiment_Analysis"><code class="docutils literal notranslate"><span class="pre">Sentiment_Analysis()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.Topic_Modeling_Negative"><code class="docutils literal notranslate"><span class="pre">Topic_Modeling_Negative()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.Topic_Modeling_Positive"><code class="docutils literal notranslate"><span class="pre">Topic_Modeling_Positive()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.Word_Cloud_Freq"><code class="docutils literal notranslate"><span class="pre">Word_Cloud_Freq()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.build_dataframe"><code class="docutils literal notranslate"><span class="pre">build_dataframe()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.clean_text"><code class="docutils literal notranslate"><span class="pre">clean_text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.format_topics_sentences"><code class="docutils literal notranslate"><span class="pre">format_topics_sentences()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.get_result"><code class="docutils literal notranslate"><span class="pre">get_result()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.lemmatization"><code class="docutils literal notranslate"><span class="pre">lemmatization()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.remove_stopwords"><code class="docutils literal notranslate"><span class="pre">remove_stopwords()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.earning_call_main.sentiment"><code class="docutils literal notranslate"><span class="pre">sentiment()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#module-docker_topics_earning_call_transcripts.main">docker_topics_earning_call_transcripts.main module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.Optimal_Model"><code class="docutils literal notranslate"><span class="pre">Optimal_Model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.Topic_Modeling_News"><code class="docutils literal notranslate"><span class="pre">Topic_Modeling_News()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.Topic_Modeling_Tweets"><code class="docutils literal notranslate"><span class="pre">Topic_Modeling_Tweets()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.Word_Cloud_Freq"><code class="docutils literal notranslate"><span class="pre">Word_Cloud_Freq()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.clean_text_modified"><code class="docutils literal notranslate"><span class="pre">clean_text_modified()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.format_topics_sentences"><code class="docutils literal notranslate"><span class="pre">format_topics_sentences()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.get_ticker_names_and_id"><code class="docutils literal notranslate"><span class="pre">get_ticker_names_and_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.read_news_data"><code class="docutils literal notranslate"><span class="pre">read_news_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.read_tweets_data"><code class="docutils literal notranslate"><span class="pre">read_tweets_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#docker_topics_earning_call_transcripts.main.text_preprocessing_fn"><code class="docutils literal notranslate"><span class="pre">text_preprocessing_fn()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_topics_earning_call_transcripts.html#module-docker_topics_earning_call_transcripts">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker_trend_prediction.html">docker_trend_prediction package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_trend_prediction.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_trend_prediction.html#module-docker_trend_prediction.Trend_prediction">docker_trend_prediction.Trend_prediction module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_trend_prediction.html#docker_trend_prediction.Trend_prediction.build_model"><code class="docutils literal notranslate"><span class="pre">build_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_trend_prediction.html#docker_trend_prediction.Trend_prediction.compute_output"><code class="docutils literal notranslate"><span class="pre">compute_output()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_trend_prediction.html#docker_trend_prediction.Trend_prediction.compute_trend_variable"><code class="docutils literal notranslate"><span class="pre">compute_trend_variable()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_trend_prediction.html#docker_trend_prediction.Trend_prediction.get_regressor"><code class="docutils literal notranslate"><span class="pre">get_regressor()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_trend_prediction.html#docker_trend_prediction.Trend_prediction.train_model"><code class="docutils literal notranslate"><span class="pre">train_model()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_trend_prediction.html#module-docker_trend_prediction">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker_tweets.html">docker_tweets package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_tweets.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_tweets.html#module-docker_tweets.news_ingestion_aws">docker_tweets.news_ingestion_aws module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_tweets.html#docker_tweets.news_ingestion_aws.Find_url"><code class="docutils literal notranslate"><span class="pre">Find_url()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_tweets.html#docker_tweets.news_ingestion_aws.crawl_news_by_keyword"><code class="docutils literal notranslate"><span class="pre">crawl_news_by_keyword()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_tweets.html#docker_tweets.news_ingestion_aws.get_content"><code class="docutils literal notranslate"><span class="pre">get_content()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_tweets.html#docker_tweets.news_ingestion_aws.news_lang_check"><code class="docutils literal notranslate"><span class="pre">news_lang_check()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_tweets.html#module-docker_tweets.tweets_ingestion_aws">docker_tweets.tweets_ingestion_aws module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_tweets.html#docker_tweets.tweets_ingestion_aws.contains_irrelavant_words"><code class="docutils literal notranslate"><span class="pre">contains_irrelavant_words()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_tweets.html#docker_tweets.tweets_ingestion_aws.contains_minimum_tokens"><code class="docutils literal notranslate"><span class="pre">contains_minimum_tokens()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_tweets.html#docker_tweets.tweets_ingestion_aws.crawl_tweets_by_keyword"><code class="docutils literal notranslate"><span class="pre">crawl_tweets_by_keyword()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_tweets.html#docker_tweets.tweets_ingestion_aws.filter_tweet"><code class="docutils literal notranslate"><span class="pre">filter_tweet()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_tweets.html#module-docker_tweets">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to ABC’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="docker_debrief.html" class="btn btn-neutral float-right" title="docker_debrief package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ABC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

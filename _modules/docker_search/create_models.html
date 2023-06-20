@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docker_search.create_models &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">backend_pub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">docker_search.create_models</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for docker_search.create_models</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="create_resources"><a class="viewcode-back" href="../../docker_search.html#docker_search.create_models.create_resources">[docs]</a><span></span><span class="k">def</span> <span class="nf">create_resources</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create all resources required for running Semantic Search. This is meant to be executed only one time</span>
+<span class="sd">    around when starting with a fresh retriever model, or in case some mistake results in previous data to be lost.</span>
+<span class="sd">    This does not fetch the data, it only creates the resources. So, the fetch data program must be run</span>
+<span class="sd">    independently from this.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">document_store_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DOCUMENT_STORE_DIR&#39;</span><span class="p">]</span>
+    <span class="n">retriever_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;RETRIEVER_DIR&#39;</span><span class="p">]</span>
+    <span class="n">mapping_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;MAPPING_DIR&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">document_store_dir</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">document_store_dir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">retriever_dir</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">retriever_dir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">mapping_dir</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">mapping_dir</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">doctype</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;news&#39;</span><span class="p">,</span> <span class="s1">&#39;tweets&#39;</span><span class="p">]:</span>
+        <span class="n">mapping_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mapping_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">doctype</span><span class="si">}</span><span class="s1">_mapping.json&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">mapping_path</span><span class="p">):</span>
+            <span class="n">empty_dict</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">mapping_path</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">empty_dict</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+        <span class="n">docstore_sql_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;sqlite:///&#39;</span><span class="p">,</span> <span class="n">document_store_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">doctype</span><span class="si">}</span><span class="s1">_faiss_document_store.db&#39;</span><span class="p">)</span>
+        <span class="n">docstore_faiss_index</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">document_store_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">doctype</span><span class="si">}</span><span class="s1">_faiss_index.faiss&#39;</span><span class="p">)</span>
+        <span class="n">docstore_faiss_config</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">document_store_dir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">doctype</span><span class="si">}</span><span class="s1">_faiss_index.json&#39;</span><span class="p">)</span>
+        <span class="n">document_store</span> <span class="o">=</span> <span class="n">FAISSDocumentStore</span><span class="p">(</span><span class="n">sql_url</span><span class="o">=</span><span class="n">docstore_sql_url</span><span class="p">)</span>
+        <span class="n">document_store</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">index_path</span><span class="o">=</span><span class="n">docstore_faiss_index</span><span class="p">,</span> <span class="n">config_path</span><span class="o">=</span><span class="n">docstore_faiss_config</span><span class="p">)</span>
+    <span class="n">retriever</span> <span class="o">=</span> <span class="n">DensePassageRetriever</span><span class="p">(</span><span class="n">document_store</span><span class="o">=</span><span class="n">document_store</span><span class="p">,</span> <span class="n">query_embedding_model</span><span class="o">=</span><span class="s1">&#39;soheeyang/rdr-question_encoder-single-nq-base&#39;</span><span class="p">,</span> <span class="n">passage_embedding_model</span><span class="o">=</span><span class="s1">&#39;soheeyang/rdr-ctx_encoder-single-nq-base&#39;</span><span class="p">,</span> <span class="n">max_seq_len_query</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">max_seq_len_passage</span><span class="o">=</span><span class="mi">384</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">use_gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">embed_title</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_fast_tokenizers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">retriever</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">save_dir</span><span class="o">=</span><span class="n">retriever_dir</span><span class="p">)</span>
+    <span class="n">classifier_tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;shahrukhx01/question-vs-statement-classifier&#39;</span><span class="p">)</span>
+    <span class="n">classifier_model</span> <span class="o">=</span> <span class="n">AutoModelForSequenceClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;shahrukhx01/question-vs-statement-classifier&#39;</span><span class="p">)</span>
+    <span class="n">classifier_tokenizer</span><span class="o">.</span><span class="n">save_pretrained</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;QUERY_CLASSIFIER_DIR&#39;</span><span class="p">])</span>
+    <span class="n">classifier_model</span><span class="o">.</span><span class="n">save_pretrained</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;QUERY_CLASSIFIER_DIR&#39;</span><span class="p">])</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">FARMReader</span><span class="p">(</span><span class="s1">&#39;deepset/minilm-uncased-squad2&#39;</span><span class="p">)</span>
+    <span class="n">reader</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;READER_DIR&#39;</span><span class="p">])</span></div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ABC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

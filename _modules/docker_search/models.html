@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>docker_search.models &mdash; Documentation for Fabric 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Documentation for Fabric
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">backend_pub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Documentation for Fabric</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">docker_search.models</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for docker_search.models</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="load_document_store"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_document_store">[docs]</a><span></span><span class="k">def</span> <span class="nf">load_document_store</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load the FAISS Document Store Index, for the given type of &quot;news&quot; or &quot;tweets&quot;. The </span>
+<span class="sd">    DocumentStore index is assumed to be present at DOCUMENT_STORE_DIR environment variable </span>
+<span class="sd">    with a naming convention of f&quot;{type}_faiss_index.faiss&quot; </span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        type (str, optional): Type of DocumentStore, either &quot;news&quot; or &quot;tweets&quot;. Defaults to &quot;news&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        FAISSDocumentStore: The FAISS DocumentStore of the given type.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">document_store</span> <span class="o">=</span> <span class="n">FAISSDocumentStore</span><span class="p">(</span><span class="n">faiss_index_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DOCUMENT_STORE_DIR&#39;</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">_faiss_index.faiss&#39;</span><span class="p">),</span> <span class="n">faiss_config_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;DOCUMENT_STORE_DIR&#39;</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">_faiss_index.json&#39;</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">document_store</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">ve</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cannot find the Document Store. Make sure the environment variables are correctly set and the document store is present.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Also, make sure that the document store correctly has the same number of embeddings as documents.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;If the document stores and models do not exist, create them by running create_models.py&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Exception Info: </span><span class="se">\n</span><span class="si">{</span><span class="n">ve</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Exception Info: </span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="load_retriever"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_retriever">[docs]</a><span class="k">def</span> <span class="nf">load_retriever</span><span class="p">(</span><span class="n">document_store</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a DensePassageRetriever (DPR) for the given type of &quot;news&quot; or &quot;tweets&quot;. The retriever</span>
+<span class="sd">    models are assumed to be present at RETRIEVER_DIR, with the query and passage encoding</span>
+<span class="sd">    models at QUERY_ENCODER_DIR and PASSAGE_ENCODER_DIR environment variables respectively.</span>
+<span class="sd">    </span>
+<span class="sd">    The current models used:</span>
+<span class="sd">    query_embedding_model: soheeyang/rdr-question_encoder-single-nq-base</span>
+<span class="sd">    passage_embedding_model: soheeyang/rdr-ctx_encoder-single-nq-base</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        document_store (FAISSDocumentStore): A FAISS DocumentStore corresponding to the type.   </span>
+<span class="sd">        type (str, optional): The type of retriever, either &quot;news&quot; or &quot;tweets&quot;. Defaults to &quot;news&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        DensePassageRetriever: The DPR for the given DocumentStore</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">retriever</span> <span class="o">=</span> <span class="n">DensePassageRetriever</span><span class="p">(</span><span class="n">document_store</span><span class="o">=</span><span class="n">document_store</span><span class="p">,</span> <span class="n">query_embedding_model</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;QUERY_ENCODER_DIR&#39;</span><span class="p">],</span> <span class="n">passage_embedding_model</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PASSAGE_ENCODER_DIR&#39;</span><span class="p">],</span> <span class="n">max_seq_len_query</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">max_seq_len_passage</span><span class="o">=</span><span class="mi">384</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">use_gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">embed_title</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">use_fast_tokenizers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">retriever</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Make sure that the environment variables are properly set and the retriever is present at the correct path.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;If the document stores and models do not exist, create them by running create_models.py&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Exception Info: </span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="load_document_search_pipeline"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_document_search_pipeline">[docs]</a><span class="k">def</span> <span class="nf">load_document_search_pipeline</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;news&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a DocumentSearchPipeline for the given type of &#39;news&#39; or &#39;tweets&#39;.</span>
+<span class="sd">    It loads DocumentStore and Retriever first, then constructs pipeline.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        type (str, optional): The type of retriever, either &quot;news&quot; or &quot;tweets&quot;. Defaults to &quot;news&quot;.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        DocumentSearchPipeline: Haystack&#39;s Document Search Pipeline that can used for querying</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">check_type</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+    <span class="n">document_store</span> <span class="o">=</span> <span class="n">load_document_store</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
+    <span class="n">retriever</span> <span class="o">=</span> <span class="n">load_retriever</span><span class="p">(</span><span class="n">document_store</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+    <span class="n">pipeline</span> <span class="o">=</span> <span class="n">DocumentSearchPipeline</span><span class="p">(</span><span class="n">retriever</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pipeline</span></div>
+
+
+
+<div class="viewcode-block" id="load_preprocessor"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_preprocessor">[docs]</a><span class="k">def</span> <span class="nf">load_preprocessor</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load Haystack PreProcessor to process documents.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        PreProcessor: A Haystack PreProcessor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">preprocessor</span> <span class="o">=</span> <span class="n">PreProcessor</span><span class="p">(</span><span class="n">clean_empty_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">clean_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">clean_header_footer</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">split_by</span><span class="o">=</span><span class="s1">&#39;word&#39;</span><span class="p">,</span> <span class="n">split_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">split_respect_sentence_boundary</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">preprocessor</span></div>
+
+
+
+<div class="viewcode-block" id="load_query_classifier"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_query_classifier">[docs]</a><span class="k">def</span> <span class="nf">load_query_classifier</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a Question vs Statement classifier.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        TransformersQueryClassifier: A TransformersQueryClassifier for Question vs Statement classification.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">classifier</span> <span class="o">=</span> <span class="n">TransformersQueryClassifier</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;QUERY_CLASSIFIER_DIR&#39;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">classifier</span>
+    <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">oe</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Make sure the environment variables are correctly set and that the classifier is present at the correct path.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;If the document stores and models do not exist, create them by running create_models.py&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Exception Info: </span><span class="se">\n</span><span class="si">{</span><span class="n">oe</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Exception Info: </span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="load_reader"><a class="viewcode-back" href="../../docker_search.html#docker_search.models.load_reader">[docs]</a><span class="k">def</span> <span class="nf">load_reader</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load Haystack FARMReader to extract answers from the documents.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        FARMReader: Haystack FARMReader</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">FARMReader</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;READER_DIR&#39;</span><span class="p">],</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">reader</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Make sure the environment variables are correctly set and that the reader model is at the correct path.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;If the document stores and models do not exist, create them by running create_models.py&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Exception Info: </span><span class="se">\n</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, ABC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
