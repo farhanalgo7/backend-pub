@@ -37,7 +37,5 @@ jobs:
           sh DocMaterial/order66.sh
 
       - name: Run ghp-import
-        env:
-          gh_token: ${{ secrets.GH_TOKEN }}
         run: |
           ghp-import -n -p -f docs/_build/html
