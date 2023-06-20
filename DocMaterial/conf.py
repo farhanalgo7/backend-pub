@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.insert(0, os.path.abspath("../src_for_doc./backend-pub"))
+sys.path.insert(0, os.path.abspath("../src_for_doc./backend_pub"))
 
 project = 'Documentation for Fabric'
 copyright = '2023, ABC'
